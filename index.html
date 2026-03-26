@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" id="metaDescription" content="Премиальное цифровое приглашение на Қыз ұзату">
+  <meta name="theme-color" content="#f6efe5">
+  <title>Қыз ұзату</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+  <div class="page-glow" aria-hidden="true"></div>
+  <div class="page-grain" aria-hidden="true"></div>
+
+  <header class="hero">
+    <div class="shell hero__shell">
+      <p class="eyebrow hero__eyebrow" id="heroEventType">Қыз ұзату</p>
+
+      <div class="hero__portrait reveal is-visible" data-reveal>
+        <img
+          id="heroPortrait"
+          src="assets/hero-placeholder.svg"
+          alt=""
+          width="640"
+          height="840"
+          decoding="async"
+        >
+      </div>
+
+      <div class="hero__content reveal is-visible" data-reveal>
+        <p class="hero__hosts" id="heroHosts"></p>
+        <h1 class="hero__name" id="heroBrideName"></h1>
+        <p class="hero__subtitle" id="heroSecondaryText"></p>
+
+        <div class="hero__meta">
+          <article class="meta-card">
+            <span class="meta-card__label" id="labelDate">Дата</span>
+            <strong class="meta-card__value" id="heroDate"></strong>
+          </article>
+          <article class="meta-card">
+            <span class="meta-card__label" id="labelTime">Время</span>
+            <strong class="meta-card__value" id="heroTime"></strong>
+          </article>
+        </div>
+
+        <p class="hero__lead" id="heroLead"></p>
+
+        <div class="hero__actions">
+          <a class="button button--primary" id="confirmPresenceButton" href="#rsvp">Подтвердить присутствие</a>
+          <a class="button button--ghost" id="scrollDownButton" href="#invitation">Листать ниже</a>
+        </div>
+      </div>
+
+      <button class="scroll-cue reveal is-visible" type="button" data-scroll-target="#invitation" aria-label="Листать ниже">
+        <span class="scroll-cue__label" id="scrollCueLabel">Листать ниже</span>
+        <span class="scroll-cue__line" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section reveal" id="invitation" data-reveal>
+      <div class="shell">
+        <div class="section-heading">
+          <p class="eyebrow" id="invitationSectionEyebrow">Приглашение</p>
+          <h2 id="invitationSectionTitle"></h2>
+          <img class="section-divider" src="assets/ornament-divider.svg" alt="" width="240" height="24" loading="lazy" decoding="async">
+        </div>
+
+        <article class="surface-card invitation-card">
+          <p class="invitation-card__lead" id="invitationLead"></p>
+          <div class="invitation-card__body" id="invitationBody"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="countdown" data-reveal>
+      <div class="shell">
+        <div class="section-heading">
+          <p class="eyebrow" id="countdownSectionEyebrow">До встречи</p>
+          <h2 id="countdownTitle"></h2>
+        </div>
+
+        <p class="section-note" id="countdownDateLine"></p>
+
+        <div class="countdown-grid" id="countdownGrid" aria-label="Таймер обратного отсчёта">
+          <article class="countdown-unit">
+            <span class="countdown-unit__value" id="daysValue">00</span>
+            <span class="countdown-unit__label" id="daysLabel">дней</span>
+          </article>
+          <article class="countdown-unit">
+            <span class="countdown-unit__value" id="hoursValue">00</span>
+            <span class="countdown-unit__label" id="hoursLabel">часов</span>
+          </article>
+          <article class="countdown-unit">
+            <span class="countdown-unit__value" id="minutesValue">00</span>
+            <span class="countdown-unit__label" id="minutesLabel">минут</span>
+          </article>
+          <article class="countdown-unit">
+            <span class="countdown-unit__value" id="secondsValue">00</span>
+            <span class="countdown-unit__label" id="secondsLabel">секунд</span>
+          </article>
+        </div>
+
+        <p class="countdown-message" id="countdownMessage" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="section reveal" id="timeline" data-reveal>
+      <div class="shell">
+        <div class="section-heading">
+          <p class="eyebrow" id="timelineSectionEyebrow">Вечер</p>
+          <h2 id="timelineTitle"></h2>
+          <p class="section-note" id="timelineIntro"></p>
+        </div>
+
+        <div class="timeline" id="timelineList"></div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="venue" data-reveal>
+      <div class="shell">
+        <div class="section-heading">
+          <p class="eyebrow" id="venueSectionEyebrow">Локация</p>
+          <h2 id="venueTitle"></h2>
+        </div>
+
+        <div class="venue-layout">
+          <article class="surface-card venue-card">
+            <p class="venue-card__overline" id="venueOverline"></p>
+            <h3 class="venue-card__name" id="venueName"></h3>
+            <p class="venue-card__address" id="venueAddress"></p>
+            <p class="venue-card__note" id="venueNote"></p>
+
+            <div class="venue-card__actions">
+              <a class="button button--primary" id="openMapLink" href="#" target="_blank" rel="noreferrer">Открыть карту</a>
+              <button class="button button--ghost" id="loadMapButton" type="button">Показать карту</button>
+            </div>
+          </article>
+
+          <article class="surface-card map-card" id="mapCard">
+            <div class="map-placeholder" id="mapPlaceholder">
+              <img src="assets/map-placeholder.svg" alt="" width="720" height="480" loading="lazy" decoding="async">
+              <div class="map-placeholder__copy">
+                <p class="map-placeholder__title" id="mapPlaceholderTitle"></p>
+                <p class="map-placeholder__text" id="mapPlaceholderText"></p>
+                <button class="button button--ghost button--small" id="loadMapButtonSecondary" type="button">Загрузить карту</button>
+              </div>
+            </div>
+
+            <div class="map-canvas" id="mapCanvas" aria-live="polite"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="dress-code" data-reveal>
+      <div class="shell">
+        <div class="section-heading">
+          <p class="eyebrow" id="dressCodeSectionEyebrow">Dress code</p>
+          <h2 id="dressCodeTitle"></h2>
+          <p class="section-note" id="dressCodeDescription"></p>
+        </div>
+
+        <div class="dress-code-palette" id="dressCodePalette"></div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="details" data-reveal>
+      <div class="shell">
+        <div class="section-heading">
+          <p class="eyebrow" id="detailsSectionEyebrow">Детали</p>
+          <h2 id="detailsTitle"></h2>
+          <p class="section-note" id="detailsIntro"></p>
+        </div>
+
+        <div class="details-list" id="detailsList"></div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="rsvp" data-reveal>
+      <div class="shell">
+        <div class="section-heading">
+          <p class="eyebrow" id="rsvpSectionEyebrow">RSVP</p>
+          <h2 id="rsvpTitle"></h2>
+        </div>
+
+        <article class="surface-card rsvp-card">
+          <div class="rsvp-card__intro">
+            <p class="rsvp-card__lead" id="rsvpIntro"></p>
+            <p class="section-note" id="rsvpDeadline"></p>
+            <p class="rsvp-card__contact" id="rsvpContactHint"></p>
+          </div>
+
+          <div class="form-status" id="formStatus" aria-live="polite"></div>
+
+          <form id="rsvpForm" novalidate>
+            <div class="form-grid">
+              <div class="field" data-field="fullName">
+                <label class="field__label" for="fullName">Имя и фамилия</label>
+                <input class="field__control" id="fullName" name="fullName" type="text" autocomplete="name" placeholder="Например, Айгерим Сатыбалдиева">
+                <p class="field__error" data-error-for="fullName"></p>
+              </div>
+
+              <div class="field" data-field="contact">
+                <label class="field__label" for="contact">Телефон или Telegram</label>
+                <input class="field__control" id="contact" name="contact" type="text" autocomplete="tel" placeholder="+7 777 000 00 00 или @username">
+                <p class="field__error" data-error-for="contact"></p>
+              </div>
+
+              <div class="field" data-field="attendance">
+                <label class="field__label" for="attendance">Сможете ли присутствовать</label>
+                <select class="field__control" id="attendance" name="attendance">
+                  <option value="">Выберите вариант</option>
+                  <option value="yes">Да, с радостью буду</option>
+                  <option value="maybe">Сообщу чуть позже</option>
+                  <option value="no">К сожалению, не смогу</option>
+                </select>
+                <p class="field__error" data-error-for="attendance"></p>
+              </div>
+
+              <div class="field" data-field="guestCount">
+                <label class="field__label" for="guestCount">Количество гостей</label>
+                <input class="field__control" id="guestCount" name="guestCount" type="number" min="0" max="6" value="1" inputmode="numeric">
+                <p class="field__error" data-error-for="guestCount"></p>
+              </div>
+
+              <div class="field field--full" data-field="foodPreferences">
+                <label class="field__label" for="foodPreferences">Особенности по еде или аллергии</label>
+                <input class="field__control" id="foodPreferences" name="foodPreferences" type="text" placeholder="Если есть, укажите кратко">
+                <p class="field__error" data-error-for="foodPreferences"></p>
+              </div>
+
+              <div class="field field--full" data-field="comment">
+                <label class="field__label" for="comment">Комментарий</label>
+                <textarea class="field__control field__control--textarea" id="comment" name="comment" rows="5" placeholder="Можно оставить тёплое пожелание или вопрос"></textarea>
+                <p class="field__error" data-error-for="comment"></p>
+              </div>
+            </div>
+
+            <button class="button button--primary button--submit" id="submitButton" type="submit">Отправить ответ</button>
+          </form>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer__shell">
+      <img class="section-divider" src="assets/ornament-divider.svg" alt="" width="240" height="24" loading="lazy" decoding="async">
+      <p class="footer__text" id="footerText"></p>
+      <p class="footer__signature" id="footerSignature"></p>
+      <a class="footer__contact" id="footerContact" href="#" target="_blank" rel="noreferrer"></a>
+      <p class="footer__year">&copy; <span id="footerYear"></span></p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
