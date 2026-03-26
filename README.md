@@ -94,8 +94,10 @@ data/rsvp-submissions.json
 1. Зайдите в [Vercel Dashboard](https://vercel.com/new)
 2. Импортируйте репозиторий `Sshows/wedding`
 3. Убедитесь, что выбрана ветка `main`
-4. Оставьте `Root Directory` пустым или `.` 
-5. Нажмите `Deploy`
+4. Выберите `Framework Preset` = `Other`
+5. Оставьте `Root Directory` пустым или `.`
+6. Если Vercel предложит `Build Command`, включите override и оставьте поле пустым
+7. Нажмите `Deploy`
 
 После деплоя проверьте:
 
