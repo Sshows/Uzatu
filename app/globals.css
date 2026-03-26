@@ -645,7 +645,7 @@ button {
 .timeline::before {
   content: "";
   position: absolute;
-  left: 0.85rem;
+  left: 1rem;
   top: 0.45rem;
   bottom: 0.45rem;
   width: 1px;
@@ -655,26 +655,29 @@ button {
 .timeline__item {
   position: relative;
   display: grid;
-  grid-template-columns: 4rem 1fr;
-  gap: 1rem;
-}
-
-.timeline__item::before {
-  content: "";
-  position: absolute;
-  top: 1.15rem;
-  left: 0.42rem;
-  width: 0.92rem;
-  height: 0.92rem;
-  border-radius: 50%;
-  background: linear-gradient(180deg, #dcc0a2, #9b775f);
-  box-shadow: 0 0 0 6px rgba(248, 242, 234, 0.9);
+  grid-template-columns: 3.2rem 1fr;
+  gap: 0.9rem;
+  align-items: start;
 }
 
 .timeline__time {
-  padding-top: 0.9rem;
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin-top: 0.15rem;
+  margin-left: 0;
+  border-radius: 999px;
+  background: #fffaf5;
+  border: 1px solid rgba(155, 119, 95, 0.16);
+  box-shadow: 0 0 0 6px #f8f2ea;
   color: var(--accent);
   font-weight: 800;
+  font-size: 0.9rem;
+  line-height: 1;
 }
 
 .timeline__card {
@@ -682,6 +685,15 @@ button {
   border-radius: var(--radius-lg);
   background: rgba(255, 250, 244, 0.84);
   border: 1px solid rgba(155, 119, 95, 0.1);
+}
+
+.timeline__meta {
+  margin: 0 0 0.45rem;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .timeline__card h3,

@@ -166,10 +166,11 @@ export default function HomePage() {
 
             <div className="timeline-shell" data-reveal>
               <div className="timeline">
-                {siteContent.timeline.items.map((item) => (
+                {siteContent.timeline.items.map((item, index) => (
                   <article className="timeline__item" key={`${item.time}-${item.title}`}>
-                    <div className="timeline__time">{item.time}</div>
+                    <div className="timeline__time">{index + 1}</div>
                     <div className="timeline__card">
+                      <p className="timeline__meta">{item.time}</p>
                       <h3>{item.title}</h3>
                       <p>{item.description}</p>
                     </div>
