@@ -50,8 +50,11 @@ Vercel ішінде:
 
 1. `Framework Preset` ретінде `Next.js` таңдаңыз.
 2. `Root Directory` бос қалсын немесе `.` болсын.
-3. `Environment Variables` бөліміне Supabase айнымалыларын енгізіңіз.
-4. Deploy жасаңыз.
+3. `Output Directory` бос болуы керек.
+4. `Environment Variables` бөліміне Supabase айнымалыларын енгізіңіз.
+5. Deploy жасаңыз.
+
+Егер сайт `404` көрсетсе, әдетте мәселе Vercel-дегі ескі `Output Directory` баптауында болады. Жобадағы `vercel.json` бұл мәнді override етеді.
 
 ## Қай жерден өзгерту керек
 
