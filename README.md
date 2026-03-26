@@ -1,116 +1,64 @@
-# Qyz Uzatu Invitation Website
+# Қыз ұзату сайты
 
-Одностраничный invitation website с лёгким backend для RSVP.
+Бұл жоба `Next.js` негізінде жасалған бір беттік цифрлық шақыру сайты. Интерфейс толықтай қазақ тілінде дайындалған және `Vercel + Supabase` сценарийіне бейімделген.
 
-## Как открыть сайт локально
+## Не бар
 
-Есть два рабочих режима.
+- `app/` — негізгі бет пен API маршруттары
+- `components/` — countdown, карта, reveal және RSVP формасы
+- `lib/site-content.js` — барлық өзгертілетін мәтін мен дерек бір жерде
+- `lib/rsvp-validation.js` — форма валидациясы
+- `lib/rsvp-storage.js` — Supabase немесе local dev сақтау логикасы
+- `public/assets/` — графикалық файлдар
+- `supabase/schema.sql` — RSVP кестесін құруға арналған SQL
 
-## 1. Быстрый просмотр без backend
+## Жергілікті іске қосу
 
-Откройте `index.html` через Live Server в VS Code.
+Алдымен тәуелділіктерді орнатыңыз:
 
-Обычно адрес будет таким:
+```bash
+npm install
+```
+
+Сосын development режимін іске қосыңыз:
+
+```bash
+npm run dev
+```
+
+Браузерде ашыңыз:
 
 ```text
-http://127.0.0.1:5500
+http://localhost:3000
 ```
 
-В этом режиме сайт откроется как обычный лендинг, а форма RSVP при недоступном backend сохранит ответ в `localStorage`.
+## Supabase қосу
 
-## 2. Полный запуск с backend
-
-Из корня проекта выполните:
-
-```powershell
-node server.js
-```
-
-или:
-
-```powershell
-.\start-local.ps1
-```
-
-или двойным кликом:
+1. Supabase жобасын ашыңыз.
+2. `supabase/schema.sql` файлын орындаңыз.
+3. Жобаға мына env айнымалыларын қосыңыз:
 
 ```text
-start-local.bat
+SUPABASE_URL=
+SUPABASE_SERVICE_ROLE_KEY=
+SUPABASE_RSVP_TABLE=rsvp_submissions
 ```
-
-После этого откройте именно этот адрес:
-
-```text
-http://127.0.0.1:3000
-```
-
-Важно:
-
-- `http://127.0.0.1` без порта не подойдёт
-- `ERR_CONNECTION_REFUSED` означает, что локальный сервер не запущен
-- если вы открыли `127.0.0.1:3000`, но команда `node server.js` не запущена, сайт не откроется
-
-## Что внутри
-
-- `index.html` - структура лендинга
-- `styles.css` - визуальный стиль и адаптив
-- `script.js` - контент, таймер, reveal-анимации, lazy map и логика формы
-- `server.js` - локальный HTTP-сервер
-- `api/rsvp.js` - backend endpoint для Vercel
-- `api/health.js` - health endpoint
-- `lib/rsvp.js` - валидация и обработка RSVP
-- `assets/` - графика
-- `start-local.ps1` - локальный запуск на Windows
-- `start-local.bat` - быстрый запуск двойным кликом
-
-## RSVP
-
-Форма отправляет данные на:
-
-```text
-/api/rsvp
-```
-
-При локальном запуске через `server.js` ответы сохраняются в:
-
-```text
-data/rsvp-submissions.json
-```
-
-Если backend недоступен, форма не ломает страницу и сохраняет ответ локально в браузере.
 
 ## Vercel
 
-Для Vercel используйте корень репозитория как `Root Directory`.
+Vercel ішінде:
 
-Проверьте:
+1. `Framework Preset` ретінде `Next.js` таңдаңыз.
+2. `Root Directory` бос қалсын немесе `.` болсын.
+3. `Environment Variables` бөліміне Supabase айнымалыларын енгізіңіз.
+4. Deploy жасаңыз.
 
-- ветка `main`
-- root directory = `.`
-- не `public`
+## Қай жерден өзгерту керек
 
-Короткий путь:
-
-1. Зайдите в [Vercel Dashboard](https://vercel.com/new)
-2. Импортируйте репозиторий `Sshows/wedding`
-3. Убедитесь, что выбрана ветка `main`
-4. Выберите `Framework Preset` = `Other`
-5. Оставьте `Root Directory` пустым или `.`
-6. Если Vercel предложит `Build Command`, включите override и оставьте поле пустым
-7. Нажмите `Deploy`
-
-После деплоя проверьте:
-
-- главная страница открывается по домену Vercel
-- `https://ваш-домен/api/health` возвращает `ok: true`
-- форма RSVP отправляется без ошибок
-
-В проект уже добавлен `vercel.json`, чтобы деплой был стабильнее:
-
-- статический лендинг отдаётся из корня репозитория
-- API-файлы из `api/` работают как Vercel Functions
-- не нужен отдельный `server.js` на самом Vercel
-
-## Где менять контент
-
-Весь редактируемый контент вынесен в объект `siteContent` в начале `script.js`.
+- Қалыңдықтың аты: `lib/site-content.js`
+- Күйеу жігіттің аты: `lib/site-content.js`
+- Күн мен уақыт: `lib/site-content.js`
+- Өтетін орын мен карта: `lib/site-content.js`
+- Фото: `lib/site-content.js` ішіндегі `media.heroImage`
+- RSVP мәтіндері: `lib/site-content.js`
+- Сақтау кестесі: `.env` немесе Vercel env ішіндегі `SUPABASE_RSVP_TABLE`
