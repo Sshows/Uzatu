@@ -232,9 +232,31 @@ button {
   font-weight: 600;
 }
 
+.hero__script {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-script), cursive;
+  font-size: clamp(3.2rem, 17vw, 7rem);
+  line-height: 0.9;
+  font-weight: 400;
+  color: #4d382e;
+  text-wrap: balance;
+}
+
+.hero__script span {
+  display: block;
+}
+
+.hero__date-city {
+  margin: 0.95rem 0 0;
+  color: #6b5648;
+  font-size: clamp(1rem, 4vw, 1.18rem);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
 .hero__subtitle {
   max-width: 35rem;
-  margin: 1rem 0 0;
+  margin: 0.7rem 0 0;
   color: #685346;
   font-size: clamp(1rem, 4vw, 1.28rem);
   line-height: 1.72;

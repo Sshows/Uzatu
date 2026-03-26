@@ -1,4 +1,4 @@
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { Cormorant_Garamond, Great_Vibes, Manrope } from "next/font/google";
 import { siteContent } from "@/lib/site-content";
 import "./globals.css";
 
@@ -17,6 +17,13 @@ const sans = Manrope({
   variable: "--font-sans"
 });
 
+const script = Great_Vibes({
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+  variable: "--font-script"
+});
+
 export const metadata = {
   title: siteContent.seo.title,
   description: siteContent.seo.description
@@ -25,7 +32,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="kk">
-      <body className={`${serif.variable} ${sans.variable}`}>{children}</body>
+      <body className={`${serif.variable} ${sans.variable} ${script.variable}`}>{children}</body>
     </html>
   );
 }

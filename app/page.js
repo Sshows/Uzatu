@@ -38,7 +38,12 @@ export default function HomePage() {
               <p className="hero__eyebrow">{siteContent.eventType}</p>
               <div className="hero__tag">{siteContent.heroTag}</div>
               <p className="hero__hosts">{siteContent.hosts}</p>
-              <h1 className="hero__title">{siteContent.brideName}</h1>
+              <h1 className="hero__script" aria-label="MEREKE'S QYZ UZATU">
+                {siteContent.heroScriptLines.map((line) => (
+                  <span key={line}>{line}</span>
+                ))}
+              </h1>
+              <p className="hero__date-city">{siteContent.heroDateCity}</p>
               <p className="hero__subtitle">{siteContent.heroSubtitle}</p>
 
               <div className="hero__story">
@@ -191,7 +196,7 @@ export default function HomePage() {
 
             <div className="venue-grid">
               <article className="venue-card" data-reveal>
-                <p className="venue-card__label">Зал атауы</p>
+                <p className="venue-card__label">Мекенжай</p>
                 <h3>{siteContent.venue.hall}</h3>
                 <p className="venue-card__address">{siteContent.venue.address}</p>
                 <a className="button button--primary" href={siteContent.venue.mapUrl} target="_blank" rel="noreferrer">

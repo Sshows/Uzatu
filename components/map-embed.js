@@ -5,10 +5,11 @@ import { siteContent } from "@/lib/site-content";
 
 export default function MapEmbed({ title, embedUrl, openUrl }) {
   const [isLoaded, setIsLoaded] = useState(false);
+  const canEmbed = Boolean(embedUrl);
 
   return (
     <div className="map-card" data-reveal>
-      {isLoaded ? (
+      {isLoaded && canEmbed ? (
         <iframe
           className="map-card__frame"
           src={embedUrl}
@@ -22,11 +23,13 @@ export default function MapEmbed({ title, embedUrl, openUrl }) {
           <h3>{siteContent.venue.mapPlaceholderTitle}</h3>
           <p>{siteContent.venue.mapPlaceholderText}</p>
           <div className="map-card__actions">
-            <button className="button button--primary" type="button" onClick={() => setIsLoaded(true)}>
-              {siteContent.venue.loadMapLabel}
-            </button>
+            {canEmbed ? (
+              <button className="button button--primary" type="button" onClick={() => setIsLoaded(true)}>
+                {siteContent.venue.loadMapLabel}
+              </button>
+            ) : null}
             <a className="button button--ghost" href={openUrl} target="_blank" rel="noreferrer">
-              {siteContent.venue.externalMapLabel}
+              {siteContent.venue.openMapLabel}
             </a>
           </div>
         </div>
