@@ -1,23 +1,71 @@
-# Қыз ұзату Invitation Landing
+# Қыз ұзату Invitation Website
 
-Премиальный одностраничный invitation website на чистых `HTML + CSS + vanilla JavaScript`. Проект рассчитан на запуск через Live Server в VS Code и подходит для деплоя на Vercel как обычный статический сайт.
+Полноценный invitation website с фронтендом и лёгким backend для RSVP.
+
+## Стек
+
+- `HTML`
+- `CSS`
+- `vanilla JavaScript`
+- `Node.js` без внешних зависимостей
+- `Vercel API Functions` для деплоя
 
 ## Что внутри
 
-- `index.html` — структура длинного лендинга
-- `styles.css` — визуальный стиль, типографика, адаптив и анимации
-- `script.js` — весь редактируемый контент, countdown, lazy map, RSVP и UI-логика
-- `assets/` — локальные SVG-ассеты, dress code line-art и placeholder-графика
+- `index.html` — структура лендинга
+- `styles.css` — весь визуальный стиль и адаптив
+- `script.js` — контент, countdown, reveal, lazy map и работа формы
+- `server.js` — локальный сервер для полноценного запуска с backend
+- `api/rsvp.js` — Vercel backend endpoint для формы
+- `api/health.js` — health endpoint
+- `lib/rsvp.js` — серверная логика валидации и сохранения RSVP
+- `assets/` — локальная графика
 
-## Запуск через Live Server
+## Как запустить локально
 
-1. Откройте папку проекта в VS Code.
-2. Откройте `index.html`.
-3. Нажмите `Open with Live Server`.
+```powershell
+node server.js
+```
+
+После этого откройте:
+
+```text
+http://127.0.0.1:3000
+```
+
+## RSVP backend
+
+Форма отправляет данные на:
+
+```text
+/api/rsvp
+```
+
+Локально ответы сохраняются в:
+
+```text
+data/rsvp-submissions.json
+```
+
+Этот файл добавлен в `.gitignore`.
+
+## Поддержка Vercel
+
+На Vercel frontend и API работают из одного репозитория.
+
+Для реальной доставки RSVP можно использовать переменные окружения:
+
+- `TELEGRAM_BOT_TOKEN`
+- `TELEGRAM_CHAT_ID`
+- `RSVP_WEBHOOK_URL`
+
+Если указать Telegram-переменные, backend будет отправлять новую заявку в Telegram.
+
+Если указать `RSVP_WEBHOOK_URL`, backend дополнительно будет пересылать заявку на ваш внешний endpoint.
 
 ## Где менять контент
 
-Весь основной контент находится в объекте `invitationContent` в начале `script.js`.
+Весь основной контент вынесен в объект `siteContent` в начале `script.js`.
 
 Там можно быстро поменять:
 
@@ -30,27 +78,20 @@
 - локацию и карту
 - программу вечера
 - dress code palette
-- fashion-инфографику dress code
-- важные детали
+- карточки образов
+- детали
 - контакты
-- настройки RSVP
 - фото невесты
 
-## TODO-точки в коде
+## TODO-точки
 
-В коде оставлены понятные TODO-комментарии:
+В коде оставлены TODO-комментарии:
 
 - где менять шрифты
 - где менять имя невесты
 - где менять дату
-- где заменять фото
-- где изменять место проведения
+- где менять место
 - где настраивать карту
-- где менять dress code palette и fashion-инфографику
-- где подключать реальную отправку RSVP
-
-## RSVP
-
-Если `endpoint` в `script.js` пустой, форма сохраняет ответы в `localStorage`.
-
-Если указать `endpoint`, форма начнёт отправлять данные через `fetch`. В коде уже оставлены места для подключения Google Apps Script, Formspree или собственного backend.
+- где менять dress code
+- где менять фото
+- где подключать реальную доставку RSVP

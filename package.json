@@ -1,0 +1,13 @@
+{
+  "name": "qyz-uzatu-invitation",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Premium Qyz Uzatu invitation site with lightweight backend",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

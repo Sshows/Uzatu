@@ -136,11 +136,10 @@ const siteContent = {
     title: "Подтверждение присутствия",
     intro: "Пожалуйста, подтвердите своё присутствие заранее, чтобы мы смогли подготовить вечер с заботой о каждом госте.",
     deadline: "Просим ответить до 10 сентября 2026 года.",
-    // TODO: подключите Google Apps Script / Formspree / любой backend.
-    endpoint: "",
-    storageKey: "kyz-uzatu-rsvp-responses",
-    successMessage: "Спасибо. Ваш ответ сохранён.",
-    endpointSuccessMessage: "Спасибо. Ваш ответ отправлен.",
+    endpoint: "/api/rsvp",
+    fallbackStorageKey: "kyz-uzatu-rsvp-fallback",
+    successMessage: "Спасибо. Ваш ответ успешно отправлен.",
+    fallbackMessage: "Сервер сейчас недоступен. Ответ сохранён локально в этом браузере.",
     errorMessage: "Не удалось отправить форму. Попробуйте ещё раз или свяжитесь с организатором напрямую."
   },
 
@@ -186,6 +185,7 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 const elements = {
   metaDescription: document.getElementById("metaDescription"),
   heroEventType: document.getElementById("heroEventType"),
+  heroHosts: document.getElementById("heroHosts"),
   heroBrideName: document.getElementById("heroBrideName"),
   heroSubtitle: document.getElementById("heroSubtitle"),
   heroDate: document.getElementById("heroDate"),
@@ -305,6 +305,7 @@ function renderContent() {
   elements.metaDescription.setAttribute("content", siteContent.seo.description);
 
   setText(elements.heroEventType, siteContent.eventType);
+  setText(elements.heroHosts, siteContent.hosts);
   setText(elements.heroBrideName, siteContent.brideName);
   setText(
     elements.heroSubtitle,
@@ -373,7 +374,6 @@ function renderContent() {
   setText(elements.dressCodeKicker, siteContent.dressCode.kicker);
   setText(elements.dressCodeTitle, siteContent.dressCode.title);
   setText(elements.dressCodeDescription, siteContent.dressCode.description);
-  setText(elements.dressCodeNote, siteContent.dressCode.note);
   elements.dressCodePalette.innerHTML = siteContent.dressCode.palette
     .map(
       (color) => `
@@ -403,6 +403,7 @@ function renderContent() {
       `
     )
     .join("");
+  setText(elements.dressCodeNote, siteContent.dressCode.note);
 
   setText(elements.detailsKicker, siteContent.details.kicker);
   setText(elements.detailsTitle, siteContent.details.title);
@@ -617,6 +618,31 @@ function updateGuestCountState() {
   }
 }
 
+async function sendRsvp(payload) {
+  const response = await fetch(siteContent.rsvp.endpoint, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  let result = {};
+  try {
+    result = await response.json();
+  } catch (error) {
+    result = {};
+  }
+
+  if (!response.ok) {
+    const errorMessage = result.message || siteContent.rsvp.errorMessage;
+    const errorObject = new Error(errorMessage);
+    errorObject.details = result.errors;
+    errorObject.statusCode = response.status;
+    throw errorObject;
+  }
+
+  return result;
+}
+
 async function handleFormSubmit(event) {
   event.preventDefault();
   clearStatus();
@@ -640,37 +666,28 @@ async function handleFormSubmit(event) {
   const payload = {
     ...values,
     eventType: siteContent.eventType,
-    brideName: siteContent.brideName,
-    submittedAt: new Date().toISOString()
+    brideName: siteContent.brideName
   };
 
   try {
-    if (siteContent.rsvp.endpoint) {
-      // TODO: сюда можно подключить Google Apps Script / Formspree / собственный backend.
-      const response = await fetch(siteContent.rsvp.endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
-
-      if (!response.ok) {
-        throw new Error("RSVP request failed");
-      }
-
-      setStatus("success", siteContent.rsvp.endpointSuccessMessage);
-    } else {
-      const existing = JSON.parse(localStorage.getItem(siteContent.rsvp.storageKey) || "[]");
-      existing.push(payload);
-      localStorage.setItem(siteContent.rsvp.storageKey, JSON.stringify(existing));
-      setStatus("success", siteContent.rsvp.successMessage);
-    }
-
+    await sendRsvp(payload);
+    setStatus("success", siteContent.rsvp.successMessage);
     elements.rsvpForm.reset();
     elements.rsvpForm.elements.guestCount.value = "1";
     updateGuestCountState();
   } catch (error) {
-    console.error(error);
-    setStatus("error", siteContent.rsvp.errorMessage);
+    if (error.details && typeof error.details === "object") {
+      Object.entries(error.details).forEach(([name, message]) => setFieldError(name, message));
+      setStatus("error", error.message || siteContent.rsvp.errorMessage);
+    } else {
+      const existing = JSON.parse(localStorage.getItem(siteContent.rsvp.fallbackStorageKey) || "[]");
+      existing.push({ ...payload, submittedAt: new Date().toISOString() });
+      localStorage.setItem(siteContent.rsvp.fallbackStorageKey, JSON.stringify(existing));
+      setStatus("success", siteContent.rsvp.fallbackMessage);
+      elements.rsvpForm.reset();
+      elements.rsvpForm.elements.guestCount.value = "1";
+      updateGuestCountState();
+    }
   } finally {
     elements.submitButton.disabled = false;
     elements.submitButton.textContent = siteContent.labels.submit;

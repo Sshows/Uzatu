@@ -1,0 +1,9 @@
+data/state.json
+data/state.corrupt.*.json
+data/state.json.tmp
+data/projectm.db*
+data/projectm.corrupt.*.db*
+data/rsvp-submissions.json
+render-data-test-*
+server.err.txt
+server.out.txt
