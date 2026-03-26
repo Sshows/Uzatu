@@ -1,23 +1,23 @@
-const invitationContent = {
+const siteContent = {
   seo: {
     title: "Қыз ұзату | Айару",
-    description: "Премиальное цифровое приглашение на Қыз ұзату в формате одного длинного лендинга."
+    description: "Премиальное цифровое приглашение на Қыз ұзату."
   },
 
-  // TODO: поменяйте название события при необходимости.
+  // TODO: поменяйте название события.
   eventType: "Қыз ұзату",
 
   // TODO: поменяйте имя невесты.
   brideName: "Айару",
 
-  // TODO: поменяйте имя жениха. Можно оставить пустым, если не хотите показывать.
+  // TODO: поменяйте имя жениха.
   groomName: "Нұрсұлтан",
 
   // TODO: поменяйте семью / hosts.
-  hosts: "Семья Жақсыбековых с любовью приглашает вас разделить этот особенный вечер",
+  hosts: "Семья Жақсыбековых с теплом приглашает вас",
 
-  // TODO: поменяйте дату торжества здесь.
-  eventSchedule: {
+  // TODO: поменяйте дату и время.
+  eventDate: {
     year: 2026,
     month: 9,
     day: 18,
@@ -25,172 +25,102 @@ const invitationContent = {
     minute: 0
   },
 
-  hero: {
-    scriptNote: "вечер любви и благословения",
-    secondaryText: "",
-    lead:
-      "Будем счастливы видеть вас рядом в этот трогательный семейный вечер, наполненный теплом, уважением к традиции и светлыми пожеланиями для новой главы жизни нашей дочери."
-  },
+  heroLead:
+    "Будем счастливы разделить с вами этот трогательный и очень важный для нашей семьи вечер, наполненный теплом, уважением к традициям и светлыми пожеланиями.",
 
   invitation: {
-    eyebrow: "Приглашение",
-    title: "С теплом приглашаем вас на важный и красивый семейный вечер",
-    script: "соберёмся рядом с самыми близкими",
+    kicker: "Приглашение",
+    title: "Соберёмся рядом с самыми близкими в красивый семейный вечер",
     lead: "Дорогие родные и близкие!",
     paragraphs: [
-      "С большим уважением и любовью приглашаем вас на Қыз ұзату — особенный семейный вечер, наполненный трепетом, благодарностью и светлыми словами.",
-      "Для нашей семьи это очень важный и эмоциональный момент. Нам будет особенно дорого, если вы разделите его рядом с Айару, поддержите её своим присутствием и сохраните этот вечер вместе с нами как тёплую семейную историю.",
-      "Пусть эта встреча будет наполнена искренними улыбками, красивыми пожеланиями, добрыми бата и тихой светлой атмосферой близости."
+      "С большим уважением и любовью приглашаем вас на Қыз ұзату — особенный семейный вечер, наполненный трепетом, благодарностью и искренними словами.",
+      "Для нашей семьи это очень важный и эмоциональный момент. Нам будет особенно дорого, если вы разделите его рядом с Айару и сохраните этот вечер вместе с нами как тёплую семейную историю.",
+      "Пусть эта встреча будет наполнена красивой атмосферой, добрыми бата и спокойным ощущением близости."
     ],
-    signatureLabel: "С уважением и любовью",
-    signatureValue: "семья Жақсыбековых"
+    signature: "С уважением и любовью, семья Жақсыбековых"
   },
 
   countdown: {
-    eyebrow: "До встречи",
+    kicker: "До встречи",
     title: "До Қыз ұзату осталось",
-    script: "совсем немного",
-    afterMessage:
-      "Этот долгожданный вечер уже начался. Будем рады встретить вас и разделить его вместе."
+    afterMessage: "Этот долгожданный вечер уже начался. Будем рады видеть вас рядом."
   },
 
   timeline: {
-    eyebrow: "Программа",
-    title: "Красивый ритм вечера",
-    script: "мягко, торжественно, с любовью",
-    intro:
-      "Мы продумали вечер так, чтобы у каждого момента было своё красивое место и спокойное, тёплое настроение.",
+    kicker: "Программа",
+    title: "Ритм вечера",
+    intro: "Лёгкий тайминг, чтобы весь вечер ощущался спокойно, красиво и без суеты.",
     items: [
-      {
-        time: "17:00",
-        title: "Сбор гостей",
-        description: "Неспешная встреча гостей, welcome drinks и первые тёплые объятия."
-      },
-      {
-        time: "17:40",
-        title: "Приветствие",
-        description: "Слова благодарности, знакомство с атмосферой вечера и начало общей семейной встречи."
-      },
-      {
-        time: "18:15",
-        title: "Торжественная часть",
-        description: "Главные моменты вечера, наполненные уважением к семье, традициям и новому этапу."
-      },
-      {
-        time: "19:00",
-        title: "Выход невесты",
-        description: "Трогательный момент, который хочется прожить красиво, спокойно и рядом с самыми близкими."
-      },
-      {
-        time: "19:40",
-        title: "Фотосессия и ужин",
-        description: "Время для совместных фотографий, тёплого общения и праздничного ужина."
-      },
-      {
-        time: "20:40",
-        title: "Пожелания и бата",
-        description: "Искренние слова от родных и близких, которые останутся в сердце надолго."
-      },
-      {
-        time: "21:20",
-        title: "Торт и завершение вечера",
-        description: "Мягкий финал торжества, красивые кадры и последние тёплые мгновения вечера."
-      }
+      { time: "17:00", title: "Сбор гостей", description: "Неспешная встреча гостей и первые тёплые объятия." },
+      { time: "17:40", title: "Приветствие", description: "Слова благодарности и начало общей семейной встречи." },
+      { time: "18:15", title: "Торжественная часть", description: "Главные моменты вечера, наполненные уважением к семье и традиции." },
+      { time: "19:00", title: "Выход невесты", description: "Особенный и очень трогательный момент вечера." },
+      { time: "19:40", title: "Фотосессия и ужин", description: "Время для красивых кадров, общения и праздничного ужина." },
+      { time: "20:40", title: "Пожелания и бата", description: "Искренние слова от родных и близких, которые останутся в сердце." },
+      { time: "21:20", title: "Торт и завершение", description: "Мягкий финал торжества и последние тёплые мгновения вечера." }
     ]
   },
 
   venue: {
-    eyebrow: "Локация",
+    kicker: "Локация",
     title: "Место встречи",
-    script: "сохраним этот вечер в красивых кадрах",
-    overline: "Локация вечера",
-    // TODO: поменяйте место проведения и адрес здесь.
+    eyebrow: "Локация вечера",
+    // TODO: поменяйте площадку и адрес.
     name: "Aru Hall",
     address: "Кызылорда, ул. Тәуелсіздік, 12",
-    note:
-      "Зал находится в центральной части города. Просим приехать немного заранее, чтобы спокойно занять места к началу торжества.",
-    // TODO: поменяйте карту и ссылку на реальную локацию здесь.
+    note: "Просим приехать немного заранее, чтобы спокойно занять места к началу торжества.",
+    // TODO: поменяйте карту и ссылку на реальную локацию.
     openMapUrl: "https://www.google.com/maps/search/?api=1&query=Kyzylorda",
     mapEmbedUrl: "https://www.google.com/maps?q=Kyzylorda&output=embed",
-    mapPlaceholderTitle: "Карта загрузится только при необходимости",
-    mapPlaceholderText:
-      "Так страница остаётся лёгкой и быстро открывается на телефоне, сохраняя красивую и чистую композицию."
+    mapPlaceholderTitle: "Карта загрузится по запросу",
+    mapPlaceholderText: "Так страница остаётся легче и быстрее открывается на телефоне."
   },
 
   dressCode: {
-    eyebrow: "Образы",
-    title: "Dress code",
-    script: "мягкая палитра и благородные силуэты",
-    description:
-      "Будем рады образам в светлой спокойной гамме: мягкие оттенки поддержат нежную атмосферу этого вечера и сделают общую палитру фотографий особенно красивой.",
-    finePrint:
-      "Можно выбирать лаконичные ткани, деликатный блеск и чистые силуэты без кричащих акцентов. Чем спокойнее и благороднее образ, тем красивее он будет смотреться в атмосфере этого вечера.",
-    // TODO: поменяйте палитру dress code и fashion-инфографику здесь.
-    colors: [
+    kicker: "Dress code",
+    title: "Образы",
+    description: "Будем рады образам в спокойной благородной гамме: мягкие оттенки и чистые силуэты поддержат атмосферу вечера.",
+    // TODO: поменяйте палитру dress code и карточки образов.
+    palette: [
       { name: "Ivory", hex: "#F6EFE5" },
-      { name: "Champagne", hex: "#E8D2B4" },
-      { name: "Cream", hex: "#F4E8D7" },
-      { name: "Beige", hex: "#D7C0A2" },
-      { name: "Taupe", hex: "#B59E88" },
-      { name: "Soft Brown", hex: "#8A6E58" }
+      { name: "Champagne", hex: "#E4D0B5" },
+      { name: "Cream", hex: "#F1E6D8" },
+      { name: "Taupe", hex: "#B79F8A" },
+      { name: "Mocha", hex: "#8A6E58" },
+      { name: "Warm White", hex: "#FBF8F3" }
     ],
-    women: {
-      label: "Для неё",
-      title: "Вечернее платье",
-      text:
-        "Элегантное платье в спокойной благородной гамме: струящиеся ткани, мягкая длина и деликатный силуэт без чрезмерно ярких деталей.",
-      notes: ["midi / maxi", "мягкий блеск", "лаконичный крой"],
-      art: "assets/fashion-gown.svg",
-      alt: "Элегантная line-art иллюстрация вечернего платья"
-    },
-    men: {
-      label: "Для него",
-      title: "Смокинг или костюм",
-      text:
-        "Классический тёмный костюм или смокинг с аккуратной рубашкой и минималистичными деталями, чтобы образ выглядел сдержанно и торжественно.",
-      notes: ["глубокий тёмный тон", "чистый силуэт", "классическая посадка"],
-      art: "assets/fashion-suit.svg",
-      alt: "Элегантная line-art иллюстрация мужского костюма"
-    }
+    looks: [
+      {
+        label: "Для неё",
+        title: "Вечернее платье",
+        text: "Элегантное платье в спокойной светлой гамме: струящиеся ткани, мягкий силуэт и лаконичные детали.",
+        tags: ["midi / maxi", "чистый силуэт", "деликатный блеск"],
+        art: "assets/look-woman.svg",
+        alt: "Минималистичная иллюстрация женского образа"
+      },
+      {
+        label: "Для него",
+        title: "Смокинг или костюм",
+        text: "Классический тёмный костюм или смокинг с аккуратной рубашкой и минималистичными акцентами.",
+        tags: ["глубокий тёмный тон", "классическая посадка", "сдержанный образ"],
+        art: "assets/look-man.svg",
+        alt: "Минималистичная иллюстрация мужского образа"
+      }
+    ],
+    note: "Чем спокойнее и чище образ, тем красивее он будет смотреться в общей атмосфере этого вечера."
   },
 
   details: {
-    eyebrow: "Важные детали",
+    kicker: "Важные детали",
     title: "Всё, что пригодится перед вечером",
-    script: "коротко и с заботой",
-    intro:
-      "Собрали всё важное в одном месте, чтобы приглашение было удобным для быстрого просмотра на телефоне.",
+    intro: "Собрали всё важное в одном месте, чтобы приглашение было удобным и быстрым для просмотра на телефоне.",
     items: [
-      {
-        title: "От имени семьи",
-        text:
-          "С любовью и уважением приглашают семья Жақсыбековых. Для нас особенно ценно разделить этот вечер именно в кругу близких сердцу людей."
-      },
-      {
-        title: "Подарки",
-        text:
-          "Ваше присутствие будет самым тёплым подарком. Если вы захотите выразить внимание дополнительно, нам будет комфортно принять его в конверте."
-      },
-      {
-        title: "Цветы",
-        text:
-          "Если вам хочется подарить цветы, выберите, пожалуйста, один аккуратный букет или композицию в нежной гамме без лишней упаковки."
-      },
-      {
-        title: "Дети",
-        text:
-          "Мы будем рады маленьким гостям. Если вы планируете прийти с детьми, пожалуйста, укажите это в RSVP, чтобы мы всё красиво подготовили."
-      },
-      {
-        title: "Парковка",
-        text:
-          "У площадки предусмотрена парковка для гостей. В день мероприятия вас также сможет сориентировать координатор."
-      },
-      {
-        title: "Контакт организатора",
-        text:
-          "По любым вопросам, связанным с приездом, рассадкой или уточнениями по вечеру, можно связаться с координатором Асем."
-      }
+      { title: "От имени семьи", text: "С любовью и уважением приглашают семья Жақсыбековых." },
+      { title: "Подарки", text: "Ваше присутствие будет самым тёплым подарком. Если захотите выразить внимание дополнительно, нам будет комфортно принять его в конверте." },
+      { title: "Цветы", text: "Если вам хочется подарить цветы, выберите, пожалуйста, один аккуратный букет или композицию в нежной гамме." },
+      { title: "Дети", text: "Мы будем рады маленьким гостям. Если планируете прийти с детьми, пожалуйста, укажите это в RSVP." },
+      { title: "Парковка", text: "У площадки предусмотрена парковка для гостей." },
+      { title: "Контакт организатора", text: "По всем вопросам можно связаться с координатором Асем." }
     ]
   },
 
@@ -202,44 +132,39 @@ const invitationContent = {
   },
 
   rsvp: {
-    eyebrow: "RSVP",
+    kicker: "RSVP",
     title: "Подтверждение присутствия",
-    script: "будем признательны за ваш ответ",
-    intro:
-      "Пожалуйста, подтвердите своё присутствие заранее, чтобы мы смогли с любовью подготовить вечер для каждого гостя.",
+    intro: "Пожалуйста, подтвердите своё присутствие заранее, чтобы мы смогли подготовить вечер с заботой о каждом госте.",
     deadline: "Просим ответить до 10 сентября 2026 года.",
-    // TODO: подключите реальную отправку RSVP через Google Apps Script / Formspree / custom backend здесь.
+    // TODO: подключите Google Apps Script / Formspree / любой backend.
     endpoint: "",
     storageKey: "kyz-uzatu-rsvp-responses",
-    successMessage: "Спасибо. Ваш ответ бережно сохранён на этом устройстве.",
-    endpointSuccessMessage: "Спасибо. Ваш ответ отправлен организатору.",
-    errorMessage:
-      "Не удалось отправить форму. Попробуйте ещё раз или свяжитесь с организатором напрямую."
+    successMessage: "Спасибо. Ваш ответ сохранён.",
+    endpointSuccessMessage: "Спасибо. Ваш ответ отправлен.",
+    errorMessage: "Не удалось отправить форму. Попробуйте ещё раз или свяжитесь с организатором напрямую."
   },
 
   footer: {
-    script: "до скорой встречи",
-    text:
-      "С нетерпением ждём встречи в этот красивый и очень важный для нашей семьи вечер.",
+    text: "С нетерпением ждём встречи в этот красивый и очень важный для нашей семьи вечер.",
     signature: "Айару и семья Жақсыбековых"
   },
 
   media: {
-    // TODO: замените фото невесты на реальный файл из папки assets.
+    // TODO: замените фото невесты.
     heroImage: "assets/hero-placeholder.svg",
-    heroAlt: "Элегантный placeholder для портрета невесты"
+    heroAlt: "Портрет-заглушка для невесты"
   },
 
   labels: {
     date: "Дата",
     time: "Время",
-    venue: "Локация",
-    confirmPresence: "Подтвердить присутствие",
-    scrollBelow: "Листать ниже",
+    place: "Локация",
+    confirm: "Подтвердить присутствие",
+    scroll: "Листать ниже",
     openMap: "Открыть карту",
     loadMap: "Показать карту",
     submit: "Отправить ответ",
-    countdownUnits: {
+    countdown: {
       days: "дней",
       hours: "часов",
       minutes: "минут",
@@ -248,39 +173,39 @@ const invitationContent = {
   }
 };
 
+const eventDate = new Date(
+  siteContent.eventDate.year,
+  siteContent.eventDate.month - 1,
+  siteContent.eventDate.day,
+  siteContent.eventDate.hour,
+  siteContent.eventDate.minute
+);
+
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-const eventDate = buildEventDate(invitationContent.eventSchedule);
 
 const elements = {
   metaDescription: document.getElementById("metaDescription"),
   heroEventType: document.getElementById("heroEventType"),
-  heroHosts: document.getElementById("heroHosts"),
   heroBrideName: document.getElementById("heroBrideName"),
-  heroScriptNote: document.getElementById("heroScriptNote"),
-  heroSecondaryText: document.getElementById("heroSecondaryText"),
+  heroSubtitle: document.getElementById("heroSubtitle"),
   heroDate: document.getElementById("heroDate"),
   heroTime: document.getElementById("heroTime"),
   heroVenue: document.getElementById("heroVenue"),
   heroLead: document.getElementById("heroLead"),
   heroPortrait: document.getElementById("heroPortrait"),
-  heroDayNameShort: document.getElementById("heroDayNameShort"),
-  heroDateBadge: document.getElementById("heroDateBadge"),
   labelDate: document.getElementById("labelDate"),
   labelTime: document.getElementById("labelTime"),
-  labelVenue: document.getElementById("labelVenue"),
+  labelPlace: document.getElementById("labelPlace"),
   confirmPresenceButton: document.getElementById("confirmPresenceButton"),
   scrollDownButton: document.getElementById("scrollDownButton"),
   scrollCueLabel: document.getElementById("scrollCueLabel"),
-  invitationSectionEyebrow: document.getElementById("invitationSectionEyebrow"),
-  invitationSectionTitle: document.getElementById("invitationSectionTitle"),
-  invitationSectionScript: document.getElementById("invitationSectionScript"),
+  invitationKicker: document.getElementById("invitationKicker"),
+  invitationTitle: document.getElementById("invitationTitle"),
   invitationLead: document.getElementById("invitationLead"),
   invitationBody: document.getElementById("invitationBody"),
-  invitationSignatureLabel: document.getElementById("invitationSignatureLabel"),
-  invitationSignatureValue: document.getElementById("invitationSignatureValue"),
-  countdownSectionEyebrow: document.getElementById("countdownSectionEyebrow"),
+  invitationSignature: document.getElementById("invitationSignature"),
+  countdownKicker: document.getElementById("countdownKicker"),
   countdownTitle: document.getElementById("countdownTitle"),
-  countdownSectionScript: document.getElementById("countdownSectionScript"),
   countdownDateLine: document.getElementById("countdownDateLine"),
   countdownGrid: document.getElementById("countdownGrid"),
   countdownMessage: document.getElementById("countdownMessage"),
@@ -292,15 +217,13 @@ const elements = {
   hoursLabel: document.getElementById("hoursLabel"),
   minutesLabel: document.getElementById("minutesLabel"),
   secondsLabel: document.getElementById("secondsLabel"),
-  timelineSectionEyebrow: document.getElementById("timelineSectionEyebrow"),
+  timelineKicker: document.getElementById("timelineKicker"),
   timelineTitle: document.getElementById("timelineTitle"),
-  timelineSectionScript: document.getElementById("timelineSectionScript"),
   timelineIntro: document.getElementById("timelineIntro"),
   timelineList: document.getElementById("timelineList"),
-  venueSectionEyebrow: document.getElementById("venueSectionEyebrow"),
+  venueKicker: document.getElementById("venueKicker"),
   venueTitle: document.getElementById("venueTitle"),
-  venueSectionScript: document.getElementById("venueSectionScript"),
-  venueOverline: document.getElementById("venueOverline"),
+  venueEyebrow: document.getElementById("venueEyebrow"),
   venueName: document.getElementById("venueName"),
   venueAddress: document.getElementById("venueAddress"),
   venueNote: document.getElementById("venueNote"),
@@ -311,37 +234,24 @@ const elements = {
   mapCanvas: document.getElementById("mapCanvas"),
   mapPlaceholderTitle: document.getElementById("mapPlaceholderTitle"),
   mapPlaceholderText: document.getElementById("mapPlaceholderText"),
-  dressCodeSectionEyebrow: document.getElementById("dressCodeSectionEyebrow"),
+  dressCodeKicker: document.getElementById("dressCodeKicker"),
   dressCodeTitle: document.getElementById("dressCodeTitle"),
-  dressCodeSectionScript: document.getElementById("dressCodeSectionScript"),
   dressCodeDescription: document.getElementById("dressCodeDescription"),
-  dressCodeFinePrint: document.getElementById("dressCodeFinePrint"),
   dressCodePalette: document.getElementById("dressCodePalette"),
-  dressCodeWomenArt: document.getElementById("dressCodeWomenArt"),
-  dressCodeMenArt: document.getElementById("dressCodeMenArt"),
-  dressWomenLabel: document.getElementById("dressWomenLabel"),
-  dressWomenTitle: document.getElementById("dressWomenTitle"),
-  dressWomenText: document.getElementById("dressWomenText"),
-  dressWomenNotes: document.getElementById("dressWomenNotes"),
-  dressMenLabel: document.getElementById("dressMenLabel"),
-  dressMenTitle: document.getElementById("dressMenTitle"),
-  dressMenText: document.getElementById("dressMenText"),
-  dressMenNotes: document.getElementById("dressMenNotes"),
-  detailsSectionEyebrow: document.getElementById("detailsSectionEyebrow"),
+  looksGrid: document.getElementById("looksGrid"),
+  dressCodeNote: document.getElementById("dressCodeNote"),
+  detailsKicker: document.getElementById("detailsKicker"),
   detailsTitle: document.getElementById("detailsTitle"),
-  detailsSectionScript: document.getElementById("detailsSectionScript"),
   detailsIntro: document.getElementById("detailsIntro"),
   detailsList: document.getElementById("detailsList"),
-  rsvpSectionEyebrow: document.getElementById("rsvpSectionEyebrow"),
+  rsvpKicker: document.getElementById("rsvpKicker"),
   rsvpTitle: document.getElementById("rsvpTitle"),
-  rsvpSectionScript: document.getElementById("rsvpSectionScript"),
   rsvpIntro: document.getElementById("rsvpIntro"),
   rsvpDeadline: document.getElementById("rsvpDeadline"),
   rsvpContactHint: document.getElementById("rsvpContactHint"),
-  formStatus: document.getElementById("formStatus"),
   rsvpForm: document.getElementById("rsvpForm"),
+  formStatus: document.getElementById("formStatus"),
   submitButton: document.getElementById("submitButton"),
-  footerScript: document.getElementById("footerScript"),
   footerText: document.getElementById("footerText"),
   footerSignature: document.getElementById("footerSignature"),
   footerContact: document.getElementById("footerContact"),
@@ -349,10 +259,6 @@ const elements = {
 };
 
 const fieldNames = ["fullName", "contact", "attendance", "guestCount", "foodPreferences", "comment"];
-
-function buildEventDate(schedule) {
-  return new Date(schedule.year, schedule.month - 1, schedule.day, schedule.hour, schedule.minute);
-}
 
 function setText(node, value) {
   if (node) {
@@ -387,23 +293,6 @@ function formatWeekdayDate(date) {
   return formatted.charAt(0).toUpperCase() + formatted.slice(1);
 }
 
-function formatDayName(date) {
-  const formatted = new Intl.DateTimeFormat("ru-RU", {
-    weekday: "long"
-  }).format(date);
-
-  return formatted.charAt(0).toUpperCase() + formatted.slice(1);
-}
-
-function formatDayMonthShort(date) {
-  return new Intl.DateTimeFormat("ru-RU", {
-    day: "numeric",
-    month: "short"
-  })
-    .format(date)
-    .replace(".", "");
-}
-
 function formatTime(date) {
   return new Intl.DateTimeFormat("ru-RU", {
     hour: "2-digit",
@@ -411,117 +300,49 @@ function formatTime(date) {
   }).format(date);
 }
 
-function getHeroSecondaryText() {
-  if (invitationContent.hero.secondaryText.trim()) {
-    return invitationContent.hero.secondaryText;
-  }
+function renderContent() {
+  document.title = siteContent.seo.title;
+  elements.metaDescription.setAttribute("content", siteContent.seo.description);
 
-  if (invitationContent.groomName.trim()) {
-    return `Особенный вечер в честь ${invitationContent.brideName} и новой красивой главы её жизни рядом с ${invitationContent.groomName}.`;
-  }
-
-  return `Особенный вечер в честь ${invitationContent.brideName} и начала новой прекрасной главы её жизни.`;
-}
-
-function renderStaticContent() {
-  document.title = invitationContent.seo.title;
-  elements.metaDescription.setAttribute("content", invitationContent.seo.description);
-
-  setText(elements.heroEventType, invitationContent.eventType);
-  setText(elements.heroHosts, invitationContent.hosts);
-  setText(elements.heroBrideName, invitationContent.brideName);
-  setText(elements.heroScriptNote, invitationContent.hero.scriptNote);
-  setText(elements.heroSecondaryText, getHeroSecondaryText());
+  setText(elements.heroEventType, siteContent.eventType);
+  setText(elements.heroBrideName, siteContent.brideName);
+  setText(
+    elements.heroSubtitle,
+    `Особенный вечер в честь ${siteContent.brideName}${siteContent.groomName ? ` и новой главы рядом с ${siteContent.groomName}` : ""}.`
+  );
   setText(elements.heroDate, formatLongDate(eventDate));
   setText(elements.heroTime, formatTime(eventDate));
-  setText(elements.heroVenue, invitationContent.venue.name);
-  setText(elements.heroLead, invitationContent.hero.lead);
-  setText(elements.heroDayNameShort, formatDayName(eventDate));
-  setText(elements.heroDateBadge, formatDayMonthShort(eventDate));
-  setText(elements.labelDate, invitationContent.labels.date);
-  setText(elements.labelTime, invitationContent.labels.time);
-  setText(elements.labelVenue, invitationContent.labels.venue);
-  setText(elements.confirmPresenceButton, invitationContent.labels.confirmPresence);
-  setText(elements.scrollDownButton, invitationContent.labels.scrollBelow);
-  setText(elements.scrollCueLabel, invitationContent.labels.scrollBelow);
+  setText(elements.heroVenue, siteContent.venue.name);
+  setText(elements.heroLead, siteContent.heroLead);
+  setText(elements.labelDate, siteContent.labels.date);
+  setText(elements.labelTime, siteContent.labels.time);
+  setText(elements.labelPlace, siteContent.labels.place);
+  setText(elements.confirmPresenceButton, siteContent.labels.confirm);
+  setText(elements.scrollDownButton, siteContent.labels.scroll);
+  setText(elements.scrollCueLabel, siteContent.labels.scroll);
+  elements.heroPortrait.src = siteContent.media.heroImage;
+  elements.heroPortrait.alt = siteContent.media.heroAlt;
 
-  elements.heroPortrait.src = invitationContent.media.heroImage;
-  elements.heroPortrait.alt = invitationContent.media.heroAlt;
-
-  setText(elements.invitationSectionEyebrow, invitationContent.invitation.eyebrow);
-  setText(elements.invitationSectionTitle, invitationContent.invitation.title);
-  setText(elements.invitationSectionScript, invitationContent.invitation.script);
-  setText(elements.invitationLead, invitationContent.invitation.lead);
-  setText(elements.invitationSignatureLabel, invitationContent.invitation.signatureLabel);
-  setText(elements.invitationSignatureValue, invitationContent.invitation.signatureValue);
-  elements.invitationBody.innerHTML = invitationContent.invitation.paragraphs
+  setText(elements.invitationKicker, siteContent.invitation.kicker);
+  setText(elements.invitationTitle, siteContent.invitation.title);
+  setText(elements.invitationLead, siteContent.invitation.lead);
+  elements.invitationBody.innerHTML = siteContent.invitation.paragraphs
     .map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`)
     .join("");
+  setText(elements.invitationSignature, siteContent.invitation.signature);
 
-  setText(elements.countdownSectionEyebrow, invitationContent.countdown.eyebrow);
-  setText(elements.countdownTitle, invitationContent.countdown.title);
-  setText(elements.countdownSectionScript, invitationContent.countdown.script);
+  setText(elements.countdownKicker, siteContent.countdown.kicker);
+  setText(elements.countdownTitle, siteContent.countdown.title);
   setText(elements.countdownDateLine, `${formatWeekdayDate(eventDate)} · ${formatTime(eventDate)}`);
-  setText(elements.daysLabel, invitationContent.labels.countdownUnits.days);
-  setText(elements.hoursLabel, invitationContent.labels.countdownUnits.hours);
-  setText(elements.minutesLabel, invitationContent.labels.countdownUnits.minutes);
-  setText(elements.secondsLabel, invitationContent.labels.countdownUnits.seconds);
+  setText(elements.daysLabel, siteContent.labels.countdown.days);
+  setText(elements.hoursLabel, siteContent.labels.countdown.hours);
+  setText(elements.minutesLabel, siteContent.labels.countdown.minutes);
+  setText(elements.secondsLabel, siteContent.labels.countdown.seconds);
 
-  setText(elements.timelineSectionEyebrow, invitationContent.timeline.eyebrow);
-  setText(elements.timelineTitle, invitationContent.timeline.title);
-  setText(elements.timelineSectionScript, invitationContent.timeline.script);
-  setText(elements.timelineIntro, invitationContent.timeline.intro);
-
-  setText(elements.venueSectionEyebrow, invitationContent.venue.eyebrow);
-  setText(elements.venueTitle, invitationContent.venue.title);
-  setText(elements.venueSectionScript, invitationContent.venue.script);
-  setText(elements.venueOverline, invitationContent.venue.overline);
-  setText(elements.venueName, invitationContent.venue.name);
-  setText(elements.venueAddress, invitationContent.venue.address);
-  setText(elements.venueNote, invitationContent.venue.note);
-  setText(elements.openMapLink, invitationContent.labels.openMap);
-  setText(elements.loadMapButton, invitationContent.labels.loadMap);
-  setText(elements.loadMapButtonSecondary, invitationContent.labels.loadMap);
-  elements.openMapLink.href = invitationContent.venue.openMapUrl;
-  setText(elements.mapPlaceholderTitle, invitationContent.venue.mapPlaceholderTitle);
-  setText(elements.mapPlaceholderText, invitationContent.venue.mapPlaceholderText);
-
-  setText(elements.dressCodeSectionEyebrow, invitationContent.dressCode.eyebrow);
-  setText(elements.dressCodeTitle, invitationContent.dressCode.title);
-  setText(elements.dressCodeSectionScript, invitationContent.dressCode.script);
-  setText(elements.dressCodeDescription, invitationContent.dressCode.description);
-  setText(elements.dressCodeFinePrint, invitationContent.dressCode.finePrint);
-  elements.dressCodeWomenArt.src = invitationContent.dressCode.women.art;
-  elements.dressCodeWomenArt.alt = invitationContent.dressCode.women.alt;
-  elements.dressCodeMenArt.src = invitationContent.dressCode.men.art;
-  elements.dressCodeMenArt.alt = invitationContent.dressCode.men.alt;
-  setText(elements.dressWomenLabel, invitationContent.dressCode.women.label);
-  setText(elements.dressWomenTitle, invitationContent.dressCode.women.title);
-  setText(elements.dressWomenText, invitationContent.dressCode.women.text);
-  setText(elements.dressMenLabel, invitationContent.dressCode.men.label);
-  setText(elements.dressMenTitle, invitationContent.dressCode.men.title);
-  setText(elements.dressMenText, invitationContent.dressCode.men.text);
-
-  setText(elements.detailsSectionEyebrow, invitationContent.details.eyebrow);
-  setText(elements.detailsTitle, invitationContent.details.title);
-  setText(elements.detailsSectionScript, invitationContent.details.script);
-  setText(elements.detailsIntro, invitationContent.details.intro);
-
-  setText(elements.rsvpSectionEyebrow, invitationContent.rsvp.eyebrow);
-  setText(elements.rsvpTitle, invitationContent.rsvp.title);
-  setText(elements.rsvpSectionScript, invitationContent.rsvp.script);
-  setText(elements.rsvpIntro, invitationContent.rsvp.intro);
-  setText(elements.rsvpDeadline, invitationContent.rsvp.deadline);
-  setText(elements.submitButton, invitationContent.labels.submit);
-
-  setText(elements.footerScript, invitationContent.footer.script);
-  setText(elements.footerText, invitationContent.footer.text);
-  setText(elements.footerSignature, invitationContent.footer.signature);
-  setText(elements.footerYear, String(new Date().getFullYear()));
-}
-
-function renderTimeline() {
-  elements.timelineList.innerHTML = invitationContent.timeline.items
+  setText(elements.timelineKicker, siteContent.timeline.kicker);
+  setText(elements.timelineTitle, siteContent.timeline.title);
+  setText(elements.timelineIntro, siteContent.timeline.intro);
+  elements.timelineList.innerHTML = siteContent.timeline.items
     .map(
       (item) => `
         <article class="timeline-item reveal" data-reveal>
@@ -535,81 +356,102 @@ function renderTimeline() {
       `
     )
     .join("");
-}
 
-function renderDressCode() {
-  elements.dressCodePalette.innerHTML = invitationContent.dressCode.colors
+  setText(elements.venueKicker, siteContent.venue.kicker);
+  setText(elements.venueTitle, siteContent.venue.title);
+  setText(elements.venueEyebrow, siteContent.venue.eyebrow);
+  setText(elements.venueName, siteContent.venue.name);
+  setText(elements.venueAddress, siteContent.venue.address);
+  setText(elements.venueNote, siteContent.venue.note);
+  setText(elements.openMapLink, siteContent.labels.openMap);
+  setText(elements.loadMapButton, siteContent.labels.loadMap);
+  setText(elements.loadMapButtonSecondary, siteContent.labels.loadMap);
+  elements.openMapLink.href = siteContent.venue.openMapUrl;
+  setText(elements.mapPlaceholderTitle, siteContent.venue.mapPlaceholderTitle);
+  setText(elements.mapPlaceholderText, siteContent.venue.mapPlaceholderText);
+
+  setText(elements.dressCodeKicker, siteContent.dressCode.kicker);
+  setText(elements.dressCodeTitle, siteContent.dressCode.title);
+  setText(elements.dressCodeDescription, siteContent.dressCode.description);
+  setText(elements.dressCodeNote, siteContent.dressCode.note);
+  elements.dressCodePalette.innerHTML = siteContent.dressCode.palette
     .map(
       (color) => `
-        <article class="palette-chip reveal" data-reveal>
-          <span class="palette-chip__swatch" style="background:${escapeHtml(color.hex)};" aria-hidden="true"></span>
-          <span class="palette-chip__name">${escapeHtml(color.name)}</span>
-          <span class="palette-chip__code">${escapeHtml(color.hex)}</span>
+        <article class="swatch">
+          <span class="swatch__dot" style="background:${escapeHtml(color.hex)};" aria-hidden="true"></span>
+          <span class="swatch__name">${escapeHtml(color.name)}</span>
+        </article>
+      `
+    )
+    .join("");
+  elements.looksGrid.innerHTML = siteContent.dressCode.looks
+    .map(
+      (look) => `
+        <article class="look-card reveal" data-reveal>
+          <div class="look-card__art">
+            <img src="${escapeHtml(look.art)}" alt="${escapeHtml(look.alt)}" width="280" height="360" loading="lazy" decoding="async">
+          </div>
+          <div class="look-card__body">
+            <p class="look-card__label">${escapeHtml(look.label)}</p>
+            <h3 class="look-card__title">${escapeHtml(look.title)}</h3>
+            <p class="look-card__text">${escapeHtml(look.text)}</p>
+            <div class="look-card__tags">
+              ${look.tags.map((tag) => `<span class="look-tag">${escapeHtml(tag)}</span>`).join("")}
+            </div>
+          </div>
         </article>
       `
     )
     .join("");
 
-  elements.dressWomenNotes.innerHTML = invitationContent.dressCode.women.notes
-    .map((note) => `<span class="fashion-note">${escapeHtml(note)}</span>`)
-    .join("");
-
-  elements.dressMenNotes.innerHTML = invitationContent.dressCode.men.notes
-    .map((note) => `<span class="fashion-note">${escapeHtml(note)}</span>`)
-    .join("");
-}
-
-function renderDetails() {
-  elements.detailsList.innerHTML = invitationContent.details.items
+  setText(elements.detailsKicker, siteContent.details.kicker);
+  setText(elements.detailsTitle, siteContent.details.title);
+  setText(elements.detailsIntro, siteContent.details.intro);
+  elements.detailsList.innerHTML = siteContent.details.items
     .map(
-      (item, index) => `
+      (item) => `
         <article class="details-card reveal" data-reveal>
-          <span class="details-card__index">${String(index + 1).padStart(2, "0")}</span>
           <h3 class="details-card__title">${escapeHtml(item.title)}</h3>
           <p class="details-card__text">${escapeHtml(item.text)}</p>
         </article>
       `
     )
     .join("");
-}
 
-function renderContacts() {
-  const contactParts = [];
+  setText(elements.rsvpKicker, siteContent.rsvp.kicker);
+  setText(elements.rsvpTitle, siteContent.rsvp.title);
+  setText(elements.rsvpIntro, siteContent.rsvp.intro);
+  setText(elements.rsvpDeadline, siteContent.rsvp.deadline);
+  setText(elements.submitButton, siteContent.labels.submit);
 
-  if (invitationContent.contacts.coordinatorName) {
-    contactParts.push(`Координатор: ${escapeHtml(invitationContent.contacts.coordinatorName)}`);
+  const contacts = [];
+  if (siteContent.contacts.coordinatorName) {
+    contacts.push(`Координатор: ${escapeHtml(siteContent.contacts.coordinatorName)}`);
   }
-
-  if (invitationContent.contacts.phone) {
-    contactParts.push(
-      `<a href="${escapeHtml(invitationContent.contacts.phoneHref)}">${escapeHtml(invitationContent.contacts.phone)}</a>`
-    );
+  if (siteContent.contacts.phone) {
+    contacts.push(`<a href="${escapeHtml(siteContent.contacts.phoneHref)}">${escapeHtml(siteContent.contacts.phone)}</a>`);
   }
-
-  if (invitationContent.contacts.telegram) {
-    contactParts.push(
-      `<a href="${escapeHtml(invitationContent.contacts.telegram)}" target="_blank" rel="noreferrer">Telegram</a>`
-    );
+  if (siteContent.contacts.telegram) {
+    contacts.push(`<a href="${escapeHtml(siteContent.contacts.telegram)}" target="_blank" rel="noreferrer">Telegram</a>`);
   }
+  elements.rsvpContactHint.innerHTML = contacts.join(" · ");
 
-  elements.rsvpContactHint.innerHTML = contactParts.join(" · ");
-
-  if (invitationContent.contacts.telegram) {
-    elements.footerContact.href = invitationContent.contacts.telegram;
-    elements.footerContact.target = "_blank";
-    elements.footerContact.rel = "noreferrer";
-    elements.footerContact.textContent = `Организатор: ${invitationContent.contacts.coordinatorName}`;
-  } else if (invitationContent.contacts.phoneHref) {
-    elements.footerContact.href = invitationContent.contacts.phoneHref;
+  if (siteContent.contacts.telegram) {
+    elements.footerContact.href = siteContent.contacts.telegram;
+    elements.footerContact.textContent = `Организатор: ${siteContent.contacts.coordinatorName}`;
+  } else if (siteContent.contacts.phoneHref) {
+    elements.footerContact.href = siteContent.contacts.phoneHref;
+    elements.footerContact.textContent = siteContent.contacts.phone;
     elements.footerContact.removeAttribute("target");
     elements.footerContact.removeAttribute("rel");
-    elements.footerContact.textContent = invitationContent.contacts.phone;
   } else {
     elements.footerContact.removeAttribute("href");
-    elements.footerContact.removeAttribute("target");
-    elements.footerContact.removeAttribute("rel");
     elements.footerContact.textContent = "";
   }
+
+  setText(elements.footerText, siteContent.footer.text);
+  setText(elements.footerSignature, siteContent.footer.signature);
+  setText(elements.footerYear, String(new Date().getFullYear()));
 }
 
 function updateCountdown() {
@@ -617,7 +459,7 @@ function updateCountdown() {
 
   if (diff <= 0) {
     elements.countdownGrid.hidden = true;
-    setText(elements.countdownMessage, invitationContent.countdown.afterMessage);
+    setText(elements.countdownMessage, siteContent.countdown.afterMessage);
     return;
   }
 
@@ -629,37 +471,32 @@ function updateCountdown() {
   const hour = minute * 60;
   const day = hour * 24;
 
-  const days = Math.floor(diff / day);
-  const hours = Math.floor((diff % day) / hour);
-  const minutes = Math.floor((diff % hour) / minute);
-  const seconds = Math.floor((diff % minute) / second);
-
-  setText(elements.daysValue, String(days).padStart(2, "0"));
-  setText(elements.hoursValue, String(hours).padStart(2, "0"));
-  setText(elements.minutesValue, String(minutes).padStart(2, "0"));
-  setText(elements.secondsValue, String(seconds).padStart(2, "0"));
+  setText(elements.daysValue, String(Math.floor(diff / day)).padStart(2, "0"));
+  setText(elements.hoursValue, String(Math.floor((diff % day) / hour)).padStart(2, "0"));
+  setText(elements.minutesValue, String(Math.floor((diff % hour) / minute)).padStart(2, "0"));
+  setText(elements.secondsValue, String(Math.floor((diff % minute) / second)).padStart(2, "0"));
 }
 
 let mapLoaded = false;
 
 function loadMap() {
-  if (mapLoaded || !invitationContent.venue.mapEmbedUrl) {
+  if (mapLoaded || !siteContent.venue.mapEmbedUrl) {
     return;
   }
 
   const iframe = document.createElement("iframe");
-  iframe.src = invitationContent.venue.mapEmbedUrl;
+  iframe.src = siteContent.venue.mapEmbedUrl;
   iframe.loading = "lazy";
   iframe.allowFullscreen = true;
   iframe.referrerPolicy = "no-referrer-when-downgrade";
-  iframe.title = `Карта: ${invitationContent.venue.name}`;
+  iframe.title = `Карта: ${siteContent.venue.name}`;
 
   elements.mapCanvas.replaceChildren(iframe);
   elements.mapCard.classList.add("is-loaded");
   mapLoaded = true;
 }
 
-function setupLazyMap() {
+function setupMap() {
   elements.loadMapButton.addEventListener("click", loadMap);
   elements.loadMapButtonSecondary.addEventListener("click", loadMap);
 
@@ -667,19 +504,17 @@ function setupLazyMap() {
     return;
   }
 
-  const mapObserver = new IntersectionObserver(
-    (entries, observer) => {
+  const observer = new IntersectionObserver(
+    (entries, instance) => {
       if (entries.some((entry) => entry.isIntersecting)) {
         loadMap();
-        observer.disconnect();
+        instance.disconnect();
       }
     },
-    {
-      rootMargin: "220px 0px"
-    }
+    { rootMargin: "220px 0px" }
   );
 
-  mapObserver.observe(elements.mapCard);
+  observer.observe(elements.mapCard);
 }
 
 function setStatus(type, message) {
@@ -749,7 +584,7 @@ function validateForm(values) {
   }
 
   if (values.contact.length < 3) {
-    errors.contact = "Нужен способ связи: телефон или Telegram.";
+    errors.contact = "Нужен телефон или Telegram.";
   }
 
   if (!values.attendance) {
@@ -791,10 +626,7 @@ async function handleFormSubmit(event) {
   const errors = validateForm(values);
 
   if (Object.keys(errors).length > 0) {
-    Object.entries(errors).forEach(([name, message]) => {
-      setFieldError(name, message);
-    });
-
+    Object.entries(errors).forEach(([name, message]) => setFieldError(name, message));
     const firstErrorField = elements.rsvpForm.querySelector(".field.has-error .field__control");
     if (firstErrorField) {
       firstErrorField.focus();
@@ -807,19 +639,17 @@ async function handleFormSubmit(event) {
 
   const payload = {
     ...values,
-    eventType: invitationContent.eventType,
-    brideName: invitationContent.brideName,
+    eventType: siteContent.eventType,
+    brideName: siteContent.brideName,
     submittedAt: new Date().toISOString()
   };
 
   try {
-    if (invitationContent.rsvp.endpoint) {
+    if (siteContent.rsvp.endpoint) {
       // TODO: сюда можно подключить Google Apps Script / Formspree / собственный backend.
-      const response = await fetch(invitationContent.rsvp.endpoint, {
+      const response = await fetch(siteContent.rsvp.endpoint, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
       });
 
@@ -827,12 +657,12 @@ async function handleFormSubmit(event) {
         throw new Error("RSVP request failed");
       }
 
-      setStatus("success", invitationContent.rsvp.endpointSuccessMessage);
+      setStatus("success", siteContent.rsvp.endpointSuccessMessage);
     } else {
-      const existingResponses = JSON.parse(localStorage.getItem(invitationContent.rsvp.storageKey) || "[]");
-      existingResponses.push(payload);
-      localStorage.setItem(invitationContent.rsvp.storageKey, JSON.stringify(existingResponses));
-      setStatus("success", invitationContent.rsvp.successMessage);
+      const existing = JSON.parse(localStorage.getItem(siteContent.rsvp.storageKey) || "[]");
+      existing.push(payload);
+      localStorage.setItem(siteContent.rsvp.storageKey, JSON.stringify(existing));
+      setStatus("success", siteContent.rsvp.successMessage);
     }
 
     elements.rsvpForm.reset();
@@ -840,16 +670,15 @@ async function handleFormSubmit(event) {
     updateGuestCountState();
   } catch (error) {
     console.error(error);
-    setStatus("error", invitationContent.rsvp.errorMessage);
+    setStatus("error", siteContent.rsvp.errorMessage);
   } finally {
     elements.submitButton.disabled = false;
-    elements.submitButton.textContent = invitationContent.labels.submit;
+    elements.submitButton.textContent = siteContent.labels.submit;
   }
 }
 
 function setupForm() {
   updateGuestCountState();
-
   elements.rsvpForm.addEventListener("submit", handleFormSubmit);
   elements.rsvpForm.addEventListener("input", (event) => {
     clearStatus();
@@ -881,7 +710,7 @@ function setupScrollButtons() {
   });
 }
 
-function setupRevealAnimations() {
+function setupReveal() {
   const revealElements = document.querySelectorAll("[data-reveal]");
 
   if (prefersReducedMotion || !("IntersectionObserver" in window)) {
@@ -889,65 +718,28 @@ function setupRevealAnimations() {
     return;
   }
 
-  const revealObserver = new IntersectionObserver(
-    (entries, observer) => {
+  const observer = new IntersectionObserver(
+    (entries, instance) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
+          instance.unobserve(entry.target);
         }
       });
     },
-    {
-      threshold: 0.16,
-      rootMargin: "0px 0px -8% 0px"
-    }
+    { threshold: 0.16, rootMargin: "0px 0px -8% 0px" }
   );
 
-  revealElements.forEach((element) => revealObserver.observe(element));
-}
-
-function setupHeroParallax() {
-  if (prefersReducedMotion) {
-    return;
-  }
-
-  const hero = document.querySelector(".hero");
-  const root = document.documentElement;
-  let ticking = false;
-
-  function updateProgress() {
-    const progress = Math.max(0, Math.min(1, window.scrollY / Math.max(hero.offsetHeight * 0.9, 1)));
-    root.style.setProperty("--scroll-progress", progress.toFixed(3));
-    ticking = false;
-  }
-
-  updateProgress();
-
-  window.addEventListener(
-    "scroll",
-    () => {
-      if (!ticking) {
-        window.requestAnimationFrame(updateProgress);
-        ticking = true;
-      }
-    },
-    { passive: true }
-  );
+  revealElements.forEach((element) => observer.observe(element));
 }
 
 function init() {
-  renderStaticContent();
-  renderTimeline();
-  renderDressCode();
-  renderDetails();
-  renderContacts();
+  renderContent();
   updateCountdown();
-  setupLazyMap();
+  setupMap();
   setupForm();
   setupScrollButtons();
-  setupRevealAnimations();
-  setupHeroParallax();
+  setupReveal();
   window.setInterval(updateCountdown, 1000);
 }
 
