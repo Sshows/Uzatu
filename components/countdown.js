@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { siteContent } from "@/lib/site-content";
 
 function getTimeLeft(targetIso) {
   const difference = new Date(targetIso).getTime() - Date.now();
@@ -41,10 +42,10 @@ export default function Countdown({ targetIso, afterText }) {
   }
 
   const items = [
-    { label: "күн", value: timeLeft.days },
-    { label: "сағат", value: timeLeft.hours },
-    { label: "минут", value: timeLeft.minutes },
-    { label: "секунд", value: timeLeft.seconds }
+    { label: siteContent.countdown.units.days, value: timeLeft.days },
+    { label: siteContent.countdown.units.hours, value: timeLeft.hours },
+    { label: siteContent.countdown.units.minutes, value: timeLeft.minutes },
+    { label: siteContent.countdown.units.seconds, value: timeLeft.seconds }
   ];
 
   return (

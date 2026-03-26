@@ -1,9 +1,9 @@
-import { Manrope, Noto_Serif_Display } from "next/font/google";
+import { Cormorant_Garamond, Manrope } from "next/font/google";
 import { siteContent } from "@/lib/site-content";
 import "./globals.css";
 
 // TODO: Қаріп жұбын осы жерден ауыстырыңыз. Қазақ әріптері толық көрінетін шрифт таңдаңыз.
-const serif = Noto_Serif_Display({
+const serif = Cormorant_Garamond({
   subsets: ["latin", "cyrillic"],
   weight: ["400", "500", "600", "700"],
   display: "swap",

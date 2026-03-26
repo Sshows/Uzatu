@@ -54,7 +54,7 @@ export default function RsvpForm() {
       setErrors(validationErrors);
       setStatus({
         type: "error",
-        message: "Өтінеміз, белгіленген жолдарды тексеріп шығыңыз."
+        message: siteContent.rsvp.validationMessage
       });
       return;
     }
@@ -88,7 +88,7 @@ export default function RsvpForm() {
           return;
         }
 
-        throw new Error(result.message || "Жауапты жіберу сәтсіз аяқталды.");
+        throw new Error(result.message || siteContent.rsvp.errors.submitFailed);
       }
 
       setForm(initialForm);
@@ -124,7 +124,7 @@ export default function RsvpForm() {
           type="text"
           value={form.fullName}
           onChange={(event) => updateField("fullName", event.target.value)}
-          placeholder="Айгерім Сәрсенқызы"
+          placeholder={siteContent.rsvp.placeholders.fullName}
         />
         {errors.fullName ? <span className="field__error">{errors.fullName}</span> : null}
       </div>
@@ -137,7 +137,7 @@ export default function RsvpForm() {
           type="text"
           value={form.contact}
           onChange={(event) => updateField("contact", event.target.value)}
-          placeholder="+7 (700) 000-00-00"
+          placeholder={siteContent.rsvp.placeholders.contact}
         />
         {errors.contact ? <span className="field__error">{errors.contact}</span> : null}
       </div>
@@ -182,7 +182,7 @@ export default function RsvpForm() {
           rows="4"
           value={form.dietaryNotes}
           onChange={(event) => updateField("dietaryNotes", event.target.value)}
-          placeholder="Мысалы: жаңғаққа аллергия бар"
+          placeholder={siteContent.rsvp.placeholders.dietaryNotes}
         />
       </div>
 
@@ -194,12 +194,12 @@ export default function RsvpForm() {
           rows="4"
           value={form.comment}
           onChange={(event) => updateField("comment", event.target.value)}
-          placeholder="Қосымша ақпаратыңыз болса, осында жазыңыз"
+          placeholder={siteContent.rsvp.placeholders.comment}
         />
       </div>
 
       <button className="button button--primary button--submit" type="submit" disabled={isPending}>
-        {isPending ? "Жіберіліп жатыр..." : siteContent.rsvp.submitLabel}
+        {isPending ? siteContent.rsvp.pendingLabel : siteContent.rsvp.submitLabel}
       </button>
 
       {status.message ? (

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { siteContent } from "@/lib/site-content";
 
 export default function MapEmbed({ title, embedUrl, openUrl }) {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -17,15 +18,15 @@ export default function MapEmbed({ title, embedUrl, openUrl }) {
         />
       ) : (
         <div className="map-card__placeholder">
-          <p className="map-card__eyebrow">Карта</p>
-          <h3>Мекенжайды бір түрту арқылы ашуға болады</h3>
-          <p>Алдымен карта блогын жүктеп алыңыз немесе жаңа терезеде картаны ашыңыз.</p>
+          <p className="map-card__eyebrow">{siteContent.venue.mapLabel}</p>
+          <h3>{siteContent.venue.mapPlaceholderTitle}</h3>
+          <p>{siteContent.venue.mapPlaceholderText}</p>
           <div className="map-card__actions">
             <button className="button button--primary" type="button" onClick={() => setIsLoaded(true)}>
-              Картаны жүктеу
+              {siteContent.venue.loadMapLabel}
             </button>
             <a className="button button--ghost" href={openUrl} target="_blank" rel="noreferrer">
-              Сыртқы карта
+              {siteContent.venue.externalMapLabel}
             </a>
           </div>
         </div>

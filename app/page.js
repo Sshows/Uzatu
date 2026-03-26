@@ -5,12 +5,20 @@ import RevealInit from "@/components/reveal-init";
 import RsvpForm from "@/components/rsvp-form";
 import { siteContent } from "@/lib/site-content";
 
-function SectionHeader({ kicker, title, copy }) {
+function SectionHeader({ kicker, title, copy, centered = false }) {
   return (
-    <div className="section-head" data-reveal>
+    <div className={`section-head ${centered ? "section-head--center" : ""}`} data-reveal>
       <p className="section-kicker">{kicker}</p>
       <h2 className="section-title">{title}</h2>
       {copy ? <p className="section-copy">{copy}</p> : null}
+    </div>
+  );
+}
+
+function EditorialDivider() {
+  return (
+    <div className="editorial-divider" data-reveal>
+      <Image src={siteContent.media.divider} alt="" width={240} height={24} />
     </div>
   );
 }
@@ -22,35 +30,21 @@ export default function HomePage() {
       <main className="page-shell">
         <div className="ambient ambient--one" aria-hidden="true" />
         <div className="ambient ambient--two" aria-hidden="true" />
+        <div className="ambient ambient--three" aria-hidden="true" />
 
         <section className="hero">
           <div className="container hero__grid">
             <div className="hero__content" data-reveal>
               <p className="hero__eyebrow">{siteContent.eventType}</p>
+              <div className="hero__tag">{siteContent.heroTag}</div>
               <p className="hero__hosts">{siteContent.hosts}</p>
               <h1 className="hero__title">{siteContent.brideName}</h1>
-              <p className="hero__subtitle">
-                {siteContent.groomName} есімді аяулы жанмен жаңа өмірге қадам басар алдындағы
-                жүрекке жақын кешке шақырамыз
-              </p>
+              <p className="hero__subtitle">{siteContent.heroSubtitle}</p>
 
-              <div className="hero__meta">
-                <div className="meta-card">
-                  <span className="meta-card__label">Күні</span>
-                  <strong className="meta-card__value">{siteContent.event.dateLabel}</strong>
-                </div>
-                <div className="meta-card">
-                  <span className="meta-card__label">Уақыты</span>
-                  <strong className="meta-card__value">{siteContent.event.time}</strong>
-                </div>
-                <div className="meta-card meta-card--wide">
-                  <span className="meta-card__label">Өтетін орны</span>
-                  <strong className="meta-card__value">{siteContent.venue.hall}</strong>
-                </div>
+              <div className="hero__story">
+                <p className="hero__lead">{siteContent.heroLead}</p>
+                <p className="hero__note">{siteContent.heroNote}</p>
               </div>
-
-              <p className="hero__lead">{siteContent.heroLead}</p>
-              <p className="hero__note">{siteContent.heroNote}</p>
 
               <div className="hero__actions">
                 <a className="button button--primary" href="#rsvp">
@@ -72,31 +66,71 @@ export default function HomePage() {
                   priority
                 />
               </div>
-              <div className="hero__badge">
+
+              <div className="hero__floating hero__floating--top">
                 <span>{siteContent.event.weekday}</span>
                 <strong>{siteContent.event.dateLabel}</strong>
+                <p>{siteContent.event.time}</p>
+              </div>
+
+              <div className="hero__floating hero__floating--bottom">
+                <span>Өтетін орны</span>
+                <strong>{siteContent.venue.hall}</strong>
+                <p>{siteContent.venue.address}</p>
               </div>
             </div>
           </div>
+
+          <div className="container">
+            <div className="hero__ribbon" data-reveal>
+              {siteContent.heroMetrics.map((item) => (
+                <article className="hero__metric" key={`${item.label}-${item.value}`}>
+                  <span>{item.label}</span>
+                  <strong>{item.value}</strong>
+                </article>
+              ))}
+            </div>
+          </div>
         </section>
+
+        <EditorialDivider />
 
         <section className="section" id="invitation">
           <div className="container">
             <SectionHeader
               kicker={siteContent.invitation.kicker}
               title={siteContent.invitation.title}
+              centered
             />
-            <article className="quote-card" data-reveal>
-              <p className="quote-card__lead">{siteContent.invitation.lead}</p>
-              <div className="quote-card__body">
-                {siteContent.invitation.body.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))}
-              </div>
-              <p className="quote-card__signature">{siteContent.invitation.signature}</p>
-            </article>
+
+            <div className="editorial-grid">
+              <article className="quote-card quote-card--feature" data-reveal>
+                <p className="quote-card__lead">{siteContent.invitation.lead}</p>
+                <div className="quote-card__body">
+                  {siteContent.invitation.body.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+                <p className="quote-card__signature">{siteContent.invitation.signature}</p>
+              </article>
+
+              <aside className="aside-card" data-reveal>
+                <p className="aside-card__eyebrow">{siteContent.invitation.asideTitle}</p>
+                <p className="aside-card__text">{siteContent.invitation.asideText}</p>
+                <div className="aside-card__list">
+                  {siteContent.invitation.asideItems.map((item, index) => (
+                    <div className="aside-card__item" key={item}>
+                      <span>{String(index + 1).padStart(2, "0")}</span>
+                      <p>{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </aside>
+            </div>
           </div>
         </section>
+
+        <EditorialDivider />
 
         <section className="section section--soft">
           <div className="container">
@@ -104,11 +138,21 @@ export default function HomePage() {
               kicker={siteContent.countdown.kicker}
               title={siteContent.countdown.title}
               copy={`${siteContent.event.weekday}, ${siteContent.event.dateLabel} • ${siteContent.event.time}`}
+              centered
             />
-            <Countdown
-              targetIso={siteContent.event.iso}
-              afterText={siteContent.countdown.afterText}
-            />
+
+            <div className="countdown-layout">
+              <Countdown
+                targetIso={siteContent.event.iso}
+                afterText={siteContent.countdown.afterText}
+              />
+
+              <article className="countdown-note" data-reveal>
+                <p className="countdown-note__eyebrow">Еске салу</p>
+                <h3>{siteContent.countdown.noteTitle}</h3>
+                <p>{siteContent.countdown.noteText}</p>
+              </article>
+            </div>
           </div>
         </section>
 
@@ -117,18 +161,21 @@ export default function HomePage() {
             <SectionHeader
               kicker={siteContent.timeline.kicker}
               title={siteContent.timeline.title}
-              copy="Кеш барысы бірізді, жайлы әрі отбасылық жылылыққа толы болып жоспарланды."
+              copy={siteContent.timeline.copy}
             />
-            <div className="timeline">
-              {siteContent.timeline.items.map((item) => (
-                <article className="timeline__item" key={`${item.time}-${item.title}`} data-reveal>
-                  <div className="timeline__time">{item.time}</div>
-                  <div className="timeline__card">
-                    <h3>{item.title}</h3>
-                    <p>{item.description}</p>
-                  </div>
-                </article>
-              ))}
+
+            <div className="timeline-shell" data-reveal>
+              <div className="timeline">
+                {siteContent.timeline.items.map((item) => (
+                  <article className="timeline__item" key={`${item.time}-${item.title}`}>
+                    <div className="timeline__time">{item.time}</div>
+                    <div className="timeline__card">
+                      <h3>{item.title}</h3>
+                      <p>{item.description}</p>
+                    </div>
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -140,15 +187,17 @@ export default function HomePage() {
               title={siteContent.venue.title}
               copy={siteContent.venue.note}
             />
+
             <div className="venue-grid">
               <article className="venue-card" data-reveal>
                 <p className="venue-card__label">Зал атауы</p>
                 <h3>{siteContent.venue.hall}</h3>
                 <p className="venue-card__address">{siteContent.venue.address}</p>
                 <a className="button button--primary" href={siteContent.venue.mapUrl} target="_blank" rel="noreferrer">
-                  Картаны ашу
+                  {siteContent.venue.openMapLabel}
                 </a>
               </article>
+
               <MapEmbed
                 title={`${siteContent.venue.hall} картасы`}
                 embedUrl={siteContent.venue.embedUrl}
@@ -164,9 +213,11 @@ export default function HomePage() {
               kicker={siteContent.dressCode.kicker}
               title={siteContent.dressCode.title}
               copy={siteContent.dressCode.description}
+              centered
             />
-            <div className="dress-code">
-              <div className="dress-code__looks">
+
+            <div className="dress-board">
+              <div className="dress-board__looks">
                 <article className="look-card" data-reveal>
                   <div className="look-card__art">
                     <Image
@@ -176,10 +227,12 @@ export default function HomePage() {
                       height={320}
                     />
                   </div>
+                  <span className="look-card__index">01</span>
                   <h3>{siteContent.dressCode.styleNotes[0].title}</h3>
                   <p>{siteContent.dressCode.styleNotes[0].description}</p>
                 </article>
-                <article className="look-card" data-reveal>
+
+                <article className="look-card look-card--offset" data-reveal>
                   <div className="look-card__art">
                     <Image
                       src={siteContent.media.dressManImage}
@@ -188,13 +241,14 @@ export default function HomePage() {
                       height={320}
                     />
                   </div>
+                  <span className="look-card__index">02</span>
                   <h3>{siteContent.dressCode.styleNotes[1].title}</h3>
                   <p>{siteContent.dressCode.styleNotes[1].description}</p>
                 </article>
               </div>
 
               <div className="palette-card" data-reveal>
-                <p className="palette-card__label">Ұсынылатын реңктер</p>
+                <p className="palette-card__label">{siteContent.dressCode.paletteLabel}</p>
                 <div className="palette-card__row">
                   {siteContent.dressCode.palette.map((swatch) => (
                     <div className="swatch" key={swatch.name}>
@@ -203,6 +257,7 @@ export default function HomePage() {
                     </div>
                   ))}
                 </div>
+                <p className="palette-card__note">{siteContent.dressCode.note}</p>
               </div>
             </div>
           </div>
@@ -213,10 +268,13 @@ export default function HomePage() {
             <SectionHeader
               kicker={siteContent.details.kicker}
               title={siteContent.details.title}
+              centered
             />
+
             <div className="details-grid">
-              {siteContent.details.items.map((item) => (
+              {siteContent.details.items.map((item, index) => (
                 <article className="detail-card" key={item.title} data-reveal>
+                  <span className="detail-card__index">{String(index + 1).padStart(2, "0")}</span>
                   <h3>{item.title}</h3>
                   <p>{item.text}</p>
                 </article>
@@ -225,31 +283,32 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="section" id="rsvp">
+        <section className="section section--contrast" id="rsvp">
           <div className="container">
             <SectionHeader
               kicker={siteContent.rsvp.kicker}
               title={siteContent.rsvp.title}
               copy={siteContent.rsvp.intro}
+              centered
             />
-            <div className="rsvp-layout">
+
+            <div className="rsvp-shell">
               <article className="rsvp-note" data-reveal>
-                <p className="rsvp-note__label">Маңызды</p>
-                <h3>{siteContent.eventType} кешіне жауабыңызды қалдырыңыз</h3>
+                <p className="rsvp-note__label">{siteContent.rsvp.noteLabel}</p>
+                <h3>{siteContent.rsvp.noteTitle}</h3>
                 <p>{siteContent.rsvp.deadline}</p>
                 <p>{siteContent.rsvp.contactNote}</p>
                 <div className="rsvp-note__divider" />
-                <p>
-                  Қатысатыныңызды алдын ала растау арқылы біз орын жайғастыруын, дастарқанды және
-                  қонақтар тізімін ұқыпты жоспарлай аламыз.
-                </p>
+                <p>{siteContent.rsvp.noteBody}</p>
               </article>
+
               <RsvpForm />
             </div>
           </div>
         </section>
 
         <footer className="footer">
+          <EditorialDivider />
           <div className="container footer__inner" data-reveal>
             <p className="footer__title">{siteContent.footer.title}</p>
             <p className="footer__note">{siteContent.footer.note}</p>
