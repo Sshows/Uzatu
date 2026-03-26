@@ -10,134 +10,189 @@ const invitationContent = {
   // TODO: поменяйте имя невесты.
   brideName: "Айару",
 
-  // TODO: поменяйте имя жениха. Можно оставить пустым, если не нужно выводить.
+  // TODO: поменяйте имя жениха. Можно оставить пустым, если не хотите показывать.
   groomName: "Нұрсұлтан",
 
   // TODO: поменяйте семью / hosts.
-  hosts: "Семья Жақсыбековых с теплом приглашает вас",
+  hosts: "Семья Жақсыбековых с любовью приглашает вас разделить этот особенный вечер",
 
-  // TODO: поменяйте дату и время торжества.
-  eventDateTime: "2026-09-18T18:00:00+05:00",
-  timezoneLabel: "Кызылорда, GMT+5",
+  // TODO: поменяйте дату торжества здесь.
+  eventSchedule: {
+    year: 2026,
+    month: 9,
+    day: 18,
+    hour: 18,
+    minute: 0
+  },
 
-  heroSecondaryText: "",
-  heroLead:
-    "Будем счастливы разделить с вами тёплый и торжественный вечер, посвящённый проводам нашей дочери в новую красивую главу её жизни.",
+  hero: {
+    scriptNote: "вечер любви и благословения",
+    secondaryText: "",
+    lead:
+      "Будем счастливы видеть вас рядом в этот трогательный семейный вечер, наполненный теплом, уважением к традиции и светлыми пожеланиями для новой главы жизни нашей дочери."
+  },
 
-  invitationLead: "Дорогие родные и близкие!",
-  invitationParagraphs: [
-    "С большим уважением и любовью приглашаем вас на Қыз ұзату — особенный семейный вечер, наполненный трепетом, благодарностью и светлыми пожеланиями.",
-    "Для нашей семьи это очень важный и трогательный момент. Нам будет особенно дорого, если вы разделите его рядом с Айару, поддержите её своим присутствием и сохраните этот вечер вместе с нами в памяти как тёплую семейную историю.",
-    "Пусть эта встреча будет наполнена искренними улыбками, красивыми словами, добрыми бата и спокойной, светлой атмосферой близости."
-  ],
+  invitation: {
+    eyebrow: "Приглашение",
+    title: "С теплом приглашаем вас на важный и красивый семейный вечер",
+    script: "соберёмся рядом с самыми близкими",
+    lead: "Дорогие родные и близкие!",
+    paragraphs: [
+      "С большим уважением и любовью приглашаем вас на Қыз ұзату — особенный семейный вечер, наполненный трепетом, благодарностью и светлыми словами.",
+      "Для нашей семьи это очень важный и эмоциональный момент. Нам будет особенно дорого, если вы разделите его рядом с Айару, поддержите её своим присутствием и сохраните этот вечер вместе с нами как тёплую семейную историю.",
+      "Пусть эта встреча будет наполнена искренними улыбками, красивыми пожеланиями, добрыми бата и тихой светлой атмосферой близости."
+    ],
+    signatureLabel: "С уважением и любовью",
+    signatureValue: "семья Жақсыбековых"
+  },
 
-  countdownAfterMessage:
-    "Этот долгожданный вечер уже начался. Будем рады встретить вас и разделить его вместе.",
+  countdown: {
+    eyebrow: "До встречи",
+    title: "До Қыз ұзату осталось",
+    script: "совсем немного",
+    afterMessage:
+      "Этот долгожданный вечер уже начался. Будем рады встретить вас и разделить его вместе."
+  },
 
-  timelineIntro:
-    "Мы продумали вечер мягко и камерно, чтобы у каждого момента было своё красивое место.",
-  timeline: [
-    {
-      time: "17:00",
-      title: "Сбор гостей",
-      description: "Неспешная встреча гостей, welcome drinks и первые тёплые объятия."
-    },
-    {
-      time: "17:40",
-      title: "Приветствие гостей",
-      description: "Слова благодарности, знакомство с атмосферой вечера и начало общей семейной встречи."
-    },
-    {
-      time: "18:15",
-      title: "Торжественная часть",
-      description: "Главные моменты вечера, наполненные уважением к семье, традициям и новому этапу."
-    },
-    {
-      time: "19:00",
-      title: "Особый выход невесты",
-      description: "Трогательный момент, который хочется прожить спокойно, красиво и вместе с самыми близкими."
-    },
-    {
-      time: "19:40",
-      title: "Ужин и фотосессия",
-      description: "Время для совместных фотографий, тёплого общения и праздничного ужина."
-    },
-    {
-      time: "20:40",
-      title: "Пожелания и бата",
-      description: "Искренние слова от родных и близких, которые останутся в сердце надолго."
-    },
-    {
-      time: "21:20",
-      title: "Торт и завершение вечера",
-      description: "Мягкий финал торжества, красивые кадры и последние тёплые мгновения вечера."
-    }
-  ],
+  timeline: {
+    eyebrow: "Программа",
+    title: "Красивый ритм вечера",
+    script: "мягко, торжественно, с любовью",
+    intro:
+      "Мы продумали вечер так, чтобы у каждого момента было своё красивое место и спокойное, тёплое настроение.",
+    items: [
+      {
+        time: "17:00",
+        title: "Сбор гостей",
+        description: "Неспешная встреча гостей, welcome drinks и первые тёплые объятия."
+      },
+      {
+        time: "17:40",
+        title: "Приветствие",
+        description: "Слова благодарности, знакомство с атмосферой вечера и начало общей семейной встречи."
+      },
+      {
+        time: "18:15",
+        title: "Торжественная часть",
+        description: "Главные моменты вечера, наполненные уважением к семье, традициям и новому этапу."
+      },
+      {
+        time: "19:00",
+        title: "Выход невесты",
+        description: "Трогательный момент, который хочется прожить красиво, спокойно и рядом с самыми близкими."
+      },
+      {
+        time: "19:40",
+        title: "Фотосессия и ужин",
+        description: "Время для совместных фотографий, тёплого общения и праздничного ужина."
+      },
+      {
+        time: "20:40",
+        title: "Пожелания и бата",
+        description: "Искренние слова от родных и близких, которые останутся в сердце надолго."
+      },
+      {
+        time: "21:20",
+        title: "Торт и завершение вечера",
+        description: "Мягкий финал торжества, красивые кадры и последние тёплые мгновения вечера."
+      }
+    ]
+  },
 
   venue: {
+    eyebrow: "Локация",
     title: "Место встречи",
+    script: "сохраним этот вечер в красивых кадрах",
     overline: "Локация вечера",
-    // TODO: поменяйте площадку и адрес.
+    // TODO: поменяйте место проведения и адрес здесь.
     name: "Aru Hall",
     address: "Кызылорда, ул. Тәуелсіздік, 12",
     note:
       "Зал находится в центральной части города. Просим приехать немного заранее, чтобы спокойно занять места к началу торжества.",
-    // TODO: поменяйте карту и ссылку на реальную локацию.
+    // TODO: поменяйте карту и ссылку на реальную локацию здесь.
     openMapUrl: "https://www.google.com/maps/search/?api=1&query=Kyzylorda",
     mapEmbedUrl: "https://www.google.com/maps?q=Kyzylorda&output=embed",
     mapPlaceholderTitle: "Карта загрузится только при необходимости",
     mapPlaceholderText:
-      "Так страница остаётся лёгкой и быстро открывается на телефоне даже при слабом интернете."
+      "Так страница остаётся лёгкой и быстро открывается на телефоне, сохраняя красивую и чистую композицию."
   },
 
   dressCode: {
+    eyebrow: "Образы",
     title: "Dress code",
+    script: "мягкая палитра и благородные силуэты",
     description:
-      "Будем рады образам в мягкой светлой палитре: спокойные благородные оттенки поддержат нежную атмосферу этого вечера.",
+      "Будем рады образам в светлой спокойной гамме: мягкие оттенки поддержат нежную атмосферу этого вечера и сделают общую палитру фотографий особенно красивой.",
+    finePrint:
+      "Можно выбирать лаконичные ткани, деликатный блеск и чистые силуэты без кричащих акцентов. Чем спокойнее и благороднее образ, тем красивее он будет смотреться в атмосфере этого вечера.",
+    // TODO: поменяйте палитру dress code и fashion-инфографику здесь.
     colors: [
-      { name: "Ivory", hex: "#F4EDE2" },
-      { name: "Champagne", hex: "#EAD8BE" },
-      { name: "Beige", hex: "#D9C3A7" },
-      { name: "Taupe", hex: "#B69F8C" },
-      { name: "Soft Brown", hex: "#8F7763" },
-      { name: "Warm White", hex: "#F9F6F1" }
-    ]
+      { name: "Ivory", hex: "#F6EFE5" },
+      { name: "Champagne", hex: "#E8D2B4" },
+      { name: "Cream", hex: "#F4E8D7" },
+      { name: "Beige", hex: "#D7C0A2" },
+      { name: "Taupe", hex: "#B59E88" },
+      { name: "Soft Brown", hex: "#8A6E58" }
+    ],
+    women: {
+      label: "Для неё",
+      title: "Вечернее платье",
+      text:
+        "Элегантное платье в спокойной благородной гамме: струящиеся ткани, мягкая длина и деликатный силуэт без чрезмерно ярких деталей.",
+      notes: ["midi / maxi", "мягкий блеск", "лаконичный крой"],
+      art: "assets/fashion-gown.svg",
+      alt: "Элегантная line-art иллюстрация вечернего платья"
+    },
+    men: {
+      label: "Для него",
+      title: "Смокинг или костюм",
+      text:
+        "Классический тёмный костюм или смокинг с аккуратной рубашкой и минималистичными деталями, чтобы образ выглядел сдержанно и торжественно.",
+      notes: ["глубокий тёмный тон", "чистый силуэт", "классическая посадка"],
+      art: "assets/fashion-suit.svg",
+      alt: "Элегантная line-art иллюстрация мужского костюма"
+    }
   },
 
-  detailsIntro:
-    "Собрали всё важное в одном месте, чтобы приглашение было лёгким и удобным для быстрого просмотра на телефоне.",
-  details: [
-    {
-      title: "От имени семьи",
-      content:
-        "С любовью и уважением приглашают семья Жақсыбековых. Для нас особенно ценно разделить этот вечер именно в кругу близких сердцу людей."
-    },
-    {
-      title: "Подарки",
-      content:
-        "Ваше присутствие будет самым тёплым подарком. Если вы захотите выразить внимание дополнительно, нам будет комфортно принять его в конверте."
-    },
-    {
-      title: "Цветы",
-      content:
-        "Если вам хочется подарить цветы, выберите, пожалуйста, один аккуратный букет или композицию в нежной гамме без лишней упаковки."
-    },
-    {
-      title: "Дети",
-      content:
-        "Мы будем рады маленьким гостям. Если вы планируете прийти с детьми, пожалуйста, укажите это в RSVP, чтобы мы всё красиво подготовили."
-    },
-    {
-      title: "Парковка",
-      content:
-        "У площадки предусмотрена парковка для гостей. В день мероприятия вас также сможет сориентировать координатор."
-    },
-    {
-      title: "Контакт организатора",
-      content:
-        "По любым вопросам, связанным с рассадкой, приездом или уточнениями по вечеру, можно связаться с координатором Асем."
-    }
-  ],
+  details: {
+    eyebrow: "Важные детали",
+    title: "Всё, что пригодится перед вечером",
+    script: "коротко и с заботой",
+    intro:
+      "Собрали всё важное в одном месте, чтобы приглашение было удобным для быстрого просмотра на телефоне.",
+    items: [
+      {
+        title: "От имени семьи",
+        text:
+          "С любовью и уважением приглашают семья Жақсыбековых. Для нас особенно ценно разделить этот вечер именно в кругу близких сердцу людей."
+      },
+      {
+        title: "Подарки",
+        text:
+          "Ваше присутствие будет самым тёплым подарком. Если вы захотите выразить внимание дополнительно, нам будет комфортно принять его в конверте."
+      },
+      {
+        title: "Цветы",
+        text:
+          "Если вам хочется подарить цветы, выберите, пожалуйста, один аккуратный букет или композицию в нежной гамме без лишней упаковки."
+      },
+      {
+        title: "Дети",
+        text:
+          "Мы будем рады маленьким гостям. Если вы планируете прийти с детьми, пожалуйста, укажите это в RSVP, чтобы мы всё красиво подготовили."
+      },
+      {
+        title: "Парковка",
+        text:
+          "У площадки предусмотрена парковка для гостей. В день мероприятия вас также сможет сориентировать координатор."
+      },
+      {
+        title: "Контакт организатора",
+        text:
+          "По любым вопросам, связанным с приездом, рассадкой или уточнениями по вечеру, можно связаться с координатором Асем."
+      }
+    ]
+  },
 
   contacts: {
     coordinatorName: "Асем",
@@ -147,11 +202,13 @@ const invitationContent = {
   },
 
   rsvp: {
+    eyebrow: "RSVP",
     title: "Подтверждение присутствия",
+    script: "будем признательны за ваш ответ",
     intro:
       "Пожалуйста, подтвердите своё присутствие заранее, чтобы мы смогли с любовью подготовить вечер для каждого гостя.",
     deadline: "Просим ответить до 10 сентября 2026 года.",
-    // TODO: подключите реальную отправку RSVP через Google Apps Script / Formspree / любой backend.
+    // TODO: подключите реальную отправку RSVP через Google Apps Script / Formspree / custom backend здесь.
     endpoint: "",
     storageKey: "kyz-uzatu-rsvp-responses",
     successMessage: "Спасибо. Ваш ответ бережно сохранён на этом устройстве.",
@@ -160,9 +217,12 @@ const invitationContent = {
       "Не удалось отправить форму. Попробуйте ещё раз или свяжитесь с организатором напрямую."
   },
 
-  footerText:
-    "С нетерпением ждём встречи в этот красивый и очень важный для нашей семьи вечер.",
-  footerSignature: "Айару и семья Жақсыбековых",
+  footer: {
+    script: "до скорой встречи",
+    text:
+      "С нетерпением ждём встречи в этот красивый и очень важный для нашей семьи вечер.",
+    signature: "Айару и семья Жақсыбековых"
+  },
 
   media: {
     // TODO: замените фото невесты на реальный файл из папки assets.
@@ -173,19 +233,9 @@ const invitationContent = {
   labels: {
     date: "Дата",
     time: "Время",
+    venue: "Локация",
     confirmPresence: "Подтвердить присутствие",
     scrollBelow: "Листать ниже",
-    invitationEyebrow: "Приглашение",
-    invitationTitle: "С теплом приглашаем вас разделить этот особенный вечер",
-    countdownEyebrow: "До встречи",
-    countdownTitle: "До Қыз ұзату осталось",
-    timelineEyebrow: "Программа",
-    timelineTitle: "Красивый ритм вечера",
-    venueEyebrow: "Локация",
-    dressCodeEyebrow: "Образы",
-    detailsEyebrow: "Важные детали",
-    detailsTitle: "Всё, что пригодится перед вечером",
-    rsvpEyebrow: "RSVP",
     openMap: "Открыть карту",
     loadMap: "Показать карту",
     submit: "Отправить ответ",
@@ -199,32 +249,41 @@ const invitationContent = {
 };
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-const countdownTarget = new Date(invitationContent.eventDateTime);
+const eventDate = buildEventDate(invitationContent.eventSchedule);
 
 const elements = {
   metaDescription: document.getElementById("metaDescription"),
   heroEventType: document.getElementById("heroEventType"),
   heroHosts: document.getElementById("heroHosts"),
   heroBrideName: document.getElementById("heroBrideName"),
+  heroScriptNote: document.getElementById("heroScriptNote"),
   heroSecondaryText: document.getElementById("heroSecondaryText"),
   heroDate: document.getElementById("heroDate"),
   heroTime: document.getElementById("heroTime"),
+  heroVenue: document.getElementById("heroVenue"),
   heroLead: document.getElementById("heroLead"),
   heroPortrait: document.getElementById("heroPortrait"),
+  heroDayNameShort: document.getElementById("heroDayNameShort"),
+  heroDateBadge: document.getElementById("heroDateBadge"),
   labelDate: document.getElementById("labelDate"),
   labelTime: document.getElementById("labelTime"),
+  labelVenue: document.getElementById("labelVenue"),
   confirmPresenceButton: document.getElementById("confirmPresenceButton"),
   scrollDownButton: document.getElementById("scrollDownButton"),
   scrollCueLabel: document.getElementById("scrollCueLabel"),
   invitationSectionEyebrow: document.getElementById("invitationSectionEyebrow"),
   invitationSectionTitle: document.getElementById("invitationSectionTitle"),
+  invitationSectionScript: document.getElementById("invitationSectionScript"),
   invitationLead: document.getElementById("invitationLead"),
   invitationBody: document.getElementById("invitationBody"),
+  invitationSignatureLabel: document.getElementById("invitationSignatureLabel"),
+  invitationSignatureValue: document.getElementById("invitationSignatureValue"),
   countdownSectionEyebrow: document.getElementById("countdownSectionEyebrow"),
   countdownTitle: document.getElementById("countdownTitle"),
+  countdownSectionScript: document.getElementById("countdownSectionScript"),
   countdownDateLine: document.getElementById("countdownDateLine"),
-  countdownMessage: document.getElementById("countdownMessage"),
   countdownGrid: document.getElementById("countdownGrid"),
+  countdownMessage: document.getElementById("countdownMessage"),
   daysValue: document.getElementById("daysValue"),
   hoursValue: document.getElementById("hoursValue"),
   minutesValue: document.getElementById("minutesValue"),
@@ -235,10 +294,12 @@ const elements = {
   secondsLabel: document.getElementById("secondsLabel"),
   timelineSectionEyebrow: document.getElementById("timelineSectionEyebrow"),
   timelineTitle: document.getElementById("timelineTitle"),
+  timelineSectionScript: document.getElementById("timelineSectionScript"),
   timelineIntro: document.getElementById("timelineIntro"),
   timelineList: document.getElementById("timelineList"),
   venueSectionEyebrow: document.getElementById("venueSectionEyebrow"),
   venueTitle: document.getElementById("venueTitle"),
+  venueSectionScript: document.getElementById("venueSectionScript"),
   venueOverline: document.getElementById("venueOverline"),
   venueName: document.getElementById("venueName"),
   venueAddress: document.getElementById("venueAddress"),
@@ -252,27 +313,46 @@ const elements = {
   mapPlaceholderText: document.getElementById("mapPlaceholderText"),
   dressCodeSectionEyebrow: document.getElementById("dressCodeSectionEyebrow"),
   dressCodeTitle: document.getElementById("dressCodeTitle"),
+  dressCodeSectionScript: document.getElementById("dressCodeSectionScript"),
   dressCodeDescription: document.getElementById("dressCodeDescription"),
+  dressCodeFinePrint: document.getElementById("dressCodeFinePrint"),
   dressCodePalette: document.getElementById("dressCodePalette"),
+  dressCodeWomenArt: document.getElementById("dressCodeWomenArt"),
+  dressCodeMenArt: document.getElementById("dressCodeMenArt"),
+  dressWomenLabel: document.getElementById("dressWomenLabel"),
+  dressWomenTitle: document.getElementById("dressWomenTitle"),
+  dressWomenText: document.getElementById("dressWomenText"),
+  dressWomenNotes: document.getElementById("dressWomenNotes"),
+  dressMenLabel: document.getElementById("dressMenLabel"),
+  dressMenTitle: document.getElementById("dressMenTitle"),
+  dressMenText: document.getElementById("dressMenText"),
+  dressMenNotes: document.getElementById("dressMenNotes"),
   detailsSectionEyebrow: document.getElementById("detailsSectionEyebrow"),
   detailsTitle: document.getElementById("detailsTitle"),
+  detailsSectionScript: document.getElementById("detailsSectionScript"),
   detailsIntro: document.getElementById("detailsIntro"),
   detailsList: document.getElementById("detailsList"),
   rsvpSectionEyebrow: document.getElementById("rsvpSectionEyebrow"),
   rsvpTitle: document.getElementById("rsvpTitle"),
+  rsvpSectionScript: document.getElementById("rsvpSectionScript"),
   rsvpIntro: document.getElementById("rsvpIntro"),
   rsvpDeadline: document.getElementById("rsvpDeadline"),
   rsvpContactHint: document.getElementById("rsvpContactHint"),
   formStatus: document.getElementById("formStatus"),
   rsvpForm: document.getElementById("rsvpForm"),
+  submitButton: document.getElementById("submitButton"),
+  footerScript: document.getElementById("footerScript"),
   footerText: document.getElementById("footerText"),
   footerSignature: document.getElementById("footerSignature"),
   footerContact: document.getElementById("footerContact"),
-  footerYear: document.getElementById("footerYear"),
-  submitButton: document.getElementById("submitButton")
+  footerYear: document.getElementById("footerYear")
 };
 
 const fieldNames = ["fullName", "contact", "attendance", "guestCount", "foodPreferences", "comment"];
+
+function buildEventDate(schedule) {
+  return new Date(schedule.year, schedule.month - 1, schedule.day, schedule.hour, schedule.minute);
+}
 
 function setText(node, value) {
   if (node) {
@@ -297,13 +377,31 @@ function formatLongDate(date) {
   }).format(date);
 }
 
-function formatDateWithWeekday(date) {
-  return new Intl.DateTimeFormat("ru-RU", {
+function formatWeekdayDate(date) {
+  const formatted = new Intl.DateTimeFormat("ru-RU", {
     weekday: "long",
     day: "numeric",
-    month: "long",
-    year: "numeric"
+    month: "long"
   }).format(date);
+
+  return formatted.charAt(0).toUpperCase() + formatted.slice(1);
+}
+
+function formatDayName(date) {
+  const formatted = new Intl.DateTimeFormat("ru-RU", {
+    weekday: "long"
+  }).format(date);
+
+  return formatted.charAt(0).toUpperCase() + formatted.slice(1);
+}
+
+function formatDayMonthShort(date) {
+  return new Intl.DateTimeFormat("ru-RU", {
+    day: "numeric",
+    month: "short"
+  })
+    .format(date)
+    .replace(".", "");
 }
 
 function formatTime(date) {
@@ -314,35 +412,35 @@ function formatTime(date) {
 }
 
 function getHeroSecondaryText() {
-  if (invitationContent.heroSecondaryText.trim()) {
-    return invitationContent.heroSecondaryText;
+  if (invitationContent.hero.secondaryText.trim()) {
+    return invitationContent.hero.secondaryText;
   }
 
   if (invitationContent.groomName.trim()) {
-    return `Особенный вечер в честь ${invitationContent.brideName} и новой главы её жизни рядом с ${invitationContent.groomName}.`;
+    return `Особенный вечер в честь ${invitationContent.brideName} и новой красивой главы её жизни рядом с ${invitationContent.groomName}.`;
   }
 
-  return `Особенный вечер в честь ${invitationContent.brideName} и начала новой прекрасной главы.`;
+  return `Особенный вечер в честь ${invitationContent.brideName} и начала новой прекрасной главы её жизни.`;
 }
 
 function renderStaticContent() {
-  const eventDate = formatLongDate(countdownTarget);
-  const eventTime = formatTime(countdownTarget);
-
   document.title = invitationContent.seo.title;
-  if (elements.metaDescription) {
-    elements.metaDescription.setAttribute("content", invitationContent.seo.description);
-  }
+  elements.metaDescription.setAttribute("content", invitationContent.seo.description);
 
   setText(elements.heroEventType, invitationContent.eventType);
   setText(elements.heroHosts, invitationContent.hosts);
   setText(elements.heroBrideName, invitationContent.brideName);
+  setText(elements.heroScriptNote, invitationContent.hero.scriptNote);
   setText(elements.heroSecondaryText, getHeroSecondaryText());
-  setText(elements.heroDate, eventDate);
-  setText(elements.heroTime, `${eventTime} · ${invitationContent.timezoneLabel}`);
-  setText(elements.heroLead, invitationContent.heroLead);
+  setText(elements.heroDate, formatLongDate(eventDate));
+  setText(elements.heroTime, formatTime(eventDate));
+  setText(elements.heroVenue, invitationContent.venue.name);
+  setText(elements.heroLead, invitationContent.hero.lead);
+  setText(elements.heroDayNameShort, formatDayName(eventDate));
+  setText(elements.heroDateBadge, formatDayMonthShort(eventDate));
   setText(elements.labelDate, invitationContent.labels.date);
   setText(elements.labelTime, invitationContent.labels.time);
+  setText(elements.labelVenue, invitationContent.labels.venue);
   setText(elements.confirmPresenceButton, invitationContent.labels.confirmPresence);
   setText(elements.scrollDownButton, invitationContent.labels.scrollBelow);
   setText(elements.scrollCueLabel, invitationContent.labels.scrollBelow);
@@ -350,30 +448,33 @@ function renderStaticContent() {
   elements.heroPortrait.src = invitationContent.media.heroImage;
   elements.heroPortrait.alt = invitationContent.media.heroAlt;
 
-  setText(elements.invitationSectionEyebrow, invitationContent.labels.invitationEyebrow);
-  setText(elements.invitationSectionTitle, invitationContent.labels.invitationTitle);
-  setText(elements.invitationLead, invitationContent.invitationLead);
-  elements.invitationBody.innerHTML = invitationContent.invitationParagraphs
+  setText(elements.invitationSectionEyebrow, invitationContent.invitation.eyebrow);
+  setText(elements.invitationSectionTitle, invitationContent.invitation.title);
+  setText(elements.invitationSectionScript, invitationContent.invitation.script);
+  setText(elements.invitationLead, invitationContent.invitation.lead);
+  setText(elements.invitationSignatureLabel, invitationContent.invitation.signatureLabel);
+  setText(elements.invitationSignatureValue, invitationContent.invitation.signatureValue);
+  elements.invitationBody.innerHTML = invitationContent.invitation.paragraphs
     .map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`)
     .join("");
 
-  setText(elements.countdownSectionEyebrow, invitationContent.labels.countdownEyebrow);
-  setText(elements.countdownTitle, invitationContent.labels.countdownTitle);
-  setText(
-    elements.countdownDateLine,
-    `${formatDateWithWeekday(countdownTarget)} · ${eventTime} · ${invitationContent.timezoneLabel}`
-  );
+  setText(elements.countdownSectionEyebrow, invitationContent.countdown.eyebrow);
+  setText(elements.countdownTitle, invitationContent.countdown.title);
+  setText(elements.countdownSectionScript, invitationContent.countdown.script);
+  setText(elements.countdownDateLine, `${formatWeekdayDate(eventDate)} · ${formatTime(eventDate)}`);
   setText(elements.daysLabel, invitationContent.labels.countdownUnits.days);
   setText(elements.hoursLabel, invitationContent.labels.countdownUnits.hours);
   setText(elements.minutesLabel, invitationContent.labels.countdownUnits.minutes);
   setText(elements.secondsLabel, invitationContent.labels.countdownUnits.seconds);
 
-  setText(elements.timelineSectionEyebrow, invitationContent.labels.timelineEyebrow);
-  setText(elements.timelineTitle, invitationContent.labels.timelineTitle);
-  setText(elements.timelineIntro, invitationContent.timelineIntro);
+  setText(elements.timelineSectionEyebrow, invitationContent.timeline.eyebrow);
+  setText(elements.timelineTitle, invitationContent.timeline.title);
+  setText(elements.timelineSectionScript, invitationContent.timeline.script);
+  setText(elements.timelineIntro, invitationContent.timeline.intro);
 
-  setText(elements.venueSectionEyebrow, invitationContent.labels.venueEyebrow);
+  setText(elements.venueSectionEyebrow, invitationContent.venue.eyebrow);
   setText(elements.venueTitle, invitationContent.venue.title);
+  setText(elements.venueSectionScript, invitationContent.venue.script);
   setText(elements.venueOverline, invitationContent.venue.overline);
   setText(elements.venueName, invitationContent.venue.name);
   setText(elements.venueAddress, invitationContent.venue.address);
@@ -385,27 +486,42 @@ function renderStaticContent() {
   setText(elements.mapPlaceholderTitle, invitationContent.venue.mapPlaceholderTitle);
   setText(elements.mapPlaceholderText, invitationContent.venue.mapPlaceholderText);
 
-  setText(elements.dressCodeSectionEyebrow, invitationContent.labels.dressCodeEyebrow);
+  setText(elements.dressCodeSectionEyebrow, invitationContent.dressCode.eyebrow);
   setText(elements.dressCodeTitle, invitationContent.dressCode.title);
+  setText(elements.dressCodeSectionScript, invitationContent.dressCode.script);
   setText(elements.dressCodeDescription, invitationContent.dressCode.description);
+  setText(elements.dressCodeFinePrint, invitationContent.dressCode.finePrint);
+  elements.dressCodeWomenArt.src = invitationContent.dressCode.women.art;
+  elements.dressCodeWomenArt.alt = invitationContent.dressCode.women.alt;
+  elements.dressCodeMenArt.src = invitationContent.dressCode.men.art;
+  elements.dressCodeMenArt.alt = invitationContent.dressCode.men.alt;
+  setText(elements.dressWomenLabel, invitationContent.dressCode.women.label);
+  setText(elements.dressWomenTitle, invitationContent.dressCode.women.title);
+  setText(elements.dressWomenText, invitationContent.dressCode.women.text);
+  setText(elements.dressMenLabel, invitationContent.dressCode.men.label);
+  setText(elements.dressMenTitle, invitationContent.dressCode.men.title);
+  setText(elements.dressMenText, invitationContent.dressCode.men.text);
 
-  setText(elements.detailsSectionEyebrow, invitationContent.labels.detailsEyebrow);
-  setText(elements.detailsTitle, invitationContent.labels.detailsTitle);
-  setText(elements.detailsIntro, invitationContent.detailsIntro);
+  setText(elements.detailsSectionEyebrow, invitationContent.details.eyebrow);
+  setText(elements.detailsTitle, invitationContent.details.title);
+  setText(elements.detailsSectionScript, invitationContent.details.script);
+  setText(elements.detailsIntro, invitationContent.details.intro);
 
-  setText(elements.rsvpSectionEyebrow, invitationContent.labels.rsvpEyebrow);
+  setText(elements.rsvpSectionEyebrow, invitationContent.rsvp.eyebrow);
   setText(elements.rsvpTitle, invitationContent.rsvp.title);
+  setText(elements.rsvpSectionScript, invitationContent.rsvp.script);
   setText(elements.rsvpIntro, invitationContent.rsvp.intro);
   setText(elements.rsvpDeadline, invitationContent.rsvp.deadline);
   setText(elements.submitButton, invitationContent.labels.submit);
 
-  setText(elements.footerText, invitationContent.footerText);
-  setText(elements.footerSignature, invitationContent.footerSignature);
-  setText(elements.footerYear, new Date().getFullYear());
+  setText(elements.footerScript, invitationContent.footer.script);
+  setText(elements.footerText, invitationContent.footer.text);
+  setText(elements.footerSignature, invitationContent.footer.signature);
+  setText(elements.footerYear, String(new Date().getFullYear()));
 }
 
 function renderTimeline() {
-  elements.timelineList.innerHTML = invitationContent.timeline
+  elements.timelineList.innerHTML = invitationContent.timeline.items
     .map(
       (item) => `
         <article class="timeline-item reveal" data-reveal>
@@ -433,18 +549,25 @@ function renderDressCode() {
       `
     )
     .join("");
+
+  elements.dressWomenNotes.innerHTML = invitationContent.dressCode.women.notes
+    .map((note) => `<span class="fashion-note">${escapeHtml(note)}</span>`)
+    .join("");
+
+  elements.dressMenNotes.innerHTML = invitationContent.dressCode.men.notes
+    .map((note) => `<span class="fashion-note">${escapeHtml(note)}</span>`)
+    .join("");
 }
 
 function renderDetails() {
-  elements.detailsList.innerHTML = invitationContent.details
+  elements.detailsList.innerHTML = invitationContent.details.items
     .map(
-      (detail, index) => `
-        <details class="details-item reveal" data-reveal ${index === 0 ? "open" : ""}>
-          <summary>${escapeHtml(detail.title)}</summary>
-          <div class="details-item__body">
-            <p>${escapeHtml(detail.content)}</p>
-          </div>
-        </details>
+      (item, index) => `
+        <article class="details-card reveal" data-reveal>
+          <span class="details-card__index">${String(index + 1).padStart(2, "0")}</span>
+          <h3 class="details-card__title">${escapeHtml(item.title)}</h3>
+          <p class="details-card__text">${escapeHtml(item.text)}</p>
+        </article>
       `
     )
     .join("");
@@ -490,11 +613,11 @@ function renderContacts() {
 }
 
 function updateCountdown() {
-  const diff = countdownTarget.getTime() - Date.now();
+  const diff = eventDate.getTime() - Date.now();
 
   if (diff <= 0) {
     elements.countdownGrid.hidden = true;
-    setText(elements.countdownMessage, invitationContent.countdownAfterMessage);
+    setText(elements.countdownMessage, invitationContent.countdown.afterMessage);
     return;
   }
 
@@ -546,8 +669,7 @@ function setupLazyMap() {
 
   const mapObserver = new IntersectionObserver(
     (entries, observer) => {
-      const shouldLoad = entries.some((entry) => entry.isIntersecting);
-      if (shouldLoad) {
+      if (entries.some((entry) => entry.isIntersecting)) {
         loadMap();
         observer.disconnect();
       }
@@ -608,13 +730,14 @@ function setFieldError(name, message) {
 
 function getFormValues() {
   const formData = new FormData(elements.rsvpForm);
+
   return {
-    fullName: formData.get("fullName").trim(),
-    contact: formData.get("contact").trim(),
-    attendance: formData.get("attendance").trim(),
+    fullName: String(formData.get("fullName")).trim(),
+    contact: String(formData.get("contact")).trim(),
+    attendance: String(formData.get("attendance")).trim(),
     guestCount: Number(formData.get("guestCount")),
-    foodPreferences: formData.get("foodPreferences").trim(),
-    comment: formData.get("comment").trim()
+    foodPreferences: String(formData.get("foodPreferences")).trim(),
+    comment: String(formData.get("comment")).trim()
   };
 }
 
@@ -784,6 +907,35 @@ function setupRevealAnimations() {
   revealElements.forEach((element) => revealObserver.observe(element));
 }
 
+function setupHeroParallax() {
+  if (prefersReducedMotion) {
+    return;
+  }
+
+  const hero = document.querySelector(".hero");
+  const root = document.documentElement;
+  let ticking = false;
+
+  function updateProgress() {
+    const progress = Math.max(0, Math.min(1, window.scrollY / Math.max(hero.offsetHeight * 0.9, 1)));
+    root.style.setProperty("--scroll-progress", progress.toFixed(3));
+    ticking = false;
+  }
+
+  updateProgress();
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateProgress);
+        ticking = true;
+      }
+    },
+    { passive: true }
+  );
+}
+
 function init() {
   renderStaticContent();
   renderTimeline();
@@ -795,6 +947,7 @@ function init() {
   setupForm();
   setupScrollButtons();
   setupRevealAnimations();
+  setupHeroParallax();
   window.setInterval(updateCountdown, 1000);
 }
 
