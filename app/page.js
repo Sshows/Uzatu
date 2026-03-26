@@ -216,50 +216,55 @@ export default function HomePage() {
               centered
             />
 
-            <div className="dress-board">
-              <div className="dress-board__looks">
-                <article className="look-card" data-reveal>
-                  <div className="look-card__art">
-                    <Image
-                      src={siteContent.media.dressWomanImage}
-                      alt="Ханымдарға арналған киім үлгісі"
-                      width={260}
-                      height={320}
-                    />
-                  </div>
-                  <span className="look-card__index">01</span>
-                  <h3>{siteContent.dressCode.styleNotes[0].title}</h3>
-                  <p>{siteContent.dressCode.styleNotes[0].description}</p>
-                </article>
-
-                <article className="look-card look-card--offset" data-reveal>
-                  <div className="look-card__art">
-                    <Image
-                      src={siteContent.media.dressManImage}
-                      alt="Мырзаларға арналған киім үлгісі"
-                      width={260}
-                      height={320}
-                    />
-                  </div>
-                  <span className="look-card__index">02</span>
-                  <h3>{siteContent.dressCode.styleNotes[1].title}</h3>
-                  <p>{siteContent.dressCode.styleNotes[1].description}</p>
-                </article>
-              </div>
-
-              <div className="palette-card" data-reveal>
-                <p className="palette-card__label">{siteContent.dressCode.paletteLabel}</p>
-                <div className="palette-card__row">
-                  {siteContent.dressCode.palette.map((swatch) => (
-                    <div className="swatch" key={swatch.name}>
-                      <span className="swatch__dot" style={{ backgroundColor: swatch.hex }} />
-                      <span className="swatch__name">{swatch.name}</span>
+            <div className="dress-simple">
+              {siteContent.dressCode.cards.map((card, index) => (
+                <article className="dress-rule-card" key={card.title} data-reveal>
+                  <div className="dress-rule-card__top">
+                    <div className={`dress-rule-card__icon dress-rule-card__icon--${card.icon}`}>
+                      {card.icon === "woman" ? (
+                        <Image
+                          src={siteContent.media.dressWomanImage}
+                          alt=""
+                          width={52}
+                          height={64}
+                        />
+                      ) : card.icon === "man" ? (
+                        <Image
+                          src={siteContent.media.dressManImage}
+                          alt=""
+                          width={52}
+                          height={64}
+                        />
+                      ) : (
+                        <span className="dress-rule-card__badge">{String(index + 1).padStart(2, "0")}</span>
+                      )}
                     </div>
-                  ))}
-                </div>
-                <p className="palette-card__note">{siteContent.dressCode.note}</p>
-              </div>
+                    <h3>{card.title}</h3>
+                  </div>
+                  <ul className="dress-rule-card__list">
+                    {card.points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
             </div>
+
+            <article className="palette-card palette-card--simple" data-reveal>
+              <p className="palette-card__label">{siteContent.dressCode.paletteLabel}</p>
+              <div className="palette-strip">
+                {siteContent.dressCode.palette.map((swatch) => (
+                  <span
+                    className="palette-strip__dot"
+                    key={swatch.name}
+                    style={{ backgroundColor: swatch.hex }}
+                    aria-label={swatch.name}
+                    title={swatch.name}
+                  />
+                ))}
+              </div>
+              <p className="palette-card__text">{siteContent.dressCode.paletteText}</p>
+            </article>
           </div>
         </section>
 

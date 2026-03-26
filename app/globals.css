@@ -212,16 +212,18 @@ button {
 .quote-card__lead,
 .countdown__value,
 .venue-card h3,
-.look-card h3,
 .detail-card h3,
 .rsvp-note h3,
 .footer__title,
 .countdown-note h3,
 .aside-card__text,
-.timeline__card h3 {
+.timeline__card h3,
+.dress-rule-card h3 {
   font-family: var(--font-serif), Georgia, serif;
   line-height: 0.94;
   letter-spacing: -0.035em;
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 .hero__title {
@@ -233,9 +235,10 @@ button {
 .hero__subtitle {
   max-width: 35rem;
   margin: 1rem 0 0;
-  color: var(--muted);
+  color: #685346;
   font-size: clamp(1rem, 4vw, 1.28rem);
   line-height: 1.72;
+  overflow-wrap: anywhere;
 }
 
 .hero__story {
@@ -265,7 +268,7 @@ button {
 .quote-card__body p,
 .timeline__card p,
 .venue-card__address,
-.look-card p,
+.dress-rule-card li,
 .detail-card p,
 .rsvp-note p,
 .footer__note,
@@ -274,9 +277,10 @@ button {
 .palette-card__note,
 .aside-card__item p {
   margin: 0;
-  color: var(--muted);
+  color: #6d594b;
   font-size: 0.98rem;
   line-height: 1.78;
+  overflow-wrap: anywhere;
 }
 
 .hero__note {
@@ -457,8 +461,9 @@ button {
 
 .section-title {
   margin: 0.55rem 0 0.9rem;
-  font-size: clamp(2.4rem, 11vw, 4rem);
+  font-size: clamp(2rem, 9vw, 3.4rem);
   font-weight: 600;
+  line-height: 1.02;
 }
 
 .quote-card,
@@ -727,39 +732,86 @@ button {
   border: 0;
 }
 
-.dress-board {
-  gap: 1.2rem;
-}
-
-.dress-board__looks {
+.dress-simple {
   display: grid;
-  gap: 1rem;
+  gap: 0.9rem;
 }
 
-.look-card {
-  position: relative;
-  padding: 1.2rem;
-  background:
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.76), transparent 42%),
-    rgba(255, 249, 242, 0.88);
+.dress-rule-card {
+  padding: 1.15rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(155, 119, 95, 0.12);
+  background: rgba(255, 251, 246, 0.9);
+  box-shadow: var(--shadow-soft);
 }
 
-.look-card--offset {
-  transform: translateY(0);
+.dress-rule-card__top {
+  display: grid;
+  grid-template-columns: 4.6rem 1fr;
+  gap: 0.85rem;
+  align-items: center;
+  margin-bottom: 0.95rem;
 }
 
-.look-card__art {
+.dress-rule-card__icon {
   display: grid;
   place-items: center;
-  min-height: 18rem;
-  margin-bottom: 1rem;
-  border-radius: calc(var(--radius-xl) + 0.1rem);
-  background:
-    linear-gradient(180deg, rgba(249, 242, 234, 0.98), rgba(241, 229, 216, 0.94));
+  width: 4.6rem;
+  height: 4.6rem;
+  border-radius: 1.2rem;
+  background: #f5ede4;
+  border: 1px solid rgba(155, 119, 95, 0.1);
 }
 
-.look-card__index {
-  margin-bottom: 0.85rem;
+.dress-rule-card__icon img {
+  width: 2.5rem;
+  height: auto;
+}
+
+.dress-rule-card__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(155, 119, 95, 0.12);
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.dress-rule-card h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.15;
+  font-weight: 500;
+}
+
+.dress-rule-card__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.dress-rule-card__list li {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.dress-rule-card__list li::before {
+  content: "";
+  position: absolute;
+  top: 0.78rem;
+  left: 0;
+  width: 0.36rem;
+  height: 0.36rem;
+  border-radius: 50%;
+  background: var(--accent);
 }
 
 .palette-card {
@@ -769,35 +821,32 @@ button {
     rgba(248, 241, 233, 0.78);
 }
 
-.palette-card__row {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.95rem;
-  margin-top: 1rem;
+.palette-card--simple {
+  margin-top: 0.9rem;
+  padding: 1rem 1.1rem;
+  border-radius: var(--radius-xl);
 }
 
-.swatch {
+.palette-strip {
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 0.8rem;
 }
 
-.swatch__dot {
-  flex-shrink: 0;
-  width: 2.7rem;
-  height: 2.7rem;
+.palette-strip__dot {
+  width: 2.4rem;
+  height: 2.4rem;
   border-radius: 50%;
   border: 1px solid rgba(60, 45, 36, 0.08);
-  box-shadow: inset 0 0 0 6px rgba(255, 255, 255, 0.24);
+  box-shadow: inset 0 0 0 6px rgba(255, 255, 255, 0.2);
 }
 
-.swatch__name {
-  font-size: 0.95rem;
-  line-height: 1.4;
-}
-
-.palette-card__note {
-  margin-top: 1rem;
+.palette-card__text {
+  margin: 0.9rem 0 0;
+  color: #5d4b3f;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
 }
 
 .details-grid {
@@ -982,12 +1031,12 @@ button {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .palette-card__row {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-  }
-
   .countdown__grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .dress-simple {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .hero__floating--top {
@@ -1012,19 +1061,6 @@ button {
 
   .hero__content {
     padding-right: 1rem;
-  }
-
-  .dress-board {
-    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.85fr);
-    align-items: start;
-  }
-
-  .dress-board__looks {
-    gap: 1.4rem;
-  }
-
-  .look-card--offset {
-    transform: translateY(2rem);
   }
 
   .details-grid {
