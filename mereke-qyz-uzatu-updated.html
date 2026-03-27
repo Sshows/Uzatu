@@ -136,26 +136,12 @@ opacity:0;animation:burst 4.8s ease-out infinite;}
 .cs{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,36px);color:rgba(255,255,255,.38);padding-bottom:12px;font-weight:500;flex-shrink:0;}
 
 /* DRESS CODE */
-.sw{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(18px,5vw,72px);max-width:980px;margin:34px auto 0;padding:clamp(28px,5vw,44px) clamp(18px,5vw,52px);background:
-  radial-gradient(circle at 24% 42%,rgba(255,255,255,.26),transparent 22%),
-  radial-gradient(circle at 76% 42%,rgba(255,255,255,.24),transparent 24%),
-  linear-gradient(180deg,rgba(90,90,90,.28),rgba(36,36,36,.18) 18%,rgba(28,28,28,.82) 52%,rgba(36,36,36,.9));
-border:1px solid rgba(255,255,255,.08);box-shadow:0 30px 70px rgba(0,0,0,.24);overflow:hidden;}
-.sw::before{content:'';position:absolute;inset:-8% -10%;background:
-  repeating-linear-gradient(90deg,rgba(255,255,255,.038) 0 2px,transparent 2px 72px),
-  linear-gradient(90deg,rgba(0,0,0,.22),transparent 16%,transparent 84%,rgba(0,0,0,.22));
-opacity:.52;pointer-events:none;}
-.sw::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.06),transparent 18%,transparent 82%,rgba(0,0,0,.22));pointer-events:none;}
-.swi{position:relative;min-height:360px;padding:20px 14px;display:flex;align-items:center;justify-content:center;background:transparent;overflow:hidden;}
-.swi svg{width:100%;max-width:280px;height:auto;display:block;position:relative;z-index:1;filter:drop-shadow(0 12px 28px rgba(0,0,0,.18));}
-.tux-fill{fill:#111214;}
-.tux-shadow{fill:#1d1e21;}
-.tux-stroke{stroke:#08090a;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;fill:none;}
-.tux-detail{stroke:#232429;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round;fill:none;}
-.dress-shell{fill:#d7d7d7;}
-.dress-highlight{fill:#cfcfcf;}
-.dress-stroke{stroke:#121212;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;fill:none;}
-.dress-accent{stroke:#2a2a2a;stroke-width:1.05;stroke-linecap:round;stroke-linejoin:round;fill:none;opacity:.82;}
+.sw{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:540px;margin:34px auto 0;}
+.swi{position:relative;min-height:248px;padding:24px 18px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#faf5ef,#f2e9de);border:1px solid rgba(184,150,90,.2);box-shadow:0 16px 34px rgba(0,0,0,.08);overflow:hidden;}
+.swi::before{content:'';position:absolute;inset:12px;border:1px solid rgba(255,255,255,.58);pointer-events:none;}
+.swi svg{width:100%;max-width:156px;height:auto;display:block;position:relative;z-index:1;filter:drop-shadow(0 10px 18px rgba(0,0,0,.12));}
+.outfit-fill{fill:#101113;}
+.outfit-stroke{stroke:#101113;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;fill:none;opacity:.9;}
 .vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
 
 /* FORM */
@@ -234,18 +220,20 @@ opacity:.52;pointer-events:none;}
 .vph-corner.bl{bottom:16px;left:12px;border-bottom:1px solid var(--gold);border-left:1px solid var(--gold);}
 .vph-corner.br{bottom:16px;right:12px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);}
 
-/* CAROUSEL 3D */
+/* PHOTO CAROUSEL */
 .carsec{background:var(--ivory);padding:80px 0 90px;overflow:hidden;}
 .carinner{max-width:640px;margin:0 auto;padding:0 24px;text-align:center;}
-.carwrap{position:relative;height:340px;perspective:900px;margin:48px auto 0;cursor:grab;}
-.carwrap:active{cursor:grabbing;}
-.carstage{position:absolute;width:100%;height:100%;transform-style:preserve-3d;transition:transform 0.05s linear;will-change:transform;}
-.carcard{position:absolute;left:50%;top:50%;width:180px;height:240px;margin-left:-90px;margin-top:-120px;transform-style:preserve-3d;backface-visibility:hidden;}
-.carcard-inner{width:100%;height:100%;background:linear-gradient(145deg,#e8e4de,#d8d3cc);border-radius:3px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;box-shadow:0 8px 32px rgba(0,0,0,.18),0 2px 8px rgba(0,0,0,.12);position:relative;overflow:hidden;}
+.carwrap{position:relative;max-width:760px;margin:48px auto 0;padding:0 24px 18px;overflow-x:auto;overflow-y:hidden;scroll-behavior:smooth;scroll-snap-type:x mandatory;cursor:grab;-ms-overflow-style:none;scrollbar-width:none;}
+.carwrap::-webkit-scrollbar{display:none;}
+.carwrap.dragging{cursor:grabbing;scroll-behavior:auto;}
+.carstage{display:flex;align-items:stretch;gap:18px;width:max-content;padding:6px calc(50% - 90px) 10px;}
+.carcard{flex:0 0 180px;height:240px;scroll-snap-align:center;position:relative;transform:scale(.92);opacity:.68;transition:transform .32s ease,opacity .32s ease;}
+.carcard.active{transform:scale(1);opacity:1;}
+.carcard-inner{width:100%;height:100%;background:linear-gradient(145deg,#e8e4de,#d8d3cc);border-radius:3px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;box-shadow:0 8px 32px rgba(0,0,0,.16),0 2px 8px rgba(0,0,0,.08);position:relative;overflow:hidden;}
 .carcard-inner::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.06) 0px,rgba(255,255,255,.06) 1px,transparent 1px,transparent 20px);}
 .carcard-inner svg{width:28px;height:28px;opacity:.3;}
 .carcard-num{font-size:9px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(60,50,40,.3);}
-.carcard.active .carcard-inner{background:linear-gradient(145deg,#ede9e3,#e2ddd6);box-shadow:0 16px 48px rgba(0,0,0,.22),0 4px 16px rgba(184,150,90,.15);}
+.carcard.active .carcard-inner{background:linear-gradient(145deg,#ede9e3,#e2ddd6);box-shadow:0 14px 32px rgba(0,0,0,.18),0 4px 14px rgba(184,150,90,.12);}
 .special-title{font-style:normal;font-weight:500;letter-spacing:0.03em;margin-bottom:30px;}
 .special-note{margin-top:20px;font-size:13px;font-weight:400;letter-spacing:.08em;color:rgba(255,255,255,.28);text-align:center;}
 .gallery-title{font-style:normal;font-weight:500;letter-spacing:0.03em;margin-bottom:20px;transform:translateY(-12px);}
@@ -257,10 +245,11 @@ opacity:.52;pointer-events:none;}
 @media(max-width:480px){
   .carsec{padding:68px 0 74px;}
   .carinner{padding:0 22px;}
-  .carwrap{max-width:300px;height:208px;perspective:980px;margin:28px auto 0;}
-  .carcard{width:96px;height:132px;margin-left:-48px;margin-top:-66px;}
+  .carwrap{max-width:100%;margin:28px auto 0;padding:0 16px 14px;}
+  .carstage{gap:12px;padding:4px calc(50% - 48px) 8px;}
+  .carcard{flex-basis:96px;height:132px;transform:scale(.95);opacity:.78;}
   .carcard-inner{gap:7px;border-radius:2px;box-shadow:0 6px 18px rgba(0,0,0,.12),0 2px 6px rgba(0,0,0,.08);}
-  .carcard.active .carcard-inner{box-shadow:0 9px 22px rgba(0,0,0,.14),0 3px 9px rgba(184,150,90,.1);}
+  .carcard.active .carcard-inner{box-shadow:0 10px 20px rgba(0,0,0,.14),0 3px 8px rgba(184,150,90,.08);}
   .carcard-inner svg{width:20px;height:20px;}
   .carcard-num{font-size:7.5px;letter-spacing:.22em;}
   .gallery-title{margin-bottom:16px;transform:translateY(-8px);}
@@ -274,9 +263,9 @@ opacity:.52;pointer-events:none;}
   .cu{flex-direction:column;gap:6px;}
   .cn{min-width:auto;text-align:center;}
   .cs{padding-bottom:22px;}
-  .sw{grid-template-columns:1fr;max-width:420px;gap:8px;padding:22px 16px 18px;}
-  .swi{min-height:250px;padding:10px 6px;}
-  .swi svg{max-width:230px;}
+  .sw{max-width:360px;gap:12px;}
+  .swi{min-height:188px;padding:18px 12px;}
+  .swi svg{max-width:108px;}
 }
 @media(min-width:560px){
   .pw{flex-direction:row;justify-content:center;align-items:center;}
@@ -295,8 +284,8 @@ opacity:.52;pointer-events:none;}
   .cd{gap:8px;}
   .cn{font-size:clamp(38px,10vw,60px);}
   .nb{padding:8px 10px;font-size:10px;letter-spacing:0.12em;}
-  .carwrap{max-width:280px;height:194px;}
-  .carcard{width:86px;height:118px;margin-left:-43px;margin-top:-59px;}
+  .carstage{gap:10px;padding:4px calc(50% - 41px) 8px;}
+  .carcard{flex-basis:82px;height:116px;}
   .gallery-note{max-width:250px;font-size:14.5px;}
 }
 </style>
@@ -540,42 +529,22 @@ opacity:.52;pointer-events:none;}
   <div class="sw rv d2">
     <div class="swi" aria-label="Ерлерге арналған қара костюм немесе смокинг">
       <span class="vh">Ерлерге арналған қара костюм немесе смокинг</span>
-      <svg viewBox="0 0 220 250" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path class="tux-fill" d="M82 31h56l22 34.5-12.8 16.4-14.5-14.2-8.5 21.5 12.7 115.2h-14.4l-4.8-73.8-8.2-35.6-8.2 35.6-4.8 73.8H82.6l12.7-115.2-8.5-21.5-14.5 14.2L59.5 65.5 82 31Z"/>
-        <path class="tux-shadow" d="M93.6 31 110 61.2 126.4 31l-4.8 19.5-11.6 21-11.6-21L93.6 31Z"/>
-        <path class="tux-shadow" d="M95.3 86.4 110 61.2l14.7 25.2-10.3 24.3h-8.8L95.3 86.4Z"/>
-        <path class="tux-shadow" d="M82 31 69.2 109l17.1-21.3 9-56.7L82 31Z"/>
-        <path class="tux-shadow" d="M138 31l12.8 78-17.1-21.3-9-56.7L138 31Z"/>
-        <path class="tux-stroke" d="M82 31h56l22 34.5-12.8 16.4-14.5-14.2-8.5 21.5 12.7 115.2h-14.4l-4.8-73.8-8.2-35.6-8.2 35.6-4.8 73.8H82.6l12.7-115.2-8.5-21.5-14.5 14.2L59.5 65.5 82 31Z"/>
-        <path class="tux-stroke" d="M93.6 31 110 61.2 126.4 31"/>
-        <path class="tux-stroke" d="M95.3 86.4h29.4"/>
-        <path class="tux-stroke" d="M95.3 86.4 110 61.2l14.7 25.2"/>
-        <path class="tux-detail" d="M101.6 78.1h16.8"/>
-        <path class="tux-detail" d="M89.7 50.2 98.8 47"/>
-        <path class="tux-detail" d="M130.3 50.2 121.2 47"/>
-        <path class="tux-detail" d="M82.1 154.2h18.4"/>
-        <path class="tux-detail" d="M119.5 154.2h18.4"/>
-        <path class="tux-detail" d="M110 61.2v37.2"/>
-        <circle cx="110" cy="115" r="4.4" fill="#191A1D"/>
-        <circle cx="110" cy="137" r="4.4" fill="#191A1D"/>
-        <circle cx="110" cy="159" r="4.4" fill="#191A1D"/>
+      <svg viewBox="0 0 180 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path class="outfit-fill" d="M64 26h52l18 27.5-10.4 13.5-11.6-11.7-6.8 17.6 10.2 99.1H102l-3.8-60.4L90 83.2l-8.2 28.4L78 172H64.6l10.2-99.1L68 55.3 56.4 67 46 53.5 64 26Z"/>
+        <path class="outfit-stroke" d="M76.8 26 90 51.3 103.2 26"/>
+        <path class="outfit-stroke" d="M76.2 73.6h27.6"/>
+        <path class="outfit-stroke" d="M83.2 43.1 90 51.3l6.8-8.2"/>
+        <path class="outfit-stroke" d="M82.4 129.6h15.2"/>
       </svg>
     </div>
     <div class="swi" aria-label="Әйелдерге арналған классикалық көйлек">
       <span class="vh">Әйелдерге арналған классикалық көйлек</span>
-      <svg viewBox="0 0 220 250" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path class="dress-shell" d="M110 36c10.7 0 17.7 7.4 17.7 17.1 0 8-4.8 14.2-11.9 16.9l7.4 18.2h22.3l18.5 26.1-14.1 13.8-13.2-14.9-13 89.7c-1.8 12.3-5.6 17.6-13.7 17.6-8.1 0-11.9-5.3-13.7-17.6l-13-89.7-13.2 14.9-14.1-13.8 18.5-26.1h22.3l7.4-18.2c-7.1-2.7-11.9-8.9-11.9-16.9C92.3 43.4 99.3 36 110 36Z"/>
-        <path class="dress-highlight" d="M77.4 117.4 64 206.8c12.1 11.4 27.3 17.1 46 17.1 0-34-2.9-89.5-8.5-123.3-4.7 9.2-12.8 13.9-24.1 16.8Z"/>
-        <path class="dress-highlight" d="M142.6 117.4 156 206.8c-12.1 11.4-27.3 17.1-46 17.1 0-34 2.9-89.5 8.5-123.3 4.7 9.2 12.8 13.9 24.1 16.8Z"/>
-        <path class="dress-stroke" d="M110 36c10.7 0 17.7 7.4 17.7 17.1 0 8-4.8 14.2-11.9 16.9l7.4 18.2h22.3l18.5 26.1-14.1 13.8-13.2-14.9-13 89.7c-1.8 12.3-5.6 17.6-13.7 17.6-8.1 0-11.9-5.3-13.7-17.6l-13-89.7-13.2 14.9-14.1-13.8 18.5-26.1h22.3l7.4-18.2c-7.1-2.7-11.9-8.9-11.9-16.9C92.3 43.4 99.3 36 110 36Z"/>
-        <path class="dress-stroke" d="M96.5 91.2c8.7 4.3 18.3 4.3 27 0"/>
-        <path class="dress-stroke" d="M88.7 113.4 74.2 211.4"/>
-        <path class="dress-stroke" d="M131.3 113.4 145.8 211.4"/>
-        <path class="dress-stroke" d="M110 88.2v28.6"/>
-        <path class="dress-accent" d="M95.8 142.2c5.1 29.5 7.8 52.8 7.8 80.9"/>
-        <path class="dress-accent" d="M124.2 142.2c-5.1 29.5-7.8 52.8-7.8 80.9"/>
-        <path class="dress-accent" d="M83.5 154.8c6.7-11.1 13.2-16.9 20.4-19.2"/>
-        <path class="dress-accent" d="M136.5 154.8c-6.7-11.1-13.2-16.9-20.4-19.2"/>
+      <svg viewBox="0 0 180 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path class="outfit-fill" d="M90 28c10.2 0 17.2 7.1 17.2 16.8 0 6.5-3.6 12-9.1 14.9l7.9 17.5 12.6 8.6 22 112.2H39.4l22-112.2L74 77.2l7.9-17.5c-5.5-2.9-9.1-8.4-9.1-14.9C72.8 35.1 79.8 28 90 28Z"/>
+        <path class="outfit-stroke" d="M76.5 86.8c8.8 4.5 18.2 4.5 27 0"/>
+        <path class="outfit-stroke" d="M90 61.8v26.4"/>
+        <path class="outfit-stroke" d="M63.8 122.5 52 182.4"/>
+        <path class="outfit-stroke" d="M116.2 122.5 128 182.4"/>
       </svg>
     </div>
   </div>
@@ -797,71 +766,82 @@ function haptic(t='light'){
   navigator.vibrate({light:10,medium:20,heavy:28}[t]||10);
 }
 
-/* ── 3D CAROUSEL ── */
+/* ── PHOTO CAROUSEL ── */
 (function(){
   const stage=document.getElementById('carstage');
   const wrap=document.getElementById('carwrap');
   if(!stage||!wrap)return;
   const N=9;
-  const angleStep=360/N;
-  let curAngle=0,targetAngle=0,animId=null;
-  // build cards
+  let activeIdx=0;
   for(let i=0;i<N;i++){
     const card=document.createElement('div');card.className='carcard';card.dataset.idx=i;
     const inner=document.createElement('div');inner.className='carcard-inner';
     inner.innerHTML=`<svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#7A7268" stroke-width="1.2"/><path d="M3 15l5-5 4 4 3-3 6 6" stroke="#7A7268" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8.5" cy="8.5" r="1.5" stroke="#7A7268" stroke-width="1.2"/></svg><span class="carcard-num">${String(i+1).padStart(2,'0')}</span>`;
     card.appendChild(inner);stage.appendChild(card);
   }
-  const cards=stage.querySelectorAll('.carcard');
-  function layoutCards(){
-    const cardWidth=cards[0]?.getBoundingClientRect().width||180;
-    const mobile=window.matchMedia('(max-width: 560px)').matches;
-    const radius=Math.round((cardWidth/Math.tan(Math.PI/N))*(mobile?0.76:1));
-    cards.forEach((c,i)=>{
-      const a=angleStep*i;
-      c.style.transform=`rotateY(${a}deg) translateZ(${radius}px)`;
-    });
-  }
-  layoutCards();
-  function updateActive(){
-    const norm=((-targetAngle%360)+360)%360;
-    const activeIdx=Math.round(norm/angleStep)%N;
+  const cards=[...stage.querySelectorAll('.carcard')];
+  function syncActive(nextIdx){
+    activeIdx=((nextIdx%N)+N)%N;
     cards.forEach((c,i)=>c.classList.toggle('active',i===activeIdx));
   }
-  function animate(){
-    curAngle+=(targetAngle-curAngle)*0.1;
-    stage.style.transform=`rotateY(${curAngle}deg)`;
-    updateActive();
-    if(Math.abs(targetAngle-curAngle)>0.05)animId=requestAnimationFrame(animate);
-    else{curAngle=targetAngle;stage.style.transform=`rotateY(${curAngle}deg)`;animId=null;}
+  function cardLeft(card){
+    return card.offsetLeft-(wrap.clientWidth-card.offsetWidth)/2;
   }
-  function startAnim(){if(!animId)animId=requestAnimationFrame(animate);}
-  // drag / mouse
-  let dragging=false,startX=0,startAngle=0;
-  wrap.addEventListener('mousedown',e=>{dragging=true;startX=e.clientX;startAngle=targetAngle;e.preventDefault();});
-  window.addEventListener('mousemove',e=>{if(!dragging)return;const dx=e.clientX-startX;targetAngle=startAngle+dx*0.45;startAnim();});
-  window.addEventListener('mouseup',()=>{if(dragging){dragging=false;snap();}});
-  // touch
-  let touchX=0,touchAngle=0;
-  wrap.addEventListener('touchstart',e=>{touchX=e.touches[0].clientX;touchAngle=targetAngle;},{passive:true});
-  wrap.addEventListener('touchmove',e=>{const dx=e.touches[0].clientX-touchX;targetAngle=touchAngle+dx*0.45;startAnim();},{passive:true});
-  wrap.addEventListener('touchend',()=>snap(),{passive:true});
-  function snap(){
-    const nearest=Math.round(targetAngle/angleStep)*angleStep;
-    targetAngle=nearest;startAnim();
+  function scrollToCard(nextIdx,behavior='smooth'){
+    const normalized=((nextIdx%N)+N)%N;
+    const card=cards[normalized];
+    if(!card)return;
+    wrap.scrollTo({left:cardLeft(card),behavior});
+    syncActive(normalized);
   }
-  window.carStep=function(dir){haptic();targetAngle+=angleStep*dir;startAnim();};
-  let resizeTick=false;
-  window.addEventListener('resize',()=>{
-    if(resizeTick)return;
-    resizeTick=true;
-    requestAnimationFrame(()=>{
-      layoutCards();
-      stage.style.transform=`rotateY(${curAngle}deg)`;
-      resizeTick=false;
+  function nearestCardIndex(){
+    const wrapCenter=wrap.scrollLeft+wrap.clientWidth/2;
+    let closestIdx=0;
+    let closestDistance=Infinity;
+    cards.forEach((card,i)=>{
+      const center=card.offsetLeft+card.offsetWidth/2;
+      const distance=Math.abs(center-wrapCenter);
+      if(distance<closestDistance){closestDistance=distance;closestIdx=i;}
     });
+    return closestIdx;
+  }
+  let scrollTick=false,snapTimer=null;
+  wrap.addEventListener('scroll',()=>{
+    if(!scrollTick){
+      scrollTick=true;
+      requestAnimationFrame(()=>{syncActive(nearestCardIndex());scrollTick=false;});
+    }
+    clearTimeout(snapTimer);
+    snapTimer=setTimeout(()=>scrollToCard(nearestCardIndex()),120);
+  },{passive:true});
+  let dragging=false,startX=0,startScrollLeft=0;
+  wrap.addEventListener('mousedown',e=>{
+    dragging=true;
+    startX=e.clientX;
+    startScrollLeft=wrap.scrollLeft;
+    wrap.classList.add('dragging');
+    clearTimeout(snapTimer);
+    e.preventDefault();
   });
-  updateActive();
+  window.addEventListener('mousemove',e=>{
+    if(!dragging)return;
+    wrap.scrollLeft=startScrollLeft-(e.clientX-startX);
+  });
+  window.addEventListener('mouseup',()=>{
+    if(!dragging)return;
+    dragging=false;
+    wrap.classList.remove('dragging');
+    scrollToCard(nearestCardIndex());
+  });
+  wrap.addEventListener('mouseleave',()=>{
+    if(!dragging)return;
+    dragging=false;
+    wrap.classList.remove('dragging');
+    scrollToCard(nearestCardIndex());
+  });
+  window.carStep=function(dir){haptic();scrollToCard(activeIdx+dir);};
+  window.addEventListener('resize',()=>scrollToCard(activeIdx,'auto'));
+  requestAnimationFrame(()=>scrollToCard(0,'auto'));
 })();
 
 /* ── MUSIC HINT PULSE ── */
