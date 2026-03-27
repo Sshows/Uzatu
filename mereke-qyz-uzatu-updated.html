@@ -220,20 +220,18 @@ opacity:0;animation:burst 4.8s ease-out infinite;}
 .vph-corner.bl{bottom:16px;left:12px;border-bottom:1px solid var(--gold);border-left:1px solid var(--gold);}
 .vph-corner.br{bottom:16px;right:12px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);}
 
-/* PHOTO CAROUSEL */
+/* CAROUSEL 3D */
 .carsec{background:var(--ivory);padding:80px 0 90px;overflow:hidden;}
 .carinner{max-width:640px;margin:0 auto;padding:0 24px;text-align:center;}
-.carwrap{position:relative;max-width:760px;margin:48px auto 0;padding:0 24px 18px;overflow-x:auto;overflow-y:hidden;scroll-behavior:smooth;scroll-snap-type:x mandatory;cursor:grab;-ms-overflow-style:none;scrollbar-width:none;}
-.carwrap::-webkit-scrollbar{display:none;}
-.carwrap.dragging{cursor:grabbing;scroll-behavior:auto;}
-.carstage{display:flex;align-items:stretch;gap:18px;width:max-content;padding:6px calc(50% - 90px) 10px;}
-.carcard{flex:0 0 180px;height:240px;scroll-snap-align:center;position:relative;transform:scale(.92);opacity:.68;transition:transform .32s ease,opacity .32s ease;}
-.carcard.active{transform:scale(1);opacity:1;}
-.carcard-inner{width:100%;height:100%;background:linear-gradient(145deg,#e8e4de,#d8d3cc);border-radius:3px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;box-shadow:0 8px 32px rgba(0,0,0,.16),0 2px 8px rgba(0,0,0,.08);position:relative;overflow:hidden;}
+.carwrap{position:relative;height:340px;perspective:900px;margin:48px auto 0;cursor:grab;}
+.carwrap:active{cursor:grabbing;}
+.carstage{position:absolute;width:100%;height:100%;transform-style:preserve-3d;transition:transform 0.05s linear;will-change:transform;}
+.carcard{position:absolute;left:50%;top:50%;width:180px;height:240px;margin-left:-90px;margin-top:-120px;transform-style:preserve-3d;backface-visibility:hidden;}
+.carcard-inner{width:100%;height:100%;background:linear-gradient(145deg,#e8e4de,#d8d3cc);border-radius:3px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;box-shadow:0 8px 32px rgba(0,0,0,.18),0 2px 8px rgba(0,0,0,.12);position:relative;overflow:hidden;}
 .carcard-inner::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.06) 0px,rgba(255,255,255,.06) 1px,transparent 1px,transparent 20px);}
 .carcard-inner svg{width:28px;height:28px;opacity:.3;}
 .carcard-num{font-size:9px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(60,50,40,.3);}
-.carcard.active .carcard-inner{background:linear-gradient(145deg,#ede9e3,#e2ddd6);box-shadow:0 14px 32px rgba(0,0,0,.18),0 4px 14px rgba(184,150,90,.12);}
+.carcard.active .carcard-inner{background:linear-gradient(145deg,#ede9e3,#e2ddd6);box-shadow:0 16px 48px rgba(0,0,0,.22),0 4px 16px rgba(184,150,90,.15);}
 .special-title{font-style:normal;font-weight:500;letter-spacing:0.03em;margin-bottom:30px;}
 .special-note{margin-top:20px;font-size:13px;font-weight:400;letter-spacing:.08em;color:rgba(255,255,255,.28);text-align:center;}
 .gallery-title{font-style:normal;font-weight:500;letter-spacing:0.03em;margin-bottom:20px;transform:translateY(-12px);}
@@ -245,11 +243,10 @@ opacity:0;animation:burst 4.8s ease-out infinite;}
 @media(max-width:480px){
   .carsec{padding:68px 0 74px;}
   .carinner{padding:0 22px;}
-  .carwrap{max-width:100%;margin:28px auto 0;padding:0 16px 14px;}
-  .carstage{gap:12px;padding:4px calc(50% - 48px) 8px;}
-  .carcard{flex-basis:96px;height:132px;transform:scale(.95);opacity:.78;}
+  .carwrap{max-width:300px;height:208px;perspective:980px;margin:28px auto 0;}
+  .carcard{width:96px;height:132px;margin-left:-48px;margin-top:-66px;}
   .carcard-inner{gap:7px;border-radius:2px;box-shadow:0 6px 18px rgba(0,0,0,.12),0 2px 6px rgba(0,0,0,.08);}
-  .carcard.active .carcard-inner{box-shadow:0 10px 20px rgba(0,0,0,.14),0 3px 8px rgba(184,150,90,.08);}
+  .carcard.active .carcard-inner{box-shadow:0 9px 22px rgba(0,0,0,.14),0 3px 9px rgba(184,150,90,.1);}
   .carcard-inner svg{width:20px;height:20px;}
   .carcard-num{font-size:7.5px;letter-spacing:.22em;}
   .gallery-title{margin-bottom:16px;transform:translateY(-8px);}
@@ -284,8 +281,8 @@ opacity:0;animation:burst 4.8s ease-out infinite;}
   .cd{gap:8px;}
   .cn{font-size:clamp(38px,10vw,60px);}
   .nb{padding:8px 10px;font-size:10px;letter-spacing:0.12em;}
-  .carstage{gap:10px;padding:4px calc(50% - 41px) 8px;}
-  .carcard{flex-basis:82px;height:116px;}
+  .carwrap{max-width:280px;height:194px;}
+  .carcard{width:86px;height:118px;margin-left:-43px;margin-top:-59px;}
   .gallery-note{max-width:250px;font-size:14.5px;}
 }
 </style>
@@ -766,82 +763,68 @@ function haptic(t='light'){
   navigator.vibrate({light:10,medium:20,heavy:28}[t]||10);
 }
 
-/* ── PHOTO CAROUSEL ── */
+/* ── 3D CAROUSEL ── */
 (function(){
   const stage=document.getElementById('carstage');
   const wrap=document.getElementById('carwrap');
   if(!stage||!wrap)return;
   const N=9;
-  let activeIdx=0;
+  const angleStep=360/N;
+  let curAngle=0,targetAngle=0,animId=null;
   for(let i=0;i<N;i++){
     const card=document.createElement('div');card.className='carcard';card.dataset.idx=i;
     const inner=document.createElement('div');inner.className='carcard-inner';
     inner.innerHTML=`<svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#7A7268" stroke-width="1.2"/><path d="M3 15l5-5 4 4 3-3 6 6" stroke="#7A7268" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8.5" cy="8.5" r="1.5" stroke="#7A7268" stroke-width="1.2"/></svg><span class="carcard-num">${String(i+1).padStart(2,'0')}</span>`;
     card.appendChild(inner);stage.appendChild(card);
   }
-  const cards=[...stage.querySelectorAll('.carcard')];
-  function syncActive(nextIdx){
-    activeIdx=((nextIdx%N)+N)%N;
+  const cards=stage.querySelectorAll('.carcard');
+  function layoutCards(){
+    const cardWidth=cards[0]?.getBoundingClientRect().width||180;
+    const mobile=window.matchMedia('(max-width: 560px)').matches;
+    const radius=Math.round((cardWidth/Math.tan(Math.PI/N))*(mobile?0.76:1));
+    cards.forEach((c,i)=>{
+      const a=angleStep*i;
+      c.style.transform=`rotateY(${a}deg) translateZ(${radius}px)`;
+    });
+  }
+  layoutCards();
+  function updateActive(){
+    const norm=((-targetAngle%360)+360)%360;
+    const activeIdx=Math.round(norm/angleStep)%N;
     cards.forEach((c,i)=>c.classList.toggle('active',i===activeIdx));
   }
-  function cardLeft(card){
-    return card.offsetLeft-(wrap.clientWidth-card.offsetWidth)/2;
+  function animate(){
+    curAngle+=(targetAngle-curAngle)*0.1;
+    stage.style.transform=`rotateY(${curAngle}deg)`;
+    updateActive();
+    if(Math.abs(targetAngle-curAngle)>0.05)animId=requestAnimationFrame(animate);
+    else{curAngle=targetAngle;stage.style.transform=`rotateY(${curAngle}deg)`;animId=null;}
   }
-  function scrollToCard(nextIdx,behavior='smooth'){
-    const normalized=((nextIdx%N)+N)%N;
-    const card=cards[normalized];
-    if(!card)return;
-    wrap.scrollTo({left:cardLeft(card),behavior});
-    syncActive(normalized);
+  function startAnim(){if(!animId)animId=requestAnimationFrame(animate);}
+  let dragging=false,startX=0,startAngle=0;
+  wrap.addEventListener('mousedown',e=>{dragging=true;startX=e.clientX;startAngle=targetAngle;e.preventDefault();});
+  window.addEventListener('mousemove',e=>{if(!dragging)return;const dx=e.clientX-startX;targetAngle=startAngle+dx*0.45;startAnim();});
+  window.addEventListener('mouseup',()=>{if(dragging){dragging=false;snap();}});
+  let touchX=0,touchAngle=0;
+  wrap.addEventListener('touchstart',e=>{touchX=e.touches[0].clientX;touchAngle=targetAngle;},{passive:true});
+  wrap.addEventListener('touchmove',e=>{const dx=e.touches[0].clientX-touchX;targetAngle=touchAngle+dx*0.45;startAnim();},{passive:true});
+  wrap.addEventListener('touchend',()=>snap(),{passive:true});
+  function snap(){
+    const nearest=Math.round(targetAngle/angleStep)*angleStep;
+    targetAngle=nearest;startAnim();
   }
-  function nearestCardIndex(){
-    const wrapCenter=wrap.scrollLeft+wrap.clientWidth/2;
-    let closestIdx=0;
-    let closestDistance=Infinity;
-    cards.forEach((card,i)=>{
-      const center=card.offsetLeft+card.offsetWidth/2;
-      const distance=Math.abs(center-wrapCenter);
-      if(distance<closestDistance){closestDistance=distance;closestIdx=i;}
+  window.carStep=function(dir){haptic();targetAngle+=angleStep*dir;startAnim();};
+  let resizeTick=false;
+  window.addEventListener('resize',()=>{
+    if(resizeTick)return;
+    resizeTick=true;
+    requestAnimationFrame(()=>{
+      layoutCards();
+      stage.style.transform=`rotateY(${curAngle}deg)`;
+      resizeTick=false;
     });
-    return closestIdx;
-  }
-  let scrollTick=false,snapTimer=null;
-  wrap.addEventListener('scroll',()=>{
-    if(!scrollTick){
-      scrollTick=true;
-      requestAnimationFrame(()=>{syncActive(nearestCardIndex());scrollTick=false;});
-    }
-    clearTimeout(snapTimer);
-    snapTimer=setTimeout(()=>scrollToCard(nearestCardIndex()),120);
-  },{passive:true});
-  let dragging=false,startX=0,startScrollLeft=0;
-  wrap.addEventListener('mousedown',e=>{
-    dragging=true;
-    startX=e.clientX;
-    startScrollLeft=wrap.scrollLeft;
-    wrap.classList.add('dragging');
-    clearTimeout(snapTimer);
-    e.preventDefault();
   });
-  window.addEventListener('mousemove',e=>{
-    if(!dragging)return;
-    wrap.scrollLeft=startScrollLeft-(e.clientX-startX);
-  });
-  window.addEventListener('mouseup',()=>{
-    if(!dragging)return;
-    dragging=false;
-    wrap.classList.remove('dragging');
-    scrollToCard(nearestCardIndex());
-  });
-  wrap.addEventListener('mouseleave',()=>{
-    if(!dragging)return;
-    dragging=false;
-    wrap.classList.remove('dragging');
-    scrollToCard(nearestCardIndex());
-  });
-  window.carStep=function(dir){haptic();scrollToCard(activeIdx+dir);};
-  window.addEventListener('resize',()=>scrollToCard(activeIdx,'auto'));
-  requestAnimationFrame(()=>scrollToCard(0,'auto'));
+  updateActive();
 })();
 
 /* ── MUSIC HINT PULSE ── */
