@@ -236,9 +236,10 @@ opacity:0;animation:burst 4.8s ease-out infinite;}
 .special-note{margin-top:20px;font-size:13px;font-weight:400;letter-spacing:.08em;color:rgba(255,255,255,.28);text-align:center;}
 .gallery-title{font-style:normal;font-weight:500;letter-spacing:0.03em;margin-bottom:20px;transform:translateY(-12px);}
 .gallery-note{max-width:420px;margin:0 auto;opacity:.76;}
-.carhint{margin-top:28px;font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);opacity:.6;display:flex;align-items:center;justify-content:center;gap:10px;}
-.carhint-arrows{display:flex;gap:6px;}
-.carhint-arr{width:26px;height:26px;border:1px solid rgba(184,150,90,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .25s;-webkit-tap-highlight-color:transparent;}
+.carhint{margin-top:28px;font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);opacity:.6;display:flex;align-items:center;justify-content:center;gap:12px;}
+.carhint-arrows{display:flex;gap:10px;}
+.carhint-arr{width:42px;height:42px;border:1px solid rgba(184,150,90,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .25s;-webkit-tap-highlight-color:transparent;background:rgba(255,255,255,.46);}
+.carhint-arr svg{width:14px;height:14px;}
 .carhint-arr:hover{border-color:var(--gold);background:rgba(184,150,90,.08);}
 @media(max-width:480px){
   .carsec{padding:68px 0 74px;}
@@ -251,8 +252,10 @@ opacity:0;animation:burst 4.8s ease-out infinite;}
   .carcard-num{font-size:7.5px;letter-spacing:.22em;}
   .gallery-title{margin-bottom:16px;transform:translateY(-8px);}
   .gallery-note{max-width:276px;font-size:15px;line-height:1.72;}
-  .carhint{margin-top:14px;font-size:10px;letter-spacing:.12em;gap:8px;}
-  .carhint-arr{width:24px;height:24px;}
+  .carhint{margin-top:14px;font-size:10px;letter-spacing:.12em;gap:10px;}
+  .carhint-arrows{gap:8px;}
+  .carhint-arr{width:40px;height:40px;}
+  .carhint-arr svg{width:13px;height:13px;}
 }
 @media(max-width:560px){
   .countdown-shell{padding:34px 18px;}
