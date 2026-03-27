@@ -255,8 +255,16 @@ opacity:.52;pointer-events:none;}
 .carhint-arr{width:26px;height:26px;border:1px solid rgba(184,150,90,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .25s;-webkit-tap-highlight-color:transparent;}
 .carhint-arr:hover{border-color:var(--gold);background:rgba(184,150,90,.08);}
 @media(max-width:480px){
-  .carcard{width:140px;height:190px;margin-left:-70px;margin-top:-95px;}
-  .carwrap{height:270px;perspective:700px;}
+  .carinner{padding:0 18px;}
+  .carwrap{height:236px;perspective:760px;margin:34px auto 0;}
+  .carcard{width:118px;height:162px;margin-left:-59px;margin-top:-81px;}
+  .carcard-inner{gap:8px;box-shadow:0 8px 24px rgba(0,0,0,.15),0 2px 8px rgba(0,0,0,.1);}
+  .carcard.active .carcard-inner{box-shadow:0 12px 30px rgba(0,0,0,.18),0 4px 12px rgba(184,150,90,.12);}
+  .carcard-inner svg{width:23px;height:23px;}
+  .carcard-num{font-size:8px;letter-spacing:.24em;}
+  .gallery-title{margin-bottom:18px;transform:translateY(-10px);}
+  .gallery-note{max-width:320px;font-size:16px;line-height:1.7;}
+  .carhint{margin-top:18px;}
 }
 @media(max-width:560px){
   .countdown-shell{padding:34px 18px;}
@@ -285,6 +293,9 @@ opacity:.52;pointer-events:none;}
   .cd{gap:8px;}
   .cn{font-size:clamp(38px,10vw,60px);}
   .nb{padding:8px 10px;font-size:10px;letter-spacing:0.12em;}
+  .carwrap{height:220px;}
+  .carcard{width:108px;height:148px;margin-left:-54px;margin-top:-74px;}
+  .gallery-note{max-width:286px;font-size:15px;}
 }
 </style>
 </head>
@@ -800,11 +811,16 @@ function haptic(t='light'){
     card.appendChild(inner);stage.appendChild(card);
   }
   const cards=stage.querySelectorAll('.carcard');
-  const radius=Math.round(180/Math.tan(Math.PI/N));
-  cards.forEach((c,i)=>{
-    const a=angleStep*i;
-    c.style.transform=`rotateY(${a}deg) translateZ(${radius}px)`;
-  });
+  function layoutCards(){
+    const cardWidth=cards[0]?.getBoundingClientRect().width||180;
+    const mobile=window.matchMedia('(max-width: 560px)').matches;
+    const radius=Math.round((cardWidth/Math.tan(Math.PI/N))*(mobile?0.88:1));
+    cards.forEach((c,i)=>{
+      const a=angleStep*i;
+      c.style.transform=`rotateY(${a}deg) translateZ(${radius}px)`;
+    });
+  }
+  layoutCards();
   function updateActive(){
     const norm=((-targetAngle%360)+360)%360;
     const activeIdx=Math.round(norm/angleStep)%N;
@@ -833,6 +849,16 @@ function haptic(t='light'){
     targetAngle=nearest;startAnim();
   }
   window.carStep=function(dir){haptic();targetAngle+=angleStep*dir;startAnim();};
+  let resizeTick=false;
+  window.addEventListener('resize',()=>{
+    if(resizeTick)return;
+    resizeTick=true;
+    requestAnimationFrame(()=>{
+      layoutCards();
+      stage.style.transform=`rotateY(${curAngle}deg)`;
+      resizeTick=false;
+    });
+  });
   updateActive();
 })();
 
