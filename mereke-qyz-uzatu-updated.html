@@ -271,11 +271,11 @@ opacity:0;animation:burst 4.8s ease-out infinite;}
 /* CAROUSEL 3D */
 .carsec{background:var(--ivory);padding:80px 0 90px;overflow:hidden;}
 .carinner{max-width:640px;margin:0 auto;padding:0 24px;text-align:center;}
-.carwrap{position:relative;height:340px;perspective:1120px;margin:48px auto 0;cursor:grab;}
+.carwrap{position:relative;height:340px;perspective:1120px;margin:48px auto 0;cursor:grab;touch-action:pan-y;user-select:none;}
 .carwrap:active{cursor:grabbing;}
 .carstage{position:absolute;width:100%;height:100%;transform-style:preserve-3d;transition:transform 0.05s linear;will-change:transform;}
-.carcard{position:absolute;left:50%;top:50%;width:180px;height:240px;margin-left:-90px;margin-top:-120px;transform-style:preserve-3d;backface-visibility:hidden;}
-.carcard-inner{width:100%;height:100%;background:linear-gradient(145deg,#EEE9E2,#DCD5CD);border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;box-shadow:0 8px 32px rgba(0,0,0,.14),0 2px 8px rgba(0,0,0,.08);position:relative;overflow:hidden;border:1px solid rgba(184,150,90,.12);}
+.carcard{position:absolute;left:50%;top:50%;width:180px;height:240px;margin-left:-90px;margin-top:-120px;transform-style:preserve-3d;backface-visibility:hidden;will-change:transform,opacity;}
+.carcard-inner{width:100%;height:100%;background:linear-gradient(145deg,#EEE9E2,#DCD5CD);border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;box-shadow:0 8px 32px rgba(0,0,0,.14),0 2px 8px rgba(0,0,0,.08);position:relative;overflow:hidden;border:1px solid rgba(184,150,90,.12);transition:transform .22s ease,box-shadow .22s ease,filter .22s ease,opacity .22s ease;}
 .carcard-inner::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.05) 0px,rgba(255,255,255,.05) 1px,transparent 1px,transparent 20px);}
 .carphoto-frame{position:relative;width:74%;aspect-ratio:3/4;border-radius:14px;border:1px solid rgba(122,114,104,.18);background:linear-gradient(180deg,rgba(255,255,255,.48),rgba(255,255,255,.18));display:flex;align-items:center;justify-content:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.46);}
 .carphoto-frame::before{content:'';position:absolute;inset:9px;border:1px solid rgba(255,255,255,.44);border-radius:9px;}
@@ -294,10 +294,10 @@ opacity:0;animation:burst 4.8s ease-out infinite;}
 @media(max-width:480px){
   .carsec{padding:68px 0 74px;}
   .carinner{padding:0 22px;}
-  .carwrap{max-width:300px;height:214px;perspective:1480px;margin:28px auto 0;}
-  .carcard{width:92px;height:128px;margin-left:-46px;margin-top:-64px;}
-  .carcard-inner{gap:8px;border-radius:16px;box-shadow:0 6px 18px rgba(0,0,0,.12),0 2px 6px rgba(0,0,0,.08);}
-  .carcard.active .carcard-inner{box-shadow:0 9px 22px rgba(0,0,0,.14),0 3px 9px rgba(184,150,90,.1);}
+  .carwrap{max-width:334px;height:242px;perspective:2200px;margin:30px auto 0;}
+  .carcard{width:84px;height:118px;margin-left:-42px;margin-top:-59px;}
+  .carcard-inner{gap:6px;border-radius:14px;box-shadow:0 4px 14px rgba(0,0,0,.08),0 1px 4px rgba(0,0,0,.05);}
+  .carcard.active .carcard-inner{box-shadow:0 10px 24px rgba(0,0,0,.12),0 3px 8px rgba(184,150,90,.07);}
   .carphoto-frame{border-radius:10px;}
   .carphoto-frame::before{inset:7px;border-radius:7px;}
   .carphoto-frame svg{width:20px;height:20px;}
@@ -341,8 +341,8 @@ opacity:0;animation:burst 4.8s ease-out infinite;}
   .cn{font-size:clamp(38px,10vw,60px);}
   .nb{padding:8px 10px;font-size:10px;letter-spacing:0.12em;}
   .hseal{width:68px;height:68px;font-size:26px;}
-  .carwrap{max-width:280px;height:198px;perspective:1580px;}
-  .carcard{width:82px;height:112px;margin-left:-41px;margin-top:-56px;}
+  .carwrap{max-width:302px;height:220px;perspective:2360px;}
+  .carcard{width:78px;height:108px;margin-left:-39px;margin-top:-54px;}
   .gallery-note{max-width:250px;font-size:14.5px;}
 }
 </style>
@@ -922,6 +922,7 @@ function haptic(t='light'){
   const angleStep=360/N;
   let curAngle=0,targetAngle=0,animId=null;
   let autoSpinId=null,lastAutoTs=0,autoPauseUntil=0;
+  const isMobile=()=>window.matchMedia('(max-width: 560px)').matches;
   for(let i=0;i<N;i++){
     const card=document.createElement('div');card.className='carcard';card.dataset.idx=i;
     const inner=document.createElement('div');inner.className='carcard-inner';
@@ -931,8 +932,8 @@ function haptic(t='light'){
   const cards=stage.querySelectorAll('.carcard');
   function layoutCards(){
     const cardWidth=cards[0]?.getBoundingClientRect().width||180;
-    const mobile=window.matchMedia('(max-width: 560px)').matches;
-    const radius=Math.round((cardWidth/Math.tan(Math.PI/N))*(mobile?1.16:1.06));
+    const mobile=isMobile();
+    const radius=Math.round((cardWidth/Math.tan(Math.PI/N))*(mobile?1.52:1.06));
     cards.forEach((c,i)=>{
       const a=angleStep*i;
       c.style.transform=`rotateY(${a}deg) translateZ(${radius}px)`;
@@ -940,11 +941,28 @@ function haptic(t='light'){
   }
   layoutCards();
   function updateDepth(){
+    const mobile=isMobile();
     cards.forEach((c,i)=>{
+      const inner=c.firstElementChild;
       const angle=((angleStep*i+curAngle)%360+360)%360;
       const depth=Math.cos(angle*Math.PI/180);
       c.style.zIndex=String(Math.round((depth+1)*100));
-      c.style.opacity=(0.26+Math.max(depth,0)*0.74).toFixed(3);
+      if(mobile){
+        const front=Math.max(depth,0);
+        const back=Math.max(-depth,0);
+        c.style.opacity=(depth>0?0.18+front*0.82:0.03+(1-back)*0.08).toFixed(3);
+        if(inner){
+          const scale=0.68+((depth+1)/2)*0.32;
+          inner.style.transform=`scale(${scale.toFixed(3)})`;
+          inner.style.filter=depth<-0.24?'blur(0.35px)':'none';
+        }
+      }else{
+        c.style.opacity=(0.26+Math.max(depth,0)*0.74).toFixed(3);
+        if(inner){
+          inner.style.transform='';
+          inner.style.filter='none';
+        }
+      }
     });
   }
   function updateActive(){
@@ -953,7 +971,8 @@ function haptic(t='light'){
     cards.forEach((c,i)=>c.classList.toggle('active',i===activeIdx));
   }
   function animate(){
-    curAngle+=(targetAngle-curAngle)*0.1;
+    const ease=isMobile()?0.16:0.1;
+    curAngle+=(targetAngle-curAngle)*ease;
     stage.style.transform=`rotateY(${curAngle}deg)`;
     updateDepth();
     updateActive();
@@ -967,18 +986,20 @@ function haptic(t='light'){
     const dt=ts-lastAutoTs;
     lastAutoTs=ts;
     if(!document.hidden&&!dragging&&ts>autoPauseUntil){
-      targetAngle-=dt*0.0052;
+      targetAngle-=dt*(isMobile()?0.0038:0.0052);
       startAnim();
     }
     autoSpinId=requestAnimationFrame(autoSpin);
   }
+  const mouseDragFactor=()=>isMobile()?0.42:0.36;
+  const touchDragFactor=()=>isMobile()?0.52:0.34;
   let dragging=false,startX=0,startAngle=0;
   wrap.addEventListener('mousedown',e=>{pauseAuto(3600);dragging=true;startX=e.clientX;startAngle=targetAngle;e.preventDefault();});
-  window.addEventListener('mousemove',e=>{if(!dragging)return;const dx=e.clientX-startX;targetAngle=startAngle+dx*0.36;startAnim();});
+  window.addEventListener('mousemove',e=>{if(!dragging)return;const dx=e.clientX-startX;targetAngle=startAngle+dx*mouseDragFactor();startAnim();});
   window.addEventListener('mouseup',()=>{if(dragging){dragging=false;pauseAuto(3400);snap();}});
   let touchX=0,touchAngle=0;
   wrap.addEventListener('touchstart',e=>{pauseAuto(3600);dragging=true;touchX=e.touches[0].clientX;touchAngle=targetAngle;},{passive:true});
-  wrap.addEventListener('touchmove',e=>{if(!dragging)return;const dx=e.touches[0].clientX-touchX;targetAngle=touchAngle+dx*0.34;startAnim();},{passive:true});
+  wrap.addEventListener('touchmove',e=>{if(!dragging)return;const dx=e.touches[0].clientX-touchX;targetAngle=touchAngle+dx*touchDragFactor();startAnim();},{passive:true});
   wrap.addEventListener('touchend',()=>{if(dragging){dragging=false;pauseAuto(3400);snap();}},{passive:true});
   function snap(){
     const nearest=Math.round(targetAngle/angleStep)*angleStep;
