@@ -7,7 +7,7 @@
 <title>Мерекенің Қыз Ұзату · 11.07.2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* RESET */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;word-break:normal;overflow-wrap:normal;hyphens:none;-webkit-hyphens:none;}
@@ -15,12 +15,25 @@
   --cream:#F7F3EE;--ivory:#FBF8F4;--parchment:#EDE8E0;
   --graphite:#1C1C1C;--soft:#3A3535;--muted:#7A7268;
   --gold:#B8965A;--gold-l:#D4AE72;--gold-p:#F0E4CB;
+  --ui-font:'Manrope',sans-serif;
   --sh:rgba(90,70,40,0.10);--r:0.28s ease;
 }
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
 body{font-family:'Cormorant Garamond',serif;background:var(--cream);color:var(--graphite);font-size:18px;font-weight:400;line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 .en{font-family:'Cormorant Garamond',serif;font-style:normal;font-weight:500;letter-spacing:0.04em;}
-.ey,.hcity,.sh-hint span,.nb,.sl,.bt,.ssign,.pr,.il,.is,.mb,.vph-label,.carhint,.ao,.al{font-family:'Cormorant Garamond',serif;}
+.ey,.hcity,.sh-hint span,.nb,.sl,.pr,.il,.is,.mb,.vph-label,.carhint,.ao,.al,.form-msg,.fm,.ck,.cs,.carcard-num{
+  font-family:var(--ui-font);
+  font-variant-numeric:tabular-nums;
+  font-feature-settings:"tnum" 1,"lnum" 1;
+}
+.num-lock{
+  display:inline-block;
+  font-family:var(--ui-font);
+  font-variant-numeric:tabular-nums;
+  font-feature-settings:"tnum" 1,"lnum" 1;
+  font-weight:600;
+  letter-spacing:0.01em;
+}
 a{color:inherit;text-decoration:none;}
 button{cursor:pointer;border:none;background:none;font:inherit;}
 
@@ -54,7 +67,7 @@ pointer-events:none;z-index:1;}
 .hb-s{background:rgba(255,255,255,.58);color:var(--gold);backdrop-filter:blur(10px);}
 .hb-s:hover,.hb-s:active{background:rgba(184,150,90,.1);border-color:rgba(184,150,90,.42);}
 .hm{margin-top:28px;padding-top:20px;border-top:1px solid rgba(184,150,90,.18);opacity:0;animation:fup 1s 1.3s forwards;}
-.hdate{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,4vw,25px);font-weight:400;color:var(--soft);letter-spacing:0.04em;margin-bottom:6px;}
+.hdate{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,4vw,25px);font-weight:400;color:var(--soft);letter-spacing:0.04em;margin-bottom:6px;font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1,"lnum" 1;}
 .hcity{font-size:12px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);}
 .sh-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;animation:fin 1s 2s forwards;}
 .sh-hint span{font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);opacity:0.6;}
@@ -96,7 +109,7 @@ pointer-events:none;z-index:1;}
 .iw{width:40px;height:40px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border-radius:50%;background:linear-gradient(180deg,#F5EAD3,#EEDCB8);}
 .iw svg{width:15px;height:15px;}
 .il{font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:3px;}
-.iv{font-family:'Cormorant Garamond',serif;font-size:clamp(17px,4vw,23px);font-weight:300;color:var(--graphite);line-height:1.3;}
+.iv{font-family:'Cormorant Garamond',serif;font-size:clamp(17px,4vw,23px);font-weight:300;color:var(--graphite);line-height:1.3;font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1,"lnum" 1;}
 .is{font-size:16px;color:var(--muted);margin-top:2px;font-weight:400;line-height:1.55;}
 .mb{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:24px;width:100%;padding:16px 24px;min-height:54px;background:linear-gradient(180deg,#242020,#181515);border:1px solid rgba(184,150,90,.38);color:var(--ivory);font-size:13px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;transition:all var(--r);-webkit-tap-highlight-color:transparent;border-radius:999px;box-shadow:0 18px 32px rgba(28,28,28,.12);}
 .mb:hover,.mb:active{background:#312B2B;color:var(--ivory);transform:translateY(-1px);}
@@ -145,7 +158,7 @@ opacity:0;animation:burst 4.8s ease-out infinite;}
 .cd-burst:nth-child(8),.cd-burst:nth-child(8)::before,.cd-burst:nth-child(8)::after{animation-delay:3.85s;}
 .cd{display:flex;justify-content:center;align-items:flex-end;gap:clamp(10px,2vw,24px);margin-top:34px;flex-wrap:nowrap;position:relative;z-index:1;}
 .cu{display:flex;align-items:baseline;gap:12px;}
-.cn{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,10vw,96px);font-weight:700;line-height:.88;color:#fff;min-width:2.6ch;text-align:right;letter-spacing:-0.04em;transition:opacity 0.18s,transform 0.18s;}
+.cn{font-family:var(--ui-font);font-size:clamp(52px,10vw,96px);font-weight:700;line-height:.9;color:#fff;min-width:2.8ch;text-align:right;letter-spacing:-0.025em;font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1,"lnum" 1;transition:opacity 0.18s,transform 0.18s;}
 .cn.flip{opacity:0.45;transform:translateY(-2px);}
 .ck{font-family:'Cormorant Garamond',serif;font-size:clamp(14px,2vw,20px);font-weight:600;letter-spacing:0.28em;text-transform:uppercase;color:rgba(255,255,255,.78);}
 .cs{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,36px);color:rgba(255,255,255,.38);padding-bottom:12px;font-weight:500;flex-shrink:0;}
@@ -411,7 +424,7 @@ opacity:0;animation:burst 4.8s ease-out infinite;}
       </button>
     </div>
     <div class="hm">
-      <p class="hdate">11 Шілде · 2026</p>
+      <p class="hdate"><span class="num-lock">11</span> Шілде · <span class="num-lock">2026</span></p>
       <p class="hcity">Алматы қаласы</p>
     </div>
   </div>
@@ -526,7 +539,7 @@ opacity:0;animation:burst 4.8s ease-out infinite;}
       </div>
       <div>
         <p class="il">Күні</p>
-        <p class="iv">11 Шілде, 2026</p>
+        <p class="iv"><span class="num-lock">11</span> Шілде, <span class="num-lock">2026</span></p>
         <p class="is">Сенбі</p>
       </div>
     </div>
@@ -536,7 +549,7 @@ opacity:0;animation:burst 4.8s ease-out infinite;}
       </div>
       <div>
         <p class="il">Уақыты</p>
-        <p class="iv">18:30</p>
+        <p class="iv"><span class="num-lock">18:30</span></p>
         <p class="is">Есік 18:00-да ашылады</p>
       </div>
     </div>
@@ -547,7 +560,7 @@ opacity:0;animation:burst 4.8s ease-out infinite;}
       <div>
         <p class="il">Мекенжайы</p>
         <p class="iv">«Ismail» мейрамханасы</p>
-        <p class="is">Алматы қ., Жүнісұров к-сі, №349</p>
+        <p class="is">Алматы қ., Жүнісұров к-сі, №<span class="num-lock">349</span></p>
       </div>
     </div>
   </div>
@@ -577,7 +590,7 @@ opacity:0;animation:burst 4.8s ease-out infinite;}
         <span class="cd-burst"></span>
       </div>
       <span class="sl rv" style="text-align:center;display:block">Күтіп жатырмыз</span>
-      <h2 class="st rv d1" style="text-align:center;font-size:clamp(20px,4vw,30px);margin-bottom:0">11 Шілдеге дейін</h2>
+      <h2 class="st rv d1" style="text-align:center;font-size:clamp(20px,4vw,30px);margin-bottom:0"><span class="num-lock">11</span> Шілдеге дейін</h2>
       <div class="cd" aria-live="polite">
         <div class="cu"><span class="cn" id="cdd">00</span><span class="ck">КҮН</span></div>
         <span class="cs" aria-hidden="true">·</span>
@@ -660,7 +673,7 @@ opacity:0;animation:burst 4.8s ease-out infinite;}
 
 <!-- FOOTER -->
 <footer class="ftr">
-  <p class="fm">Мерекенің Қыз ұзатуы &nbsp;·&nbsp; 11.07.2026</p>
+  <p class="fm">Мерекенің Қыз ұзатуы &nbsp;·&nbsp; <span class="num-lock">11.07.2026</span></p>
 </footer>
 
 <!-- FIXED BUTTONS -->
