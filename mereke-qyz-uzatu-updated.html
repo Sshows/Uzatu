@@ -136,12 +136,15 @@ opacity:0;animation:burst 4.8s ease-out infinite;}
 .cs{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,36px);color:rgba(255,255,255,.38);padding-bottom:12px;font-weight:500;flex-shrink:0;}
 
 /* DRESS CODE */
-.sw{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:540px;margin:34px auto 0;}
-.swi{position:relative;min-height:248px;padding:24px 18px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#faf5ef,#f2e9de);border:1px solid rgba(184,150,90,.2);box-shadow:0 16px 34px rgba(0,0,0,.08);overflow:hidden;}
+.sw{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:560px;margin:34px auto 0;}
+.swi{position:relative;min-height:258px;padding:26px 18px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#faf5ef,#f2e9de);border:1px solid rgba(184,150,90,.2);box-shadow:0 16px 34px rgba(0,0,0,.08);overflow:hidden;}
 .swi::before{content:'';position:absolute;inset:12px;border:1px solid rgba(255,255,255,.58);pointer-events:none;}
-.swi svg{width:100%;max-width:156px;height:auto;display:block;position:relative;z-index:1;filter:drop-shadow(0 10px 18px rgba(0,0,0,.12));}
-.outfit-fill{fill:#101113;}
-.outfit-stroke{stroke:#101113;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;fill:none;opacity:.9;}
+.swi svg{width:100%;max-width:170px;height:auto;display:block;position:relative;z-index:1;filter:drop-shadow(0 10px 18px rgba(0,0,0,.12));}
+.suit-fill{fill:#101113;}
+.suit-shirt{fill:#f4efe7;}
+.suit-line{stroke:#27282b;stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round;fill:none;}
+.dress-fill{fill:#111214;}
+.dress-line{stroke:#2b2c2f;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;fill:none;}
 .vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
 
 /* FORM */
@@ -530,21 +533,29 @@ opacity:0;animation:burst 4.8s ease-out infinite;}
     <div class="swi" aria-label="Ерлерге арналған қара костюм немесе смокинг">
       <span class="vh">Ерлерге арналған қара костюм немесе смокинг</span>
       <svg viewBox="0 0 180 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path class="outfit-fill" d="M64 26h52l18 27.5-10.4 13.5-11.6-11.7-6.8 17.6 10.2 99.1H102l-3.8-60.4L90 83.2l-8.2 28.4L78 172H64.6l10.2-99.1L68 55.3 56.4 67 46 53.5 64 26Z"/>
-        <path class="outfit-stroke" d="M76.8 26 90 51.3 103.2 26"/>
-        <path class="outfit-stroke" d="M76.2 73.6h27.6"/>
-        <path class="outfit-stroke" d="M83.2 43.1 90 51.3l6.8-8.2"/>
-        <path class="outfit-stroke" d="M82.4 129.6h15.2"/>
+        <path class="suit-fill" d="M61 26h58l17 24.5-10.4 14-12.1-11.6-6.4 16 9.8 54-8.8 53.6H95.8l-3.8-47.4L90 101l-2 28.1-3.8 47.4H71.9L63.1 122l9.8-53-6.4-16-12.1 11.6L44 50.5 61 26Z"/>
+        <path class="suit-shirt" d="M78.2 26 90 47.8 101.8 26l-3.8 20.5-8 11.7-8-11.7L78.2 26Z"/>
+        <path class="suit-fill" d="M90 47.8 96.8 58.6 92.4 90h-4.8L83.2 58.6 90 47.8Z"/>
+        <path class="suit-line" d="M78.2 26 90 47.8 101.8 26"/>
+        <path class="suit-line" d="M72.7 69h34.6"/>
+        <path class="suit-line" d="M83.2 58.6h13.6"/>
+        <path class="suit-line" d="M76.8 137.4h15.6"/>
+        <path class="suit-line" d="M104 137.4h15.6"/>
+        <circle cx="90" cy="100" r="3.8" fill="#1f2023"/>
+        <circle cx="90" cy="118" r="3.8" fill="#1f2023"/>
+        <circle cx="90" cy="136" r="3.8" fill="#1f2023"/>
       </svg>
     </div>
     <div class="swi" aria-label="Әйелдерге арналған классикалық көйлек">
       <span class="vh">Әйелдерге арналған классикалық көйлек</span>
       <svg viewBox="0 0 180 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path class="outfit-fill" d="M90 28c10.2 0 17.2 7.1 17.2 16.8 0 6.5-3.6 12-9.1 14.9l7.9 17.5 12.6 8.6 22 112.2H39.4l22-112.2L74 77.2l7.9-17.5c-5.5-2.9-9.1-8.4-9.1-14.9C72.8 35.1 79.8 28 90 28Z"/>
-        <path class="outfit-stroke" d="M76.5 86.8c8.8 4.5 18.2 4.5 27 0"/>
-        <path class="outfit-stroke" d="M90 61.8v26.4"/>
-        <path class="outfit-stroke" d="M63.8 122.5 52 182.4"/>
-        <path class="outfit-stroke" d="M116.2 122.5 128 182.4"/>
+        <path class="dress-fill" d="M90 26c10 0 17 7 17 16.3 0 5.2-2.3 9.8-6.2 13.1l3.9 12.8 13.8 8.4 7.3 16.8-12.9 8.9-10.2-18.5-2.9 26.8 30.3 63.6c-23.4 15.4-56.4 15.4-79.8 0l30.3-63.6-2.9-26.8-10.2 18.5-12.9-8.9 7.3-16.8 13.8-8.4 3.9-12.8c-3.9-3.3-6.2-7.9-6.2-13.1C73 33 80 26 90 26Z"/>
+        <path class="dress-line" d="M77 74.4c8.7 4.2 17.3 4.2 26 0"/>
+        <path class="dress-line" d="M90 58.6v27.1"/>
+        <path class="dress-line" d="M69.6 118.5 58.2 174"/>
+        <path class="dress-line" d="M110.4 118.5 121.8 174"/>
+        <path class="dress-line" d="M83.6 128.4c2.8 16.7 4.3 29.8 4.3 47.5"/>
+        <path class="dress-line" d="M96.4 128.4c-2.8 16.7-4.3 29.8-4.3 47.5"/>
       </svg>
     </div>
   </div>
@@ -784,6 +795,7 @@ function haptic(t='light'){
   const N=9;
   const angleStep=360/N;
   let curAngle=0,targetAngle=0,animId=null;
+  let autoSpinId=null,lastAutoTs=0,autoPauseUntil=0;
   for(let i=0;i<N;i++){
     const card=document.createElement('div');card.className='carcard';card.dataset.idx=i;
     const inner=document.createElement('div');inner.className='carcard-inner';
@@ -823,19 +835,30 @@ function haptic(t='light'){
     else{curAngle=targetAngle;stage.style.transform=`rotateY(${curAngle}deg)`;animId=null;}
   }
   function startAnim(){if(!animId)animId=requestAnimationFrame(animate);}
+  function pauseAuto(ms=2800){autoPauseUntil=performance.now()+ms;}
+  function autoSpin(ts){
+    if(!lastAutoTs)lastAutoTs=ts;
+    const dt=ts-lastAutoTs;
+    lastAutoTs=ts;
+    if(!document.hidden&&!dragging&&ts>autoPauseUntil){
+      targetAngle-=dt*0.0052;
+      startAnim();
+    }
+    autoSpinId=requestAnimationFrame(autoSpin);
+  }
   let dragging=false,startX=0,startAngle=0;
-  wrap.addEventListener('mousedown',e=>{dragging=true;startX=e.clientX;startAngle=targetAngle;e.preventDefault();});
+  wrap.addEventListener('mousedown',e=>{pauseAuto(3600);dragging=true;startX=e.clientX;startAngle=targetAngle;e.preventDefault();});
   window.addEventListener('mousemove',e=>{if(!dragging)return;const dx=e.clientX-startX;targetAngle=startAngle+dx*0.36;startAnim();});
-  window.addEventListener('mouseup',()=>{if(dragging){dragging=false;snap();}});
+  window.addEventListener('mouseup',()=>{if(dragging){dragging=false;pauseAuto(3400);snap();}});
   let touchX=0,touchAngle=0;
-  wrap.addEventListener('touchstart',e=>{touchX=e.touches[0].clientX;touchAngle=targetAngle;},{passive:true});
-  wrap.addEventListener('touchmove',e=>{const dx=e.touches[0].clientX-touchX;targetAngle=touchAngle+dx*0.34;startAnim();},{passive:true});
-  wrap.addEventListener('touchend',()=>snap(),{passive:true});
+  wrap.addEventListener('touchstart',e=>{pauseAuto(3600);dragging=true;touchX=e.touches[0].clientX;touchAngle=targetAngle;},{passive:true});
+  wrap.addEventListener('touchmove',e=>{if(!dragging)return;const dx=e.touches[0].clientX-touchX;targetAngle=touchAngle+dx*0.34;startAnim();},{passive:true});
+  wrap.addEventListener('touchend',()=>{if(dragging){dragging=false;pauseAuto(3400);snap();}},{passive:true});
   function snap(){
     const nearest=Math.round(targetAngle/angleStep)*angleStep;
     targetAngle=nearest;startAnim();
   }
-  window.carStep=function(dir){haptic();targetAngle+=angleStep*dir;startAnim();};
+  window.carStep=function(dir){haptic();pauseAuto(3200);targetAngle+=angleStep*dir;startAnim();};
   let resizeTick=false;
   window.addEventListener('resize',()=>{
     if(resizeTick)return;
@@ -847,8 +870,11 @@ function haptic(t='light'){
       resizeTick=false;
     });
   });
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)lastAutoTs=0;});
   updateDepth();
   updateActive();
+  pauseAuto(1600);
+  autoSpinId=requestAnimationFrame(autoSpin);
 })();
 
 /* ── MUSIC HINT PULSE ── */
