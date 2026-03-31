@@ -223,7 +223,7 @@ opacity:0;animation:burst 4.8s ease-out infinite;}
 /* CAROUSEL 3D */
 .carsec{background:var(--ivory);padding:80px 0 90px;overflow:hidden;}
 .carinner{max-width:640px;margin:0 auto;padding:0 24px;text-align:center;}
-.carwrap{position:relative;height:340px;perspective:900px;margin:48px auto 0;cursor:grab;}
+.carwrap{position:relative;height:340px;perspective:1120px;margin:48px auto 0;cursor:grab;}
 .carwrap:active{cursor:grabbing;}
 .carstage{position:absolute;width:100%;height:100%;transform-style:preserve-3d;transition:transform 0.05s linear;will-change:transform;}
 .carcard{position:absolute;left:50%;top:50%;width:180px;height:240px;margin-left:-90px;margin-top:-120px;transform-style:preserve-3d;backface-visibility:hidden;}
@@ -244,8 +244,8 @@ opacity:0;animation:burst 4.8s ease-out infinite;}
 @media(max-width:480px){
   .carsec{padding:68px 0 74px;}
   .carinner{padding:0 22px;}
-  .carwrap{max-width:300px;height:208px;perspective:980px;margin:28px auto 0;}
-  .carcard{width:96px;height:132px;margin-left:-48px;margin-top:-66px;}
+  .carwrap{max-width:300px;height:214px;perspective:1480px;margin:28px auto 0;}
+  .carcard{width:92px;height:128px;margin-left:-46px;margin-top:-64px;}
   .carcard-inner{gap:7px;border-radius:2px;box-shadow:0 6px 18px rgba(0,0,0,.12),0 2px 6px rgba(0,0,0,.08);}
   .carcard.active .carcard-inner{box-shadow:0 9px 22px rgba(0,0,0,.14),0 3px 9px rgba(184,150,90,.1);}
   .carcard-inner svg{width:20px;height:20px;}
@@ -284,8 +284,8 @@ opacity:0;animation:burst 4.8s ease-out infinite;}
   .cd{gap:8px;}
   .cn{font-size:clamp(38px,10vw,60px);}
   .nb{padding:8px 10px;font-size:10px;letter-spacing:0.12em;}
-  .carwrap{max-width:280px;height:194px;}
-  .carcard{width:86px;height:118px;margin-left:-43px;margin-top:-59px;}
+  .carwrap{max-width:280px;height:198px;perspective:1580px;}
+  .carcard{width:82px;height:112px;margin-left:-41px;margin-top:-56px;}
   .gallery-note{max-width:250px;font-size:14.5px;}
 }
 </style>
@@ -590,6 +590,9 @@ opacity:0;animation:burst 4.8s ease-out infinite;}
 <button class="sct" id="sct" aria-label="Жоғары" onclick="totop()">
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 13V3M3 8l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </button>
+<audio id="bgAudio" preload="auto" loop playsinline>
+  <source src="sulu-qyz.mp3" type="audio/mpeg">
+</audio>
 
 <script>
 /* ── FLOWERS ── */
@@ -734,30 +737,37 @@ function shake(id){
     setTimeout(()=>el.style.borderColor='',500);},100);
 }
 
-/* ── MUSIC (Web Audio) ── */
-let actx=null,gn=null,playing=false;
-function buildAudio(){
-  actx=new(window.AudioContext||window.webkitAudioContext)();
-  gn=actx.createGain();gn.gain.setValueAtTime(0,actx.currentTime);gn.connect(actx.destination);
-  [220,277.18,329.63,164.81].forEach(f=>{
-    const o=actx.createOscillator(),g=actx.createGain();
-    o.type='sine';o.frequency.value=f;g.gain.value=0.055;
-    o.connect(g);g.connect(gn);o.start();
-  });
-  let ph=0;
-  (function pulse(){
-    ph+=0.003;
-    if(gn&&playing)gn.gain.setTargetAtTime(0.04+Math.sin(ph)*0.02,actx.currentTime,.5);
-    requestAnimationFrame(pulse);
-  })();
+/* ── MUSIC ── */
+let bgAudio=null,playing=false;
+function syncMusicState(){
+  const btn=document.getElementById('mbn');
+  if(!btn)return;
+  playing=!!(bgAudio&&!bgAudio.paused);
+  btn.classList.toggle('on',playing);
 }
 function tmusic(){
   haptic();
-  if(!actx)buildAudio();
-  if(actx.state==='suspended')actx.resume();
-  const btn=document.getElementById('mbn');
-  if(!playing){playing=true;gn.gain.setTargetAtTime(0.055,actx.currentTime,1.1);btn.classList.add('on');}
-  else{playing=false;gn.gain.setTargetAtTime(0,actx.currentTime,.7);btn.classList.remove('on');}
+  bgAudio ||= document.getElementById('bgAudio');
+  if(!bgAudio)return;
+  if(bgAudio.paused){
+    bgAudio.volume=0.62;
+    const playPromise=bgAudio.play();
+    if(playPromise&&typeof playPromise.then==='function'){
+      playPromise.then(syncMusicState).catch(()=>{playing=false;syncMusicState();});
+    }else{
+      syncMusicState();
+    }
+  }else{
+    bgAudio.pause();
+    syncMusicState();
+  }
+}
+bgAudio=document.getElementById('bgAudio');
+if(bgAudio){
+  bgAudio.addEventListener('play',syncMusicState);
+  bgAudio.addEventListener('pause',syncMusicState);
+  bgAudio.addEventListener('ended',syncMusicState);
+  syncMusicState();
 }
 
 /* ── HAPTIC ── */
@@ -784,13 +794,21 @@ function haptic(t='light'){
   function layoutCards(){
     const cardWidth=cards[0]?.getBoundingClientRect().width||180;
     const mobile=window.matchMedia('(max-width: 560px)').matches;
-    const radius=Math.round((cardWidth/Math.tan(Math.PI/N))*(mobile?0.76:1));
+    const radius=Math.round((cardWidth/Math.tan(Math.PI/N))*(mobile?1.16:1.06));
     cards.forEach((c,i)=>{
       const a=angleStep*i;
       c.style.transform=`rotateY(${a}deg) translateZ(${radius}px)`;
     });
   }
   layoutCards();
+  function updateDepth(){
+    cards.forEach((c,i)=>{
+      const angle=((angleStep*i+curAngle)%360+360)%360;
+      const depth=Math.cos(angle*Math.PI/180);
+      c.style.zIndex=String(Math.round((depth+1)*100));
+      c.style.opacity=(0.26+Math.max(depth,0)*0.74).toFixed(3);
+    });
+  }
   function updateActive(){
     const norm=((-targetAngle%360)+360)%360;
     const activeIdx=Math.round(norm/angleStep)%N;
@@ -799,6 +817,7 @@ function haptic(t='light'){
   function animate(){
     curAngle+=(targetAngle-curAngle)*0.1;
     stage.style.transform=`rotateY(${curAngle}deg)`;
+    updateDepth();
     updateActive();
     if(Math.abs(targetAngle-curAngle)>0.05)animId=requestAnimationFrame(animate);
     else{curAngle=targetAngle;stage.style.transform=`rotateY(${curAngle}deg)`;animId=null;}
@@ -806,11 +825,11 @@ function haptic(t='light'){
   function startAnim(){if(!animId)animId=requestAnimationFrame(animate);}
   let dragging=false,startX=0,startAngle=0;
   wrap.addEventListener('mousedown',e=>{dragging=true;startX=e.clientX;startAngle=targetAngle;e.preventDefault();});
-  window.addEventListener('mousemove',e=>{if(!dragging)return;const dx=e.clientX-startX;targetAngle=startAngle+dx*0.45;startAnim();});
+  window.addEventListener('mousemove',e=>{if(!dragging)return;const dx=e.clientX-startX;targetAngle=startAngle+dx*0.36;startAnim();});
   window.addEventListener('mouseup',()=>{if(dragging){dragging=false;snap();}});
   let touchX=0,touchAngle=0;
   wrap.addEventListener('touchstart',e=>{touchX=e.touches[0].clientX;touchAngle=targetAngle;},{passive:true});
-  wrap.addEventListener('touchmove',e=>{const dx=e.touches[0].clientX-touchX;targetAngle=touchAngle+dx*0.45;startAnim();},{passive:true});
+  wrap.addEventListener('touchmove',e=>{const dx=e.touches[0].clientX-touchX;targetAngle=touchAngle+dx*0.34;startAnim();},{passive:true});
   wrap.addEventListener('touchend',()=>snap(),{passive:true});
   function snap(){
     const nearest=Math.round(targetAngle/angleStep)*angleStep;
@@ -824,9 +843,11 @@ function haptic(t='light'){
     requestAnimationFrame(()=>{
       layoutCards();
       stage.style.transform=`rotateY(${curAngle}deg)`;
+      updateDepth();
       resizeTick=false;
     });
   });
+  updateDepth();
   updateActive();
 })();
 
