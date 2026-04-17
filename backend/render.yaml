@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: securecourse-api
+    env: node
+    plan: free
+    buildCommand: npm install && npx prisma generate && npm run build
+    startCommand: node dist/main.js
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: DATABASE_URL
+        sync: false # User must provide this in Render dashboard
+      - key: REDIS_URL
+        value: "mock://" # Since Render free doesn't give Redis, we use built-in ioredis-mock for tests, or they can put an external Redis url
