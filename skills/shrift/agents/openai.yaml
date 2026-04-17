@@ -1,0 +1,4 @@
+interface:
+  display_name: "Shrift"
+  short_description: "Help with typography and font workflows"
+  default_prompt: "Use $shrift to pick, pair, and apply fonts for this interface."

@@ -13,13 +13,6 @@ const initialForm = {
   comment: ""
 };
 
-function saveFallback(payload) {
-  const key = "qyz-uzatu-rsvp-fallback";
-  const current = JSON.parse(window.localStorage.getItem(key) || "[]");
-  current.push({ ...payload, savedAt: new Date().toISOString() });
-  window.localStorage.setItem(key, JSON.stringify(current));
-}
-
 export default function RsvpForm() {
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
@@ -29,20 +22,25 @@ export default function RsvpForm() {
   function updateField(name, value) {
     setForm((current) => {
       const next = { ...current, [name]: value };
+
       if (name === "attendance" && value === "no") {
         next.guestCount = "0";
       }
+
       if (name === "attendance" && value !== "no" && Number(next.guestCount) < 1) {
         next.guestCount = "1";
       }
+
       return next;
     });
+
     setErrors((current) => ({ ...current, [name]: "" }));
     setStatus({ type: "", message: "" });
   }
 
   async function handleSubmit(event) {
     event.preventDefault();
+
     const payload = normalizeSubmission({
       ...form,
       eventType: siteContent.eventType,
@@ -70,7 +68,6 @@ export default function RsvpForm() {
         },
         body: JSON.stringify(payload)
       });
-
       const result = await response.json();
 
       if (!response.ok) {
@@ -78,35 +75,24 @@ export default function RsvpForm() {
           setErrors(result.errors);
         }
 
-        if (response.status === 503) {
-          saveFallback(payload);
-          setStatus({
-            type: "success",
-            message: siteContent.rsvp.storageErrorMessage
-          });
-          setForm(initialForm);
-          return;
-        }
-
-        throw new Error(result.message || siteContent.rsvp.errors.submitFailed);
+        setStatus({
+          type: "error",
+          message: result.message || siteContent.rsvp.storageErrorMessage
+        });
+        return;
       }
 
       setForm(initialForm);
       setErrors({});
       setStatus({
         type: "success",
-        message:
-          result.result?.storage === "supabase"
-            ? siteContent.rsvp.successMessage
-            : siteContent.rsvp.localFallbackMessage
+        message: siteContent.rsvp.successMessage
       });
     } catch {
-      saveFallback(payload);
       setStatus({
-        type: "success",
-        message: siteContent.rsvp.localFallbackMessage
+        type: "error",
+        message: siteContent.rsvp.storageErrorMessage
       });
-      setForm(initialForm);
     } finally {
       setIsPending(false);
     }
@@ -115,51 +101,60 @@ export default function RsvpForm() {
   const guestCountDisabled = form.attendance === "no";
 
   return (
-    <form className="rsvp-card" onSubmit={handleSubmit} noValidate data-reveal>
-      <div className={`field ${errors.fullName ? "field--error" : ""}`}>
+    <form className="form-card" onSubmit={handleSubmit} noValidate data-reveal>
+      <div className={`form-field ${errors.fullName ? "form-field--error" : ""}`}>
         <label htmlFor="fullName">{siteContent.rsvp.fields.fullName}</label>
         <input
           id="fullName"
           name="fullName"
           type="text"
+          autoComplete="name"
           value={form.fullName}
           onChange={(event) => updateField("fullName", event.target.value)}
           placeholder={siteContent.rsvp.placeholders.fullName}
+          aria-invalid={Boolean(errors.fullName)}
         />
-        {errors.fullName ? <span className="field__error">{errors.fullName}</span> : null}
+        {errors.fullName ? <span className="form-field__error">{errors.fullName}</span> : null}
       </div>
 
-      <div className={`field ${errors.contact ? "field--error" : ""}`}>
+      <div className={`form-field ${errors.contact ? "form-field--error" : ""}`}>
         <label htmlFor="contact">{siteContent.rsvp.fields.contact}</label>
         <input
           id="contact"
           name="contact"
           type="text"
+          autoComplete="tel"
           value={form.contact}
           onChange={(event) => updateField("contact", event.target.value)}
           placeholder={siteContent.rsvp.placeholders.contact}
+          aria-invalid={Boolean(errors.contact)}
         />
-        {errors.contact ? <span className="field__error">{errors.contact}</span> : null}
+        {errors.contact ? <span className="form-field__error">{errors.contact}</span> : null}
       </div>
 
-      <div className={`field ${errors.attendance ? "field--error" : ""}`}>
-        <label htmlFor="attendance">{siteContent.rsvp.fields.attendance}</label>
-        <select
-          id="attendance"
-          name="attendance"
-          value={form.attendance}
-          onChange={(event) => updateField("attendance", event.target.value)}
-        >
+      <fieldset className={`form-field ${errors.attendance ? "form-field--error" : ""}`}>
+        <legend className="form-field__legend">{siteContent.rsvp.fields.attendance}</legend>
+        <div className="form-choice">
           {siteContent.rsvp.options.map((option) => (
-            <option value={option.value} key={option.value}>
-              {option.label}
-            </option>
+            <label
+              className={`choice-chip ${form.attendance === option.value ? "is-active" : ""}`}
+              key={option.value}
+            >
+              <input
+                type="radio"
+                name="attendance"
+                value={option.value}
+                checked={form.attendance === option.value}
+                onChange={(event) => updateField("attendance", event.target.value)}
+              />
+              <span>{option.label}</span>
+            </label>
           ))}
-        </select>
-        {errors.attendance ? <span className="field__error">{errors.attendance}</span> : null}
-      </div>
+        </div>
+        {errors.attendance ? <span className="form-field__error">{errors.attendance}</span> : null}
+      </fieldset>
 
-      <div className={`field ${errors.guestCount ? "field--error" : ""}`}>
+      <div className={`form-field ${errors.guestCount ? "form-field--error" : ""}`}>
         <label htmlFor="guestCount">{siteContent.rsvp.fields.guestCount}</label>
         <input
           id="guestCount"
@@ -170,11 +165,12 @@ export default function RsvpForm() {
           value={form.guestCount}
           onChange={(event) => updateField("guestCount", event.target.value)}
           disabled={guestCountDisabled}
+          aria-invalid={Boolean(errors.guestCount)}
         />
-        {errors.guestCount ? <span className="field__error">{errors.guestCount}</span> : null}
+        {errors.guestCount ? <span className="form-field__error">{errors.guestCount}</span> : null}
       </div>
 
-      <div className="field">
+      <div className="form-field">
         <label htmlFor="dietaryNotes">{siteContent.rsvp.fields.dietaryNotes}</label>
         <textarea
           id="dietaryNotes"
@@ -186,7 +182,7 @@ export default function RsvpForm() {
         />
       </div>
 
-      <div className="field">
+      <div className="form-field">
         <label htmlFor="comment">{siteContent.rsvp.fields.comment}</label>
         <textarea
           id="comment"

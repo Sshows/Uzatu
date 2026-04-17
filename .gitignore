@@ -9,3 +9,5 @@ data/
 render-data-test-*
 server.err.txt
 server.out.txt
+backend/dist/
+backend/node_modules/

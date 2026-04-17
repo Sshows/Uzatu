@@ -1,28 +1,37 @@
-import { Cormorant_Garamond, Great_Vibes, Manrope } from "next/font/google";
+import { Montserrat, Playfair_Display } from "next/font/google";
+import RevealInit from "@/components/reveal-init";
 import { siteContent } from "@/lib/site-content";
 import "./globals.css";
 
-// TODO: Қаріп жұбын осы жерден ауыстырыңыз. Қазақ әріптері толық көрінетін шрифт таңдаңыз.
-const serif = Cormorant_Garamond({
-  subsets: ["latin", "cyrillic"],
-  weight: ["400", "500", "600", "700"],
+const serif = Playfair_Display({
+  subsets: ["latin", "latin-ext", "cyrillic"],
+  weight: ["600", "700", "800", "900"],
   display: "swap",
   variable: "--font-serif"
 });
 
-const sans = Manrope({
-  subsets: ["latin", "cyrillic"],
+const sans = Montserrat({
+  subsets: ["latin", "latin-ext", "cyrillic"],
   weight: ["400", "500", "600", "700", "800"],
   display: "swap",
   variable: "--font-sans"
 });
 
-const script = Great_Vibes({
-  subsets: ["latin"],
-  weight: ["400"],
-  display: "swap",
-  variable: "--font-script"
-});
+const themeBootstrapScript = `
+(() => {
+  const root = document.documentElement;
+  const storageKey = "wedding-theme";
+  try {
+    const saved = window.localStorage.getItem(storageKey);
+    const theme = saved === "dark" ? "dark" : "light";
+    root.dataset.theme = theme;
+    root.style.colorScheme = theme === "dark" ? "dark" : "light";
+  } catch (error) {
+    root.dataset.theme = "light";
+    root.style.colorScheme = "light";
+  }
+})();
+`;
 
 export const metadata = {
   title: siteContent.seo.title,
@@ -31,8 +40,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="kk">
-      <body className={`${serif.variable} ${sans.variable} ${script.variable}`}>{children}</body>
+    <html lang="kk" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeBootstrapScript }} />
+      </head>
+      <body className={`${serif.variable} ${sans.variable}`}>
+        <RevealInit />
+        {children}
+      </body>
     </html>
   );
 }

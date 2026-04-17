@@ -1,0 +1,9 @@
+RequirementID,Requirement,Risk,DesignModule,UnitTest,IntegrationTest,SystemTest,UAT
+R1,"Collect logs from 45+ sources.","Integration failure","Log collectors / source connectors",UT-01,IT-02,SYS-01,AT-01
+R2,"Detect SYN attack traffic.","Missed attack","IDS + rule engine",UT-02,IT-01,SYS-01,AT-01
+R3,"Generate alert with IP and description.","Incorrect alert context","Alert engine",UT-03,IT-01,SYS-01,AT-01
+R4,"Dashboard must display alerts and status.","Visibility failure","Dashboard UI",UT-03,IT-02,SYS-01,AT-01
+R5,"System must handle high event rate.","EPS overload","Performance layer",-,IT-02,SYS-01,AT-01
+R6,"Access control must follow roles.","Unauthorized change","Auth / RBAC",UT-auth,-,SYS-01,AT-01
+R7,"False positive rate must stay at or below 15%.","Alert fatigue","Rule tuning",UT-02,IT-03,SYS-01,AT-01
+R8,"Project budget must remain within $55,000.","Cost overrun","PM control / EV metrics",-,-,"Project review","Sponsor acceptance"

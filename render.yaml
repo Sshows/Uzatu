@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: projectm-soc
+    runtime: docker
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    disk:
+      name: projectm-data
+      mountPath: /var/lib/projectm
+      sizeGB: 5
+    envVars:
+      - key: PORT
+        value: "10000"
+      - key: PROJECTM_BIND_HOST
+        value: "0.0.0.0"
+      - key: PROJECTM_DATA_DIR
+        value: "/var/lib/projectm"

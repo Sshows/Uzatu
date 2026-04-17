@@ -8,27 +8,33 @@ export default function MapEmbed({ title, embedUrl, openUrl }) {
   const canEmbed = Boolean(embedUrl);
 
   return (
-    <div className="map-card" data-reveal>
+    <div className="map-panel" data-reveal>
       {isLoaded && canEmbed ? (
         <iframe
-          className="map-card__frame"
+          className="map-panel__frame"
           src={embedUrl}
           title={title}
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         />
       ) : (
-        <div className="map-card__placeholder">
-          <p className="map-card__eyebrow">{siteContent.venue.mapLabel}</p>
+        <div className="map-panel__placeholder">
+          <p className="map-panel__eyebrow">{siteContent.venue.mapLabel}</p>
           <h3>{siteContent.venue.mapPlaceholderTitle}</h3>
           <p>{siteContent.venue.mapPlaceholderText}</p>
-          <div className="map-card__actions">
+
+          <div className="map-panel__actions">
             {canEmbed ? (
-              <button className="button button--primary" type="button" onClick={() => setIsLoaded(true)}>
+              <button
+                className="button button--secondary"
+                type="button"
+                onClick={() => setIsLoaded(true)}
+              >
                 {siteContent.venue.loadMapLabel}
               </button>
             ) : null}
-            <a className="button button--ghost" href={openUrl} target="_blank" rel="noreferrer">
+
+            <a className="button button--primary" href={openUrl} target="_blank" rel="noreferrer">
               {siteContent.venue.openMapLabel}
             </a>
           </div>
